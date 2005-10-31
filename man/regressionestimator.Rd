@@ -2,11 +2,11 @@
 \alias{regressionestimator}
 \title{g-weights of the regression estimator}
 \description{Compute the g-weights of the regression estimator.}
-\usage{regressionestimator(Xs,piks,t,q=rep(1,times=length(piks)))}
+\usage{regressionestimator(Xs,piks,tot,q=rep(1,times=length(piks)))}
 \arguments{
 \item{Xs}{matrix of calibration variables.}
 \item{piks}{vector of inclusion probabilities.}
-\item{t}{vector of population totals.}
+\item{tot}{vector of population totals.}
 \item{q}{vector of weights for the distance. The variation of the g-weights is reduced for the small values of q. When a component of q is null, the corresponding g-weight remains equal to 1.}
 }
 \references{ 

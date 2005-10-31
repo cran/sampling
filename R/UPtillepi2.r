@@ -1,4 +1,5 @@
-UPtillepi2<-function(pik,eps=0.000005)
+"UPtillepi2" <-
+function(pik,eps=0.000005)
 ######################################
 #
 # Compute the joint inclusion probabilities of 

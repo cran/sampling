@@ -11,13 +11,14 @@ function(Xs,piks,t,q=rep(1,times=length(piks)))
 ######################################################
 {
 library(MASS)
-EPS=0.00000000000000000000001;
-ITERATIONS=300;
+ITERATIONS=300
+EPS=1e-23	
+tol=.Machine$double.eps
 #####################################################
-n=length(piks);
+n=length(piks)
 np=length(Xs)
 p=np/n
-Xs=array(Xs,c(n,p));
+Xs=matrix(Xs,n,p)
 Xs1=Xs[q!=0,];
 piks1=piks[q!=0];
 q1=q[q!=0];
@@ -68,7 +69,7 @@ lambda1=rep(1,times=p);
 z=lambda-lambda1;
 for(i in 1:ITERATIONS)
 {
-lambda1=lambda-ginv(phiprime(lambda))%*%c(phi(lambda)-t1+tc1)
+lambda1=lambda-ginv(phiprime(lambda),tol)%*%c(phi(lambda)-t1+tc1)
 z=lambda-lambda1
 if( (t(z)%*%z<EPS)) break
 lambda=lambda1
@@ -81,3 +82,4 @@ g=rep(1,times=n)
 g[q!=0]=g1
 g
 }
+

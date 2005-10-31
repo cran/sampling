@@ -1,7 +1,3 @@
-###############################################
-# Midzuno method
-################################################
-
-UPmidzuno<-function(pik) 1-UPtille(1-pik)
-
+"UPmidzuno" <-
+function(pik) 1-UPtille(1-pik)
 

@@ -1,4 +1,5 @@
-UPMEqfromw<-function(w,n)
+"UPMEqfromw" <-
+function(w,n)
 ##################################################
 #
 # Compute matrix q that is ths matrix of conditional
@@ -23,3 +24,4 @@ for(z in 2:min(N-i,n))
 q[i,z] = w[i]*expa[i+1,z-1]/expa[i,z]
 q
 }
+

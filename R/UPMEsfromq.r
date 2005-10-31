@@ -1,4 +1,5 @@
-UPMEsfromq<-function(q)
+"UPMEsfromq" <-
+function(q)
 # select a sample from matrix q
 {
 n=ncol(q)
@@ -8,3 +9,4 @@ for(k in 1:N)
 if(n!=0) if(runif(1)<q[k,n]) {s[k]=1;n=n-1} 
 s 
 }
+

@@ -61,4 +61,3 @@ if(checkcalibration(Xs,piks,t,g))
 g
 }
 
-

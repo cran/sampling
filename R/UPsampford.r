@@ -1,4 +1,5 @@
-UPsampford<-function(pik,eps=0.000005)
+"UPsampford" <-
+function(pik,eps=0.000005)
 ########################################################################
 # Select an unequal probability sample by means of the Sampford
 # method.
