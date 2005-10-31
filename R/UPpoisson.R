@@ -1,1 +1,3 @@
-UPpoisson<-function(pik) as.integer(runif(length(pik))<pik)
+"UPpoisson" <-
+function(pik) as.integer(runif(length(pik))<pik)
+

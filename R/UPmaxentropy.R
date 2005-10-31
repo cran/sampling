@@ -1,4 +1,5 @@
-UPmaxentropy<-function(pik) 
+"UPmaxentropy" <-
+function(pik) 
 # Select a sample by means of a maximum entropy design from the inclusion
 # probabilities
 { 
@@ -18,4 +19,5 @@ s[pik!=1][s2==1]=1
 if(n==0) s=rep(0,times=length(pik))
 if(n==1) s=as.vector(rmultinom(1, 1,pik)) 
 s
-} 
+}
+

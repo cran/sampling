@@ -1,15 +1,17 @@
 "UPsystematic" <-
-function(pik) 
-##pik=first inclusion probabilities
+function (pik) 
+########################################################
+# Select a sample by means of a systematic sampling 
+# with unequal inclusion probabilities
+# pik is the vector of inclusion probabilities
+########################################################
 {
-    N = length(pik)
-    v = cumsum(pik)
-    v=c(0,v)
-    u = runif(1, 0, 1)
-    s = numeric(N)
-    j=0
-    for(i in 2:(N+1)) 
-	   if(v[i-1]<=u && u<v[i]) {j=j+1; s[i-1]=1;u=u+1;}
+pik1=pik[pik>0 & pik< 1]
+N=length(pik1)
+a=(c(0,cumsum(pik1))-runif(1,0,1)) %% 1
+s1=as.integer(a[1:N]>a[2:(N+1)])
+s=pik
+s[pik>0 & pik< 1]=s1
 s
 }
 

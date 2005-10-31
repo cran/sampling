@@ -1,4 +1,5 @@
-UPMEpik2frompikw<-function(pik,w)
+"UPMEpik2frompikw" <-
+function(pik,w)
 # Compute the joint inclusion probabilities from pik and w
 {
 n=sum(pik)
@@ -20,3 +21,4 @@ for(l in 1:N)  if(M[k,l]==-1) M[k,l]=cc
   }
 M
 }
+

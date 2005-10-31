@@ -1,4 +1,5 @@
-UPrandompivotal<-function(pik)
+"UPrandompivotal" <-
+function(pik)
 ##########################################
 # select an unequal probability sample by means of 
 # the random pivotal method.
@@ -10,3 +11,4 @@ s=numeric(N)
 s[v]=UPpivotal(pik[v])
 s
 }
+

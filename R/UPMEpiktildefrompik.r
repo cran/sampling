@@ -1,4 +1,5 @@
-UPMEpiktildefrompik<-function(pik,eps=0.0000001) 
+"UPMEpiktildefrompik" <-
+function(pik,eps=0.0000001) 
 # Newton algorithm to find the inclusion probabilities of the
 # Poisson design from which the maximum entropy design 
 #is the conditional Poisson sampling
@@ -16,4 +17,5 @@ arr=sum(abs(pikt-pikt1))
 pikt=pikt1 
 } 
 pikt
-} 
+}
+

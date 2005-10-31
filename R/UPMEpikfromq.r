@@ -1,4 +1,5 @@
-UPMEpikfromq<-function(q) 
+"UPMEpikfromq" <-
+function(q) 
 # Compute the inclusion probabilities from matrix q
 { 
 n=ncol(q)
@@ -16,4 +17,5 @@ for(i in 2:N)
 pro[i,1]=pro[i,1]+pro[i-1,1]*(1-q[i-1,1]) 
 } 
 rowSums(pro*q) 
-} 
+}
+

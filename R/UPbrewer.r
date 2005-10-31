@@ -1,4 +1,5 @@
-UPbrewer<-function(pik, eps = 5e-06)
+"UPbrewer" <-
+function(pik, eps = 5e-06)
 ##########################################
 # select an unequal probability sample by means of the Brewer method.
 ##########################################

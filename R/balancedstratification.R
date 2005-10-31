@@ -22,4 +22,3 @@ if(is.null(colnames(X))==FALSE)
 samplecube(XN,pikstar,1,comment,method) 
 }
 
-

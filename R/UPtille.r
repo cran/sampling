@@ -1,4 +1,5 @@
-UPtille<-function(pik,eps=0.000005)
+"UPtille" <-
+function(pik,eps=0.000005)
 ##########################################
 # select an unequal probability sample by means of 
 # the tille method.

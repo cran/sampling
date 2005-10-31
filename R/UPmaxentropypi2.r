@@ -1,4 +1,5 @@
-UPmaxentropypi2<-function(pik)
+"UPmaxentropypi2" <-
+function(pik)
 # Compute the joint inclusion probabilities from pik
 {
 n=sum(pik)
@@ -16,3 +17,4 @@ for(k in 1:N) if(pik[k]==1)  M[k,]=pik
 if(n==1) for(k in 1:N) M[k,k]=pik[k];
 M
 }
+

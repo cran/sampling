@@ -1,4 +1,5 @@
-UPrandomsystematic<-function(pik)
+"UPrandomsystematic" <-
+function(pik)
 ##########################################
 # select an unequal probability sample by means of 
 # the random systematic method.
@@ -10,3 +11,4 @@ s=numeric(N)
 s[v]=UPsystematic(pik[v])
 s
 }
+

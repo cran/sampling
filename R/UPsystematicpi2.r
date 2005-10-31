@@ -1,19 +1,24 @@
-UPsystematicpi2<-function(pik)
-#######################################################
-# Compute the joint inclusion probabilities of the 
-# systematic sampling.
-#######################################################
+"UPsystematicpi2" <-
+function (pik) 
+########################################################
+# Compute the matrix of the joint inclusion probabilities
+# for a systematic sampling
+# with unequal inclusion probabilities
+# pik is the vector of inclusion probabilities
+########################################################
 {
-N=length(pik)
-V=array(0,c(N,N))
-for(l in 2:N) {for(k in 1:(l-1)) V[k,l]= sum(pik[k:(l-1)])}
-for(k in 2:N) {for(l in 1:(N)) V[k,l]= sum(pik[k:N])+sum(pik[1:(l-1)])}
-V<-V-floor(V)
-pik2=array(0,c(N,N))
-for(l in 2:N) 
-for(k in 1:(l-1))
-   pik2[l,k]=pik2[k,l]=min(max(0,pik[k]-V[k,l]),pik[l])+min(pik[k],max(0,V[k,l]+pik[l]-1))
-for(k in 1:N) pik2[k,k]=pik[k]
-pik2
+pik1=pik[pik>0 & pik< 1]
+N=length(pik1)
+Vk=cumsum(pik1)
+r=c(sort(Vk %% 1),1)
+cent= (r[1:N]+r[2:(N+1)])/2
+p=r[2:(N+1)]-r[1:N]
+A=matrix(c(0,Vk),nrow=N+1,ncol=N)-t(matrix(cent,nrow=N,ncol=N+1)) 
+A = A %% 1
+M=matrix(as.integer(A[1:N,]>A[2:(N+1),]),N,N)
+pi21=M%*%diag(p)%*%t(M)
+pi2=pik%*%t(pik)
+pi2[pik>0 & pik< 1,pik>0 & pik< 1]=pi21
+pi2
 }
 
