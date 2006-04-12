@@ -1,8 +1,5 @@
 "UPbrewer" <-
-function(pik, eps = 5e-06)
-##########################################
-# select an unequal probability sample by means of the Brewer method.
-##########################################
+function(pik, eps = 1e-06)
 {
 liste = pik > eps & pik < 1 - eps
 pikb = pik[liste]

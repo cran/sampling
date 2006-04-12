@@ -1,7 +1,5 @@
 "UPmaxentropy" <-
 function(pik) 
-# Select a sample by means of a maximum entropy design from the inclusion
-# probabilities
 { 
 n=sum(pik)
 if(n>=2)

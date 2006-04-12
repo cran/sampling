@@ -1,15 +1,5 @@
 "regressionestimator" <-
 function(Xs,piks,tot,q=rep(1,times=length(piks)))
-#########################################################
-#
-# compute the g-weights of the regression estimator
-# Xs is the matrix of calibration variables
-# piks is the vector of inclusion probabilities
-# tot is the vector of population totals
-# q is the vector of weights
-#
-#
-########################################################
 {   library(MASS)
     tol=.Machine$double.eps
     n = length(piks)

@@ -40,15 +40,15 @@ tHT=t(1/piks)\%*\%Xs
 g=boundedregressionestimator(Xs,piks,t,LOW=0.75,UP=1.2)
 # the regression estimator is equal to t
 tcal=t(g/piks)\%*\%Xs
-# the g-weights are between LOW and UP
+# the g-weights are between LOW and UP bounds
 g
 ############
 ## Example 2
 ############
 # Example of rakingratio, regresssion, boundedregression and boundedrakingratio estimators,
 # with the data of Belgian municipalities.
-# First, a sample is selected by means of a Poisson sampling.
-# Next, the g-weights and the calibrated estimators are calculated.
+# Firstly, a sample is selected by means of Poisson sampling.
+# Secondly, the g-weights and the calibration estimators are calculated.
 # the database of Belgian municipalities
 data(belgianmunicipalities)
 attach(belgianmunicipalities)
@@ -62,8 +62,8 @@ Totaltaxation/mean(Totaltaxation),
 averageincome/mean(averageincome),
 medianincome/mean(medianincome))
 # selection of a sample with expectation size equal to 200
-# by means of inclusion probabilities proportional to the 
-# average income by means of a Poisson sampling
+# by means of Poisson sampling
+# the inclusion probabilities are proportional to the average income 
 pik=inclusionprobabilities(averageincome,200)
 N=length(pik)               # population size
 s=UPpoisson(pik)            # sample
@@ -77,14 +77,14 @@ c((1/piks) \%*\% Xs)
 # The true total 
 t
 # Computation of the g-weights
-# by means of the methods of calibration.
+# by means of different calibration methods.
 g1=regressionestimator(Xs,piks,t)
 g2=rakingratio(Xs,piks,t)
 g3=boundedregressionestimator(Xs,piks,t,LOW=0.5,UP=1.5)
 g4=boundedrakingratio(Xs,piks,t,LOW=0.5,UP=1.5)
 # In some cases, the calibration does not exist
 # particularly when bounds are used.
-# If they exist the calibration estimators are the following.
+# If the calibration is possible, the calibration estimators are the following
 if(checkcalibration(Xs,piks,t,g1)) c((g1/piks) \%*\% Xs) else print("error")
 if(checkcalibration(Xs,piks,t,g2)) c((g2/piks) \%*\% Xs) else print("error")
 if(checkcalibration(Xs,piks,t,g3)) c((g3/piks) \%*\% Xs) else print("error")

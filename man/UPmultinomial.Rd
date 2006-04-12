@@ -11,7 +11,9 @@ UPmultinomial(pik)
 \item{pik}{vector of prescribed inclusion probabilities.}
 }
 \details{
-Return a vector (0 and 1) of size N, where N is the population size.  
+Return a vector (with elements 0 and 1) of size N, where N is the population size.  
+Each element k of this vector indicates the status of the unit k 
+(1, the unit k is selected in the sample; 0, otherwise).
 }
 \seealso{\code{\link{rmultinom}}
 }
@@ -23,6 +25,8 @@ Hansen, M. and Hurwitz, W. (1943), On the theory of sampling from finite populat
 #define the prescribed inclusion probabilities
 pik=c(0.2,0.7,0.8,0.5,0.4,0.4)
 #select a sample
-UPmultinomial(pik)
+s=UPmultinomial(pik)
+#the sample is
+(1:length(pik))[s==1] 
 }
 \keyword{survey}

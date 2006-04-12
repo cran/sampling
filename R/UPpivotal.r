@@ -1,9 +1,5 @@
 "UPpivotal" <-
-function(pik,eps=1e-12)
-##########################################
-# select an unequal probability sample by means of 
-# the pivotal method see Deville and Tillé (1998, Biometrika).
-##########################################
+function(pik,eps=1e-6)
 {
 N<-length(pik)
 s<-rep(0,times=N)

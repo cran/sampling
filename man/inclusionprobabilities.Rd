@@ -1,8 +1,8 @@
 \name{inclusionprobabilities}
 \alias{inclusionprobabilities}
 \title{Inclusion probabilities}
-\description{Compute and return a vector
-of the first order inclusion probabilities from a vector of positive numbers.
+\description{Compute the first-order inclusion probabilities from a vector of positive numbers 
+(for probability proportional-to-size sampling).
 }
 \usage{inclusionprobabilities(a,n)}
 \arguments{
@@ -28,7 +28,9 @@ pik
 # of inhabitants in each municipality of the Belgian database.
 data(belgianmunicipalities)
 pik=inclusionprobabilities(belgianmunicipalities$Tot04,200)
+# the first-order inclusion probabilities for each municipality
 data.frame(pik=pik,name=belgianmunicipalities$Commune)
+# the inclusion probability sum is equal to sample size
 sum(pik)
 }
 \keyword{survey}

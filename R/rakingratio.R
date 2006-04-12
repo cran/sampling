@@ -1,18 +1,9 @@
 "rakingratio" <-
 function(Xs,piks,t,q=rep(1,times=length(piks)))
-#####################################################
-#
-# compute de g-weights of the raking ratio estimator
-# Xs is the matrix of calibration variables
-# piks is the vector of inclusion probabilities
-# t is the vector of population totals
-# q is the vector of weights
-#
-######################################################
 {
 library(MASS)
 ITERATIONS=300
-EPS=1e-23	
+EPS=.Machine$double.eps	
 tol=.Machine$double.eps
 #####################################################
 n=length(piks)

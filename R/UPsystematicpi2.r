@@ -1,11 +1,5 @@
 "UPsystematicpi2" <-
 function (pik) 
-########################################################
-# Compute the matrix of the joint inclusion probabilities
-# for a systematic sampling
-# with unequal inclusion probabilities
-# pik is the vector of inclusion probabilities
-########################################################
 {
 pik1=pik[pik>0 & pik< 1]
 N=length(pik1)

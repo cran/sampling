@@ -1,60 +1,34 @@
 "fastflightcube" <-
 function(X,pik,order=1,comment=TRUE) 
-# 
-# fastflightcube is a function that execute the fast flight phase 
-# of the cube method (agorithm of Tille and Chauvet) 
-# the data are sorted following the argument order 
-# next the units with probability strictly between 0 and 1 are selected and submitted to the algorithm 
-# (function algofastflightcube) 
-# #############################################################
 { 
-
-
+EPS = 1e-11
 "algofastflightcube" <-
 function(X,pik) 
 { 
-# 
-# algofastflightcube execute the fast flight phase of the cube method 
-# agorithm of Tille and Chauvet 
-# all the inclusion probabilities must be strictly between 0 and 1 
-# 
-# #####################################################
 
 "jump" <-
 function(X,pik){ 
-# 
-# jump is a function that execute the fundamental step of the cube method 
-# computation of a vector in the kernel of A and random jump 
-# towards a new inclusion probability vector 
-# #######################################################
-EPS=0.00000000001;
-N = length(pik);
-p = round(length(X)/length(pik));
-X<-array(X,c(N,p));
-# computation of a vector in the kernel of X 
+N = length(pik)
+p = round(length(X)/length(pik))
+X<-array(X,c(N,p))
 X1=cbind(X,rep(0,times=N)) 
 kern<-svd(X1)$u[,p+1] 
-# computation of lambda1 and pik1 
-listek=abs(kern)>EPS;
+listek=abs(kern)>EPS
 buff1<-(1-pik[listek])/kern[listek]
 buff2<- -pik[listek]/kern[listek]
 la1<-min( c(buff1[(buff1>0)] , buff2[(buff2>0)]) ) 
 pik1<- pik+la1*kern 
-# computation of lambda2 and pik2 
 buff1<- -(1-pik[listek])/kern[listek] 
 buff2<- pik[listek]/kern[listek]
 la2<-min(c(buff1[(buff1>0)] , buff2[(buff2>0)])) 
 pik2<- pik-la2*kern 
-q<-la2/(la1+la2) 
-# choose the vector 
+q<-la2/(la1+la2)  
 if (runif(1)<q) pikn<-pik1 else pikn<-pik2 
 pikn 
 }
-##################################################################
 
-EPS=0.00000000001;
-N = length(pik);
-p = round(length(X)/length(pik));
+N = length(pik)
+p = round(length(X)/length(pik))
 X<-array(X,c(N,p));
 A<- X/pik; 
 B<-A[1:(p+1),]; 
@@ -83,13 +57,6 @@ pik
 
 "reduc" <-
 function(X)
-################################################
-#
-# return a full rank matrix that 
-#  has the same image as X
-#
-#
-################################################
 {
 EPS=0.0000000001
 N=dim(X)[1]
@@ -97,8 +64,6 @@ Re=svd(X)
 array(Re$u[,(Re$d>EPS)] , c(N,sum(as.integer(Re$d>EPS))))
 }
 
-
-EPS=0.00000000001;
 N = length(pik);
 p = round(length(X)/length(pik));
 X<-array(X,c(N,p));
@@ -125,7 +90,6 @@ if(Nbon>p){if(comment==TRUE) cat("Step 1  ");
            pikstar[liste]=pikstarbon; 
            flag=1
            }
-## Supplementary step 
 liste<-o[(pikstar[o]>EPS & pikstar[o]<(1-EPS))];
 pikbon<-pikstar[liste]; 
 Nbon=length(pikbon); 

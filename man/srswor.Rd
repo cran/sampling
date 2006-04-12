@@ -2,13 +2,15 @@
 \alias{srswor}
 \title{Simple random sampling without replacement}
 \description{
-Draw a simple random sampling without replacement of size n.
+Draw a simple random sampling without replacement of size n (equal probabilities, fixed sample size, without replacement).
 }
 \usage{
 srswor(n,N)
 }
 \details{
-Return a vector (0 and 1) of size N which is the population size. 
+Return a vector (with elements 0 and 1) of size N, where N is the population size.  
+Each element k of this vector indicates the status of the unit k 
+(1, the unit k is selected in the sample; 0, otherwise).
 }
 \arguments{
 \item{n}{sample size.}
@@ -20,7 +22,9 @@ Return a vector (0 and 1) of size N which is the population size.
 ## Example 1
 ############
 #select a sample
-srswor(3,10)
+s=srswor(3,10)
+#the sample is
+(1:10)[s==1]
 ############
 ## Example 2
 ############
@@ -30,6 +34,7 @@ name=belgianmunicipalities$Commune
 n=200
 #select a sample
 s=srswor(n,length(Tot))  
+#the sample is 
 as.vector(name[s==1])
 }
 \keyword{survey}

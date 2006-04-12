@@ -1,11 +1,6 @@
 "UPminimalsupport" <-
 function(pik)
 {
-##################################################################
-# Select a sample by means of
-# a minimal support design 
-# pik is the vector of inclusion probabilities
-##################################################################
 basicsplit<-function(pik)
 {
 N=length(pik)

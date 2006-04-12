@@ -1,7 +1,7 @@
 \name{inclusionprobastrata}
 \alias{inclusionprobastrata}
 \title{Strata inclusion probabilities}
-\description{Return a vector of the inclusion probabilities for a stratified design. 
+\description{Compute the inclusion probabilities for a stratified design. 
 The inclusion probabilities 
 are equal in each strata.}
 \usage{inclusionprobastrata(strat,nh)}
@@ -14,9 +14,9 @@ are equal in each strata.}
 }
 \examples{
 # the strata
-strat=c(1,1,1,1,1,2,2,2,2,2,2,3,3,3,3,3,3,3)
-# size of the sample in the strata.
+strata=c(1,1,1,1,1,2,2,2,2,2,2,3,3,3,3,3,3,3)
+# sample size in each stratum
 nh=c(2,3,3)
-inclusionprobastrata(strat,nh)
+inclusionprobastrata(strata,nh)
 }
 \keyword{survey}

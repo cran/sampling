@@ -3,16 +3,16 @@
 \title{Sample cube method}
 \description{
 Select a balanced sample (a vector of 0 and 1) or an almost balanced sample.
-Firstly, the flight phase is applied. Next if needed, the landing phase is applied
+Firstly, the flight phase is applied. Next, if needed, the landing phase is applied
 on the result of the flight phase.
 }
 \usage{samplecube(X,pik,order=1,comment=TRUE,method=1)}
 \arguments{%
 \item{X}{matrix of auxiliary variables on which the sample must be balanced.}
 \item{pik}{vector of inclusion probabilities.}
-\item{order}{ 1, the data are sorted randomly,\cr
- 2, the data are sorted in decreasing order,\cr
- 3, the order of the data remains unchanged.
+\item{order}{ 1, the data are randomly arranged,\cr
+ 2, no change in data order,\cr
+ 3, the data are sorted in decreasing order.
 }
 \item{comment}{a comment is written during the execution if \code{comment} is equal to \code{TRUE}.}
 \item{method}{ 1, for a landing phase by linear programming,\cr
@@ -22,7 +22,8 @@ on the result of the flight phase.
 \code{\link{landingcube}}, \code{\link{fastflightcube}}
 }
 \references{ 
-Chauvet, G. and Tillé, Y. (2004). A fast algorithm of balanced sampling. \emph{Submitted for publication}. \cr
+Tillé, Y. (2006), \emph{Sampling Algorithms}, Springer.\cr
+Chauvet, G. and Tillé, Y. (2006). A fast algorithm of balanced sampling. \emph{to appear in Computational Statistics}. \cr
 Chauvet, G. and Tillé, Y. (2005). New SAS macros for balanced sampling. In INSEE, editor, \emph{Journées de Méthodologie Statistique}, Paris.\cr
 Deville, J.-C. and Tillé, Y. (2004). Efficient balanced sampling: the cube method. \emph{Biometrika}, 91, 893-912.\cr
 Deville, J.-C. and Tillé, Y. (2005). Variance approximation under balanced sampling. \emph{Journal of Statistical Planning and Inference}, 128/2:411--425. 
@@ -39,12 +40,12 @@ pik=c(1/3,1/3,1/3,1/3,1/3,1/3,1/3,1/3,1/3)
 # Selection of the sample
 s=samplecube(X,pik,order=1,comment=TRUE)
 # The selected sample
-s
+(1:length(pik))[s==1]
 ############
 ## Example 2
 ############
 # 2 strata and 2 auxiliary variables
-# simulation for the computation of the inclusion probabilities
+# we verify by simulations the values of the inclusion probabilities
 X=rbind(c(1,0,1,2),c(1,0,2,5),c(1,0,3,7),c(1,0,4,9),
 c(1,0,5,1),c(1,0,6,5),c(1,0,7,7),c(1,0,8,6),c(1,0,9,9),
 c(1,0,10,3),c(0,1,11,3),c(0,1,12,2),c(0,1,13,3),
@@ -61,8 +62,8 @@ print(pik)
 ############
 ## Example 3
 ############
-# unequal probability sampling with cube method
-# 1 auxiliary variable : the inclusion probability
+# unequal probability sampling by cube method
+# one auxiliary variable equal to the inclusion probability
 N=200
 pik=runif(N)
 pikfin=samplecube(array(pik,c(N,1)),pik,1,TRUE)
@@ -70,10 +71,10 @@ pikfin=samplecube(array(pik,c(N,1)),pik,1,TRUE)
 ## Example 4
 ############
 # p auxiliary variables generated randomly
-# random inclusion probabilities
 N=1000
 p=7
 x<-rnorm(N*p,10,3)
+# random inclusion probabilities 
 pik<- runif(N)
 X=array(x,c(N,p))
 X=cbind(cbind(X,rep(1,times=N)),pik)
@@ -95,33 +96,33 @@ pikfin=samplecube(X,pik,1,TRUE)
 ############
 ## Example 6
 ############
-# Selection of a balanced sample in the MU284 population,
+# Selection of a balanced sample using the MU284 population,
 # simulation and comparison of the variance with
 # unequal probability sampling of fixed sample size.
-#####################################################
+############
 data(MU284)
 # Computation of the inclusion probabilities
 pik=inclusionprobabilities(MU284$P75,50)
 # Definition of the matrix of balancing variables
 X=cbind(MU284$P75,MU284$CS82,MU284$SS82,MU284$S82,MU284$ME84,MU284$REV84)
 # Computation of the Horvitz-Thompson estimator for a balanced sample
-crossprod(MU284$RMT85/pik , samplecube(X,pik,1,TRUE))
+HTestimator(MU284$RMT85,pik,samplecube(X,pik,1,FALSE))
 # Computation of the Horvitz-Thompson estimator for an unequal probability sample
-crossprod(MU284$RMT85/pik, samplecube(matrix(pik),pik,1,TRUE))
+HTestimator(MU284$RMT85,pik,samplecube(matrix(pik),pik,1,FALSE))
 # simulations; for a better accurancy, let sim=50 
 sim=8
-resu1=rep(0,times=sim)
-resu2=rep(0,times=sim)
+res1=rep(0,times=sim)
+res2=rep(0,times=sim)
 for(i in 1:sim)
 {
 cat("Simulation number ",i,"\n")
-resu1[i]=crossprod(MU284$RMT85/pik , samplecube(X,pik,1,FALSE) )
-resu2[i]=crossprod(MU284$RMT85/pik, samplecube(matrix(pik),pik,1,FALSE) )
+res1[i]=HTestimator(MU284$RMT85,pik,samplecube(X,pik,1,FALSE))
+res2[i]=HTestimator(MU284$RMT85,pik,samplecube(matrix(pik),pik,1,FALSE) )
 }
-# summary and boxplot
-summary(resu1)
-summary(resu2)
-ss=cbind(resu1,resu2)
+# summary and boxplots
+summary(res1)
+summary(res2)
+ss=cbind(res1,res2)
 colnames(ss) <- c("balanced sampling","uneq prob sampling")
 boxplot(data.frame(ss), las=1)
 }

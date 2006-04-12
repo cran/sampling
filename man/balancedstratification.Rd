@@ -13,10 +13,11 @@ Finally, the landing phase is applied on the whole population.
 \item{strat}{vector of integers that specifies the stratification.}
 \item{pik}{vector of inclusion probabilities.}
 \item{comment}{a comment is written during the execution if \code{comment} is equal to \code{TRUE}.}
-\item{method}{the used method in the procedure samplecube.}
+\item{method}{the used method in the function samplecube.}
 }
 \references{ 
-Chauvet, G. and Tillé, Y. (2004). A fast algorithm of balanced sampling. \emph{Submitted for publication}. \cr
+Tillé, Y. (2006), \emph{Sampling Algorithms}, Springer.
+Chauvet, G. and Tillé, Y. (2006). A fast algorithm of balanced sampling. \emph{to appear in Computational Statistics}. \cr
 Chauvet, G. and Tillé, Y. (2005). New SAS macros for balanced sampling. In INSEE, editor, \emph{Journées de Méthodologie Statistique}, Paris.\cr
 Deville, J.-C. and Tillé, Y. (2004). Efficient balanced sampling: the cube method. \emph{Biometrika}, 91, 893-912.\cr
 Deville, J.-C. and Tillé, Y. (2005). Variance approximation under balanced sampling. \emph{Journal of Statistical Planning and Inference}, 128/2:411--425. 
@@ -33,12 +34,12 @@ strat=c(1,1,1,1,1,2,2,2,2,2,3,3,3,3,3)
 # matrix of balancing variables
 X=cbind(c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15))
 # Vector of inclusion probabilities.
-# The sample has a size equal to 9.
+# The sample has its size equal to 9.
 pik=rep(3/5,times=15)
-# Selection of the stratified sample
+# Selection of a stratified sample
 s=balancedstratification(X,strat,pik,comment=TRUE)
-# The sample
-s
+# The sample is
+(1:length(pik))[s==1]
 ############
 ## Example 2
 ############
@@ -64,6 +65,7 @@ X=cbind(swiss$HApoly,
         swiss$H00PTOT )
 pik=inclusionprobabilities(swiss$POPTOT,400)
 sample=balancedstratification(X,swiss$REG,pik,comment=TRUE)
+#the sample is
 as.character(swiss$Nom[sample==1])
 }
 \keyword{survey}

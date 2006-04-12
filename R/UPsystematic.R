@@ -1,10 +1,5 @@
 "UPsystematic" <-
 function (pik) 
-########################################################
-# Select a sample by means of a systematic sampling 
-# with unequal inclusion probabilities
-# pik is the vector of inclusion probabilities
-########################################################
 {
 pik1=pik[pik>0 & pik< 1]
 N=length(pik1)

@@ -14,7 +14,7 @@ UPsystematicpi2(pik)
 Return a NxN matrix with the first order inclusion probability for
 each unit k in the population on the first diagonal and with the joint inclusion
 probability of units k and l in position (k,l) in the
-matrix, where k and l are not equal (N is the population size).
+matrix, where $k\neq l$  (N is the population size).
 }
 \seealso{\code{\link{UPsystematic}}
 }
@@ -25,6 +25,7 @@ Madow, W.G. (1949), On the theory of systematic sampling, II,
 \examples{
 #define the prescribed inclusion probabilities
 pik=c(0.2,0.7,0.8,0.5,0.4,0.4)
+#matrix of the joint inclusion probabilities
 UPsystematicpi2(pik)
 }
 \keyword{survey}

@@ -11,12 +11,15 @@ UPminimalsupport(pik)
 \item{pik}{vector of prescribed inclusion probabilities.}
 }
 \details{
-Return a vector (0 and 1) of size N, where N is the population size.  
+Return a vector (with elements 0 and 1) of size N, where N is the population size.  
+Each element k of this vector indicates the status of the unit k 
+(1, the unit k is selected in the sample; 0, otherwise). 
 }
 }
 \references{
-Deville, J.-C., Tillé Y. (1998), Unequal probability sampling without replacement 
-through a splitting method, \emph{Biometrika }, 85, 89-101.
+Deville, J.-C., Tillé, Y. (1998), Unequal probability sampling without replacement 
+through a splitting method, \emph{Biometrika }, 85, 89-101.\cr
+Tillé, Y. (2006), \emph{Sampling Algorithms}, Springer.
 }
 \examples{
 ############
@@ -25,7 +28,9 @@ through a splitting method, \emph{Biometrika }, 85, 89-101.
 #define the prescribed inclusion probabilities
 pik=c(0.2,0.7,0.8,0.5,0.4,0.4)
 #select a sample
-UPminimalsupport(pik)
+s=UPminimalsupport(pik)
+#the sample is
+(1:length(pik))[s==1]
 ############
 ## Example 2
 ############
@@ -35,6 +40,7 @@ name=belgianmunicipalities$Commune
 pik=inclusionprobabilities(Tot,200)
 #select a sample
 s=UPminimalsupport(pik)  
+#the sample is
 as.vector(name[s==1])
 }
 \keyword{survey}

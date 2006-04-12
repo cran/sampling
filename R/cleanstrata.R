@@ -1,19 +1,9 @@
 "cleanstrata" <-
-function(st)
-############################################
-#
-# renumber a variable of stratification
-# (qualitative variable)
-# the strata receive number from 1 to the last stratum
-# the empty strata are suppressed
-#
-# st is a vector with the strata numbers
-#
-###########################################
+function(strata)
 {
-a=sort(unique(st)) 
+a=sort(unique(strata)) 
 b=1:length(a) 
 names(b)=a 
-as.vector(b[as.character(st)]) 
+as.vector(b[as.character(strata)]) 
 }
 

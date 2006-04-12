@@ -1,11 +1,6 @@
 "writesample" <-
 function(n,N) 
-#
-# writesample return a matrix with all possible samples of size n from 
-# a population of size N; the samples are 0-1 vectors 
-#
-######################################################
-{ 
+{
 if(n==N) samples= rep(1,times=N) 
 else{ 
 x=numeric(N) 

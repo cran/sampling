@@ -2,13 +2,15 @@
 \alias{srswr}
 \title{Simple random sampling with replacement}
 \description{
-Draw a simple random sampling with replacement of size n.
+Draw a simple random sampling with replacement of size n (equal probabilities, fixed sample size, with replacement).
 }
 \usage{
 srswr(n,N)
 }
 \details{
-Return a vector (0 and 1) of size N which is the population size. 
+Return a vector of size N which is the population size. Each element k of this vector indicates 
+the number of replicates for unit k in the sample.
+}
 }
 \arguments{
 \item{n}{sample size.}
@@ -17,6 +19,10 @@ Return a vector (0 and 1) of size N which is the population size.
 \seealso{\code{\link{rmultinom}}, \code{\link{UPmultinomial}}
 }
 \examples{
-srswr(3,10)
+s=srswr(3,10)
+#the selected units are 
+(1:10)[s!=0]
+#wiht the number of replicates 
+s[s!=0]
 }
 \keyword{survey}
