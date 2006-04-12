@@ -1,16 +1,5 @@
 "boundedregressionestimator" <-
 function(Xs,piks,t,q=rep(1,times=length(piks)),LOW=0,UP=10)
-#####################################################
-# compute the g-weights of the regression estimator
-#  with bounds on the g-weights
-# Xs is the matrix of calibration variables
-# piks is the vector of inclusion probabilities
-# t is the vector of population totals
-# q is the vector of weights
-# LOW is the smallest value for the g-weights
-# UP is the largest alue for the g-weights
-#
-######################################################
 {
 library(MASS)
 n=length(piks)
@@ -20,8 +9,8 @@ Xs=array(Xs,c(n,p));
 g=regressionestimator(Xs,piks,t,q)
 if(checkcalibration(Xs,piks,t,g))
   {
-   p=dim(Xs)[2];
-   n=length(piks);
+   p=dim(Xs)[2]
+   n=length(piks)
    arret1=-1;
    arret=0;
    flag=rep(0,times=n);
@@ -46,7 +35,7 @@ if(checkcalibration(Xs,piks,t,g))
           arret=n-length(g[flag==0])
           } else
           {
-          cat("\nError : Impossible to find calibrated weights with these bounds\n")
+          cat("\nError : Impossible to find calibration weights with these bounds\n")
           arret1=0
           arret=0
           }
@@ -54,7 +43,7 @@ if(checkcalibration(Xs,piks,t,g))
    }
    else
    {
-   cat("\nError : Impossible to find calibrated weights\n")
+   cat("\nError : Impossible to find calibration weights\n")
    arret1=0
    arret=0
    }

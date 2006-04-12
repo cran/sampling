@@ -1,11 +1,5 @@
 "UPMEqfromw" <-
 function(w,n)
-##################################################
-#
-# Compute matrix q that is ths matrix of conditional
-# selection probabilities for sequential sampling
-#
-###################################################
 {
 N=length(w)
 expa=array(0,c(N,n))

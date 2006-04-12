@@ -1,11 +1,5 @@
 "UPtillepi2" <-
-function(pik,eps=0.000005)
-######################################
-#
-# Compute the joint inclusion probabilities of 
-# Tille's method.
-#
-######################################
+function(pik,eps=1e-6)
 {
 liste= pik>eps & pik < 1-eps
 pikb=pik[liste]

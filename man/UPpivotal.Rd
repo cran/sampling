@@ -6,15 +6,17 @@ Select an unequal probability sample by means of
 the pivotal method (unequal probabilities, without replacement, fixed sample size). 
 }
 \usage{
-UPpivotal(pik,eps=1e-12)
+UPpivotal(pik,eps=1e-6)
 }
 \arguments{
 \item{pik}{vector of prescribed inclusion probabilities.}
-\item{eps}{the control value, by default equal to 1e-12.}
+\item{eps}{the control value, by default equal to 1e-6.}
 }
 \details{
-Return a vector (0 and 1) of size N, where N is the population size. The value eps is used to
-control pik (pik>eps & pik < 1-eps).
+Return a vector (with elements 0 and 1) of size N, where N is the population size.  
+Each element k of this vector indicates the status of the unit k 
+(1, the unit k is selected in the sample; 0, otherwise).
+The value eps is used to control pik (pik>eps & pik < 1-eps).
 }
 \seealso{\code{\link{UPrandompivotal}}
 }
@@ -22,13 +24,16 @@ control pik (pik>eps & pik < 1-eps).
 Deville, J.-C. and Tillé, Y. (1998), 
 Unequal probability sampling without replacement through a splitting method, 
 \emph{Biometrika}, 85:89-101.\cr
-Chauvet, G. and Tillé, Y. (2004). A fast algorithm of balanced sampling. \emph{Submitted for publication}. 
+Chauvet, G. and Tillé, Y. (2006). A fast algorithm of balanced sampling. \emph{to appear in Computational Statistics}.\cr
+Tillé, Y. (2006), \emph{Sampling Algorithms}, Springer. 
 }
 \examples{
 #define the prescribed inclusion probabilities
 pik=c(0.2,0.7,0.8,0.5,0.4,0.4)
 #select a sample
-UPpivotal(pik)
+s=UPpivotal(pik)
+#the sample is
+(1:length(pik))[s==1]
 }
 \keyword{survey}
 \encoding{latin1}

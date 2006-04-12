@@ -8,7 +8,9 @@ Draw a simple random sampling without replacement of size n, using the selection
 srswor1(n,N)
 }
 \details{
-Return a vector (0 and 1) of size N which is the population size. 
+Return a vector (with elements 0 and 1) of size N, where N is the population size.  
+Each element k of this vector indicates the status of the unit k 
+(1, the unit k is selected in the sample; 0, otherwise).
 }
 \arguments{
 \item{n}{sample size.}
@@ -19,6 +21,8 @@ selection techniques and digital computer, \emph{Journal of the American Statist
 }
 \seealso{\code{\link{srswor}}}
 \examples{
-srswor1(3,10)
+s=srswor1(3,10)
+#the sample is
+(1:10)[s==1]
 }
 \keyword{survey}

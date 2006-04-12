@@ -1,8 +1,5 @@
 "UPmidzunopi2" <-
 function(pik) 
-#####################################################
-# Joint inclusion probabilities of the Midzuno method
-#####################################################
 {
 N=length(pik)
 UN=rep(1,times=N)

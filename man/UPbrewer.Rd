@@ -5,14 +5,17 @@
 Use Brewer method to select a sample of units (unequal probabilities, without replacement, fixed sample size).
 }
 \usage{
-UPbrewer(pik,eps=5e-06)
+UPbrewer(pik,eps=1e-06)
 }
 \arguments{
 \item{pik}{vector of prescribed inclusion probabilities.}
-\item{eps}{the control value, by default equal to 5e-06.}
+\item{eps}{the control value, by default equal to 1e-06.}
 }
 \details{
-Return a vector (0 and 1) of size N, where N is the population size.  The value eps is used to
+Return a vector (with elements 0 and 1) of size N, where N is the population size.  
+Each element k of this vector indicates the status of the unit k 
+(1, the unit k is selected in the sample; 0, otherwise).
+The value eps is used to
 control pik (pik>eps & pik < 1-eps). 
 }
 \seealso{\code{\link{UPsystematic}}
@@ -26,6 +29,8 @@ Brewer, K. (1975), A simple procedure for $\pi$pswor, \emph
 #define the prescribed inclusion probabilities
 pik=c(0.2,0.7,0.8,0.5,0.4,0.4)
 #select a sample
-UPbrewer(pik)
+s=UPbrewer(pik)
+#the sample is
+(1:length(pik))[s==1]
 }
 \keyword{survey}

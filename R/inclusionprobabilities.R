@@ -1,17 +1,11 @@
 "inclusionprobabilities" <-
 function(a,n)
-############################################
-#
-# Compute a vector of inclusion probabilities
-# a is a vector of positive numbers
-# n is the sample size
-#################################################
 {
 nnull=length(a[(a==0)])
 nneg=length(a[(a<0)])
-if(nnull>0) cat("WARNING : There is ",null," null values\n")
+if(nnull>0) cat("WARNING : There are ",null," null values\n")
 if(nneg>0){
-             cat("WARNING : There is ",nneg," negative value(s)")
+             cat("WARNING : There are ",nneg," negative value(s)")
              cat(" shifted to zero\n")
              a[(a<0)]=0
             }

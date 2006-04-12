@@ -1,6 +1,5 @@
 "UPMEsfromq" <-
 function(q)
-# select a sample from matrix q
 {
 n=ncol(q)
 N=nrow(q)

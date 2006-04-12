@@ -11,9 +11,9 @@ in 2003.
   \describe{
     \item{CT}{Swiss canton.}
     \item{REG}{Swiss region.}
-    \item{COM}{number of the municipality.}
-    \item{Nom}{name of the municipality.}
-    \item{HApoly}{area of the municipality.}
+    \item{COM}{municipality number.}
+    \item{Nom}{municipality name.}
+    \item{HApoly}{municipality area.}
     \item{Surfacesbois}{wood area.}
     \item{Surfacescult}{area under cultivation.}
     \item{Alp}{mountain pasture area.}
@@ -33,12 +33,8 @@ in 2003.
     \item{POPTOT}{total population.}
   }
 }
-%\details{
-%}
 \source{Swiss Federal Statistical Office.
 }
-%\references{
-%}
 \examples{
 data(swissmunicipalities)
 hist(swissmunicipalities$POPTOT)

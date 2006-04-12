@@ -11,7 +11,10 @@ UPmidzuno(pik)
 \item{pik}{vector of prescribed inclusion probabilities.}
 }
 \details{
-Return a vector (0 and 1) of size N, where N is the population size.  
+Return a vector (with elements 0 and 1) of size N, where N is the population size. 
+Each element k of this vector indicates the status of the unit k 
+(1, the unit k is selected in the sample; 0, otherwise).
+ 
 }
 \seealso{\code{\link{UPtille}}
 }
@@ -26,7 +29,9 @@ Unequal probability sampling without replacement through a splitting method,
 #define the prescribed inclusion probabilities
 pik=c(0.2,0.7,0.8,0.5,0.4,0.4)
 #select a sample
-UPmidzuno(pik)
+s=UPmidzuno(pik)
+#the sample is
+(1:length(pik))[s==1]
 }
 \keyword{survey}
 \encoding{latin1}

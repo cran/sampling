@@ -1,6 +1,5 @@
 "UPMEpikfromq" <-
 function(q) 
-# Compute the inclusion probabilities from matrix q
 { 
 n=ncol(q)
 N=nrow(q)

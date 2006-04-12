@@ -2,21 +2,21 @@
 \alias{cleanstrata}
 \title{ Clean strata}
 \description{Renumber a variable of stratification
- (qualitative variable). The strata receive a number from 1 to the last stratum. 
+ (qualitative variable). The strata receive a number from 1 to the last stratum number. 
 The empty strata are suppressed. This function is used in 'balancedstratification'.
 }
 }
 \usage{
-cleanstrata(st)
+cleanstrata(strata)
 }
 \arguments{
-  \item{st}{vector with the numbers of the strata.}
+  \item{strata}{vector of stratum numbers.}
 }
 \seealso{\code{\link{balancedstratification}}}
 \examples{
 # definition of the stratification variable
-strat=c(-2,3,-2,3,4,4,4,-2,-2,3,4,0,0,0)
+strata=c(-2,3,-2,3,4,4,4,-2,-2,3,4,0,0,0)
 # renumber the strata
-cleanstrata(strat)
+cleanstrata(strata)
 }
 \keyword{survey}

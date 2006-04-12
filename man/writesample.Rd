@@ -14,6 +14,9 @@ of all the samples of fixed size.}
 \examples{
 # matrix with the samples of size 4
 # from a population of size 10.
-writesample(4,10)
+w=writesample(4,10)
+# the samples are
+for(i in 1:nrow(w))
+ print((1:ncol(w))[w[i,]==1])
 }
 \keyword{survey}
