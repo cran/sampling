@@ -1,24 +1,36 @@
 "UPtillepi2" <-
 function(pik,eps=1e-6)
 {
-liste= pik>eps & pik < 1-eps
-pikb=pik[liste]
-N=length(pikb)
-n=sum(pikb)
-pp=1
-UN=rep(1,times=N)
-b=rep(1,times=N)
-for(i in 1:(N-n))
+
+if(any(is.na(pik))) warning("There are missing values in the pik vector!")
+n=sum(pik)
+if(n!=trunc(n)) stop("The pik's sum is not integer!")
+list = pik > eps & pik < 1 - eps
+pikb = pik[list]
+N = length(pikb)
+#ppf=pik%*%t(pik)
+ppf=matrix(0,length(pik),length(pik))
+if(N<1) stop("The pik vector has all elements outside of the range [eps,1-eps]")
+else 
 {
-a=inclusionprobabilities(pikb,N-i)
-vv=1-a/b
-b=a
-d=vv %*% t(UN)
-pp=pp*(1-d-t(d))
+n=sum(pikb)
+if(N>n)
+{
+UN=rep(1,N)
+b=rep(1,N)
+pp=1
+for(i in 1:(N-n))
+	{
+	a=inclusionprobabilities(pikb,N-i)
+	vv=1-a/b
+	b=a
+	d=vv %*% t(UN)
+	pp=pp*(1-d-t(d))
+	}
+diag(pp)=pikb
+ppf[list,list]=pp
 }
-for(i in 1:N) pp[i,i]=pikb[i]
-ppf=pik%*%t(pik)
-ppf[liste,liste]=pp
+}
 ppf
 }
 

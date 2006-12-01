@@ -2,13 +2,13 @@
 \alias{UPmidzunopi2}
 \title{Joint inclusion probabilities for Midzuno sampling}
 \description{
-Compute the joint inclusion probabilities for Midzuno sampling. 
+Compute the joint (second-order) inclusion probabilities for Midzuno sampling. 
 }
 \usage{
 UPmidzunopi2(pik)
 }
 \arguments{
-\item{pik}{vector of inclusion probabilities.}
+\item{pik}{the vector of the first-order inclusion probabilities.}
 }
 \details{
 Return a NxN matrix with the first order inclusion probability for

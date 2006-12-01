@@ -8,7 +8,7 @@ Use Tillé method to select a sample of units (unequal probabilities, without rep
 UPtille(pik,eps=1e-6)
 }
 \arguments{
-\item{pik}{vector of prescribed inclusion probabilities.}
+\item{pik}{the vector of the prescribed inclusion probabilities.}
 \item{eps}{the control value, by default equal to 1e-6.}
 }
 \details{
@@ -48,7 +48,7 @@ N=length(pik)
 n=sum(pik)
 #number of simulations; for an accurate result, please increase this value 
 sim=10
-ss=array(0,c(sim,9))
+ss=array(0,c(sim,8))
 # the interest variable
 y=belgianmunicipalities$TaxableIncome
 # simulation and computation of the Horvitz-Thompson estimator
@@ -63,15 +63,14 @@ HTestimator(y,pik,UPtille(pik)),
 HTestimator(y,pik,UPmidzuno(pik)),
 HTestimator(y,pik,UPsystematic(pik)),
 HTestimator(y,pik,UPpivotal(pik)),
-HTestimator(y,pik,UPmultinomial(pik)),
 HTestimator(y,rep(n/N,N),srswor(n,N)))
 }
 # boxplots of the estimators
 colnames(ss) <- 
-c("poisson","rsyst","rpivotal","tille","midzuno","syst","pivotal","multinom","srswor")
+c("poisson","rsyst","rpivotal","tille","midzuno","syst","pivotal","srswor")
 boxplot(data.frame(ss), las=3)
 # The results  of the simulations can be interpreted.
-# Simple random sampling, multinomial sampling, 
+# Simple random sampling 
 # and Poisson sampling are not accurate.
 # All unequal probability sampling methods seem
 # to have the same accuracy, except systematic sampling and pivotal sampling 

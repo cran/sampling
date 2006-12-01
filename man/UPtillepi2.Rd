@@ -2,13 +2,13 @@
 \alias{UPtillepi2}
 \title{Joint inclusion probabilties for Tillé sampling}
 \description{
-Compute the joint inclusion probabilities for Tillé sampling.
+Compute the joint (second-order) inclusion probabilities for Tillé sampling.
 }
 \usage{
 UPtillepi2(pik,eps=1e-6)
 }
 \arguments{
-\item{pik}{vector of first order inclusion probabilities.}
+\item{pik}{the vector of the first-order inclusion probabilities.}
 \item{eps}{the control value, by default equal to 1e-6.}
 }
 \details{
@@ -25,11 +25,11 @@ Tillé, Y. (1996), An elimination procedure of unequal probability sampling witho
 replacement, \emph{Biometrika}, 83:238-241.
 }
 \examples{
-#define the prescribed inclusion probabilities
+#define the prescribed inclusion probabilities 
 pik=c(0.2,0.7,0.8,0.5,0.4,0.4)
-s=UPtillepi2(pik)
-#the sample is
-(1:length(pik))[s==1]
+pik_joint=UPtillepi2(pik)
+#the joint inclusion probabilities  
+pik_joint
 }
 \keyword{survey}
 \encoding{latin1}
