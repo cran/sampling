@@ -1,25 +1,33 @@
 "UPtille" <-
 function(pik,eps=1e-6)
 {
-liste= pik>eps & pik < 1-eps
-pikb=pik[liste]
-N=length(pikb)
+if(any(is.na(pik))) warning("There are missing values in the pik vector!")
+n=sum(pik)
+if(n!=trunc(n)) stop("The pik's sum is not integer!")
+list = pik > eps & pik < 1 - eps
+pikb = pik[list]
+N = length(pikb)
+s=rep(0,length(pik))
+if(N<1) stop("The pik vector has all elements outside of the range [eps,1-eps]")
+else 
+{
 n=sum(pikb)
-sb=rep(1,times=N)
-b=rep(1,times=N)
+sb=rep(1,N)
+b=rep(1,N)
 for(i in 1:(N-n))
-{a=inclusionprobabilities(pikb,N-i)
-v=1-a/b
-b=a
-p=v*sb
-for(i in 2:N) p[i]=p[i]+p[i-1]
-u=runif(1)
-j=1
-while( u>=p[j] ) j=j+1
-sb[j]=0
+	{a=inclusionprobabilities(pikb,N-i)
+	v=1-a/b
+	b=a
+	p=v*sb
+	p=cumsum(p)
+	u=runif(1)
+        for(j in 1:length(p))
+		if(u<p[j]) break;
+        sb[j] = 0
+	}
+s[list]=sb
 }
-s=pik
-s[liste]=sb
 s
 }
+
 

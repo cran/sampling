@@ -55,8 +55,8 @@ TaxableIncome/mean(TaxableIncome),
 Totaltaxation/mean(Totaltaxation),
 averageincome/mean(averageincome),
 medianincome/mean(medianincome))
-# selection of a sample with expectation size equal to 200
-# by means of Poisson sampling
+# draw a sample with expected size 200
+# using Poisson sampling
 # the inclusion probabilities are proportional to the average income 
 pik=inclusionprobabilities(averageincome,200)
 N=length(pik)               # population size
@@ -93,7 +93,16 @@ if(checkcalibration(Xs,piks,t,g4)) c((g4/piks) \%*\% Xs) else print("error")
 data(belgianmunicipalities)
 attach(belgianmunicipalities)
 pik=inclusionprobabilities(averageincome,200)
-s=UPpoisson(pik)            # sample
+X=cbind(
+Men03/mean(Men03),
+Women03/mean(Women03),
+Diffmen,
+Diffwom,
+TaxableIncome/mean(TaxableIncome),
+Totaltaxation/mean(Totaltaxation),
+averageincome/mean(averageincome),
+medianincome/mean(medianincome))
+s=UPpoisson(pik)            # sample selection
 Xs=X[s==1,]                 # matrix of calibration variables of the sample
 piks=pik[s==1]              # inclusion probabilities of the sample
 # The Horvitz-Thompson estimator

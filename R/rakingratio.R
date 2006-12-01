@@ -10,7 +10,7 @@ n=length(piks)
 np=length(Xs)
 p=np/n
 Xs=matrix(Xs,n,p)
-Xs1=Xs[q!=0,];
+Xs1 = as.matrix(Xs[q != 0, ]) 
 piks1=piks[q!=0];
 q1=q[q!=0];
 n1=length(piks1)

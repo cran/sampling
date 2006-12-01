@@ -54,12 +54,12 @@ TaxableIncome/mean(TaxableIncome),
 Totaltaxation/mean(Totaltaxation),
 averageincome/mean(averageincome),
 medianincome/mean(medianincome))
-# selection of a sample with expectation size equal to 200
-# by means of Poisson sampling
+# draw a sample with expected size 200
+# using Poisson sampling
 # the inclusion probabilities are proportional to the average income 
 pik=inclusionprobabilities(averageincome,200)
 N=length(pik)               # population size
-s=UPpoisson(pik)            # sample
+s=UPpoisson(pik)            # sample selection
 Xs=X[s==1,]                 # matrix of calibration variables of the sample
 piks=pik[s==1]              # inclusion probabilities of the sample
 n=length(piks)              # sample size

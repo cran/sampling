@@ -5,7 +5,7 @@ library(MASS)
 n=length(piks)
 np=length(Xs)
 p=np/n
-Xs=array(Xs,c(n,p));
+Xs=array(Xs,c(n,p))
 g=rakingratio(Xs,piks,t,q)
 if(checkcalibration(Xs,piks,t,g))
   {

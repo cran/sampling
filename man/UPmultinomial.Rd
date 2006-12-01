@@ -8,7 +8,7 @@ Use Hansen-Hurwitz method to select a sample of units (unequal probabilities, wi
 UPmultinomial(pik)
 }
 \arguments{
-\item{pik}{vector of prescribed inclusion probabilities.}
+\item{pik}{the vector of the prescribed inclusion probabilities.}
 }
 \details{
 Return a vector (with elements 0 and 1) of size N, where N is the population size.  
