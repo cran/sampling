@@ -2,7 +2,7 @@
 \alias{UPbrewer}
 \title{Brewer sampling}
 \description{
-Uses the Brewer's method to select a sample of units (unequal probabilities, without replacement, fixed sample size).
+Use Brewer method to select a sample of units (unequal probabilities, without replacement, fixed sample size).
 }
 \usage{
 UPbrewer(pik,eps=1e-06)
@@ -12,10 +12,10 @@ UPbrewer(pik,eps=1e-06)
 \item{eps}{the control value, by default equal to 1e-06.}
 }
 \details{
-Returns a vector (with elements 0 and 1) of size N, the population size.  
-Each element k of this vector indicates the status of unit k 
-(1, unit k is selected in the sample; 0, otherwise).
-The value 'eps' is used to
+Return a vector (with elements 0 and 1) of size N, where N is the population size.  
+Each element k of this vector indicates the status of the unit k 
+(1, the unit k is selected in the sample; 0, otherwise).
+The value eps is used to
 control pik (pik>eps & pik < 1-eps). 
 }
 \seealso{\code{\link{UPsystematic}}

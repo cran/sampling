@@ -1,18 +1,22 @@
 "landingcube" <-
 function(X,pikstar,pik,comment=TRUE) 
+#
 # landing phase of the cube method
+#
 ######################################################
 { 
+# 
 # extraction of the non-integer values for the landing phase 
-require(MASS)
-require(lpSolve)
-EPS=1e-11
-p=dim(X)[2]
-N=dim(X)[1]
+# 
+library(MASS)
+library(lpSolve)
+EPS=0.00000000001;
+p=dim(X)[2];
+N=dim(X)[1];
 liste=(pikstar>EPS & pikstar<(1-EPS)) 
 pikland=pikstar[liste] 
 Nland=length(pikland) 
-Xland=array(X[liste,] ,c(Nland,p)) 
+Xland<- array(X[liste,] ,c(Nland,p)); 
 nland=sum(pikland) 
 FLAGI=(abs(nland-round(nland))<EPS);
 # construction of the list of possible samples 

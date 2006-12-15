@@ -1,7 +1,6 @@
 "UPpivotal" <-
 function(pik,eps=1e-6)
 {
-if(any(is.na(pik))) stop("there are missing values in the pik vector")
 N<-length(pik)
 s<-rep(0,times=N)
 a<-pik[1]
@@ -36,10 +35,10 @@ if(a+b>1)
             else {a<-a+b-1;b<-1} 
           }
  else{ if(u< b/(a+b)) 
-                 		{b<-a+b;a<-0} 
+                 		{b<- a+b;a<-0} 
        else {a<- a+b;b<-0} 
        } 
 s[i]=a; s[j]=b;
-s
+round(s)
 }
 

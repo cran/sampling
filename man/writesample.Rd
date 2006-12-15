@@ -1,7 +1,7 @@
 \name{writesample}
 \alias{writesample}
 \title{All possible samples of fixed size}
-\description{Gives a matrix whose rows are the vectors (0 or 1)
+\description{Give a matrix which contains in its rows the vectors (0 or 1)
 of all samples of fixed size.}
 \usage{writesample(n,N)}
 \arguments{

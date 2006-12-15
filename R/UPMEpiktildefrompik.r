@@ -1,6 +1,7 @@
 "UPMEpiktildefrompik" <-
 function(pik,eps=1e-6) 
 { 
+N=length(pik)
 n=sum(pik) 
 pikt=pik 
 arr=1 

@@ -1,13 +1,13 @@
 "UPbrewer" <- function(pik, eps = 1e-06)
 {
-if(any(is.na(pik))) stop("there are missing values in the pik vector")
+if(any(is.na(pik))) warning("There are missing values in the pik vector!")
 n=sum(pik)
-if(n!=trunc(n)) stop("the pik's sum is not integer")
+if(n!=trunc(n)) stop("The pik's sum is not integer!")
 list = pik > eps & pik < 1 - eps
 pikb = pik[list]
 N = length(pikb)
-s=pik
-if(N<1) stop("the pik vector has all elements outside of the range [eps,1-eps]")
+s=rep(0,length(pik))
+if(N<1) stop("The pik vector has all elements outside of the range [eps,1-eps]")
 else 
 {
 sb=rep(0,N)
@@ -24,6 +24,7 @@ for (i in 1:n) {
 }
 s[list]=sb
 }
+#which(s==1) 
 s
 }
 
