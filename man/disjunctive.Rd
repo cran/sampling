@@ -2,7 +2,7 @@
 \alias{disjunctive}
 \title{Disjunctive combination}
 \description{
-Transforms a categorical variable
+Transform a categorical variable
 into a matrix of indicators. The values of the categorical variable are integer numbers (positive or negative).
 }
 \usage{disjunctive(strata)}

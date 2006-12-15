@@ -2,8 +2,8 @@
 \alias{balancedcluster}
 \title{Balanced cluster}
 \description{
-Selects a balanced cluster sample and
-returns a matrix containing the vector of inclusion probabilities and
+Select a balanced cluster sample and
+return a matrix that contains the vector of inclusion probabilities and
 the selected sample.
 }
 \usage{balancedcluster(X,m,cluster,selection=1,comment=TRUE,method=1)}
@@ -13,8 +13,8 @@ the selected sample.
 \item{cluster}{vector of integers that defines the clusters.}
 \item{selection}{1, selection of the clusters with probabilities proportional 
 to size,\cr 2, selection of the clusters with equal probabilities.}
-\item{comment}{a comment is written during the execution if \code{comment} is \code{TRUE}.}
-\item{method}{the used method in the function \code{samplecube}.}
+\item{comment}{a comment is written during the execution if \code{comment} is equal to \code{TRUE}.}
+\item{method}{the used method in the function samplecube.}
 }
 \seealso{
 \code{\link{samplecube}}, \code{\link{fastflightcube}}, \code{\link{landingcube}}
@@ -25,9 +25,9 @@ to size,\cr 2, selection of the clusters with equal probabilities.}
 ############
 # definition of the clusters; there are 15 units in 3 clusters
 cluster=c(1,1,1,1,1,2,2,2,2,2,3,3,3,3,3)
-# matrix of balancing variables
+# Matrix of balancing variables
 X=cbind(c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15))
-# selection of 2 clusters
+# Selection of 2 clusters
 s=balancedcluster(X,2,cluster,2,TRUE)
 # the sample of clusters with the inclusion probabilities of the clusters
 s

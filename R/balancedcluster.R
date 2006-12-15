@@ -13,7 +13,7 @@ for(h in 1:H)
     for(j in 1:p)  XC[h,j]=sum(X[cluster==h,j]) 
    }
 if(selection==1) pik=inclusionprobabilities(Ni,m) else pik=rep(m/H,times=H)
-s=samplecube(cbind(pik,XC),pik,1,comment,method) 
+s=samplecube(cbind(pik,XC),pik,1,TRUE,method) 
 res=array(0,c(N,2))
 for(h in 1:H) 
     {

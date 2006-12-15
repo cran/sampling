@@ -1,7 +1,6 @@
 "UPminimalsupport" <-
 function(pik)
 {
-if(any(is.na(pik))) stop("there are missing values in the pik vector")
 basicsplit<-function(pik)
 {
 N=length(pik)

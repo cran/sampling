@@ -1,7 +1,7 @@
 "writesample" <-
 function(n,N) 
 {
-if(n==N) samples=rep(1,times=N) 
+if(n==N) samples= rep(1,times=N) 
 else{ 
 x=numeric(N) 
 row=1 

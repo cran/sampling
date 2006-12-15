@@ -2,14 +2,15 @@
 \alias{srswr}
 \title{Simple random sampling with replacement}
 \description{
-Draws a simple random sampling with replacement of size $n$ (equal probabilities, fixed sample size, with replacement).
+Draw a simple random sampling with replacement of size n (equal probabilities, fixed sample size, with replacement).
 }
 \usage{
 srswr(n,N)
 }
 \details{
-Returns a vector of size N, population size. Each element k of this vector indicates 
+Return a vector of size N which is the population size. Each element k of this vector indicates 
 the number of replicates for unit k in the sample.
+}
 }
 \arguments{
 \item{n}{sample size.}

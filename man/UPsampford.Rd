@@ -2,7 +2,7 @@
 \alias{UPsampford}
 \title{Sampford sampling}
 \description{
-Uses the Sampford's method to select a sample of units (unequal probabilities, without replacement, fixed sample size).
+Use Sampford method to select a sample of units (unequal probabilities, without replacement, fixed sample size).
 }
 \usage{
 UPsampford(pik,eps=1e-6)
@@ -12,9 +12,9 @@ UPsampford(pik,eps=1e-6)
 \item{eps}{the control value, by default equal to 1e-6.}
 }
 \details{
-Returns a vector (with elements 0 and 1) of size N, the population size.  
-Each element k of this vector indicates the status of unit k 
-(1, unit k is selected in the sample; 0, otherwise).
+Return a vector (with elements 0 and 1) of size N, where N is the population size.  
+Each element k of this vector indicates the status of the unit k 
+(1, the unit k is selected in the sample; 0, otherwise).
 The value eps is used to control pik (pik>eps & pik < 1-eps). 
 The sample size must be small with respect to the 
 population size; otherwise, the selection time can be very long.

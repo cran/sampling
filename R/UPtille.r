@@ -1,14 +1,14 @@
 "UPtille" <-
 function(pik,eps=1e-6)
 {
-if(any(is.na(pik))) stop("there are missing values in the pik vector")
+if(any(is.na(pik))) warning("There are missing values in the pik vector!")
 n=sum(pik)
-if(n!=trunc(n)) stop("the sum of pik vector is not integer")
+if(n!=trunc(n)) stop("The sum of pik vector is not integer!")
 list = pik > eps & pik < 1 - eps
 pikb = pik[list]
 N = length(pikb)
 s=pik
-if(N<1) stop("the pik vector has all elements outside of the range [eps,1-eps]")
+if(N<1) stop("The pik vector has all elements outside of the range [eps,1-eps]")
 else 
 {
 n=sum(pikb)
@@ -22,7 +22,7 @@ for(i in 1:(N-n))
 	p=cumsum(p)
 	u=runif(1)
         for(j in 1:length(p))
-		if(u<p[j]) break
+		if(u<p[j]) break;
         sb[j] = 0
 	}
 s[list]=sb
