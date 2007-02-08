@@ -1,7 +1,7 @@
 \name{inclusionprobastrata}
 \alias{inclusionprobastrata}
 \title{Strata inclusion probabilities}
-\description{Compute the inclusion probabilities for a stratified design. 
+\description{Computes the inclusion probabilities for a stratified design. 
 The inclusion probabilities 
 are equal in each strata.}
 \usage{inclusionprobastrata(strat,nh)}

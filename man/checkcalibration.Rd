@@ -1,7 +1,7 @@
 \name{checkcalibration}
 \alias{checkcalibration}
 \title{Check calibration}
-\description{Check the validity of the calibration. In some cases, the regression or the raking ratio estimators
+\description{Checks the validity of the calibration. In some cases, the regression or the raking ratio estimators
 do not exist, and the g-weights do not allow calibration. The function returns \code{TRUE} or \code{FALSE}.}
 \usage{checkcalibration(Xs,pik,t,g)}
 \arguments{

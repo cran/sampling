@@ -2,8 +2,8 @@
 \alias{balancedcluster}
 \title{Balanced cluster}
 \description{
-Select a balanced cluster sample and
-return a matrix that contains the vector of inclusion probabilities and
+Selects a balanced cluster sample and
+returns a matrix containing the vector of inclusion probabilities and
 the selected sample.
 }
 \usage{balancedcluster(X,m,cluster,selection=1,comment=TRUE,method=1)}

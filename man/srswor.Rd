@@ -2,15 +2,15 @@
 \alias{srswor}
 \title{Simple random sampling without replacement}
 \description{
-Draw a simple random sampling without replacement of size n (equal probabilities, fixed sample size, without replacement).
+Draws a simple random sampling without replacement of size n (equal probabilities, fixed sample size, without replacement).
 }
 \usage{
 srswor(n,N)
 }
 \details{
-Return a vector (with elements 0 and 1) of size N, where N is the population size.  
-Each element k of this vector indicates the status of the unit k 
-(1, the unit k is selected in the sample; 0, otherwise).
+Returns a vector (with elements 0 and 1) of size N, the population size.  
+Each element k of this vector indicates the status of unit k 
+(1, unit k is selected in the sample; 0, otherwise).
 }
 \arguments{
 \item{n}{sample size.}

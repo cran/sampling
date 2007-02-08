@@ -1,7 +1,7 @@
 \name{regressionestimator}
 \alias{regressionestimator}
 \title{g-weights of the regression estimator}
-\description{Compute the g-weights of the regression estimator.}
+\description{Computes the g-weights of the regression estimator.}
 \usage{regressionestimator(Xs,piks,tot,q=rep(1,times=length(piks)))}
 \arguments{
 \item{Xs}{matrix of calibration variables.}

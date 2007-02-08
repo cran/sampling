@@ -2,7 +2,7 @@
 \alias{UPpoisson}
 \title{Poisson sampling}
 \description{
-Draw a Poisson sample, using a prescribed vector of first-order inclusion 
+Draws a Poisson sample using a prescribed vector of first-order inclusion 
 probabilities (unequal probabilities, without replacement, random sample size). 
 }
 \usage{UPpoisson(pik)}
@@ -10,10 +10,9 @@ probabilities (unequal probabilities, without replacement, random sample size).
 \item{pik}{vector of the first-order inclusion probabilities.}
 }
 \details{
-Return a vector (with elements 0 and 1) of size N, where N is the population size.  
-Each element k of this vector indicates the status of the unit k 
-(1, the unit k is selected in the sample; 0, otherwise).
-
+Returns a vector (with elements 0 and 1) of size N, the population size.  
+Each element k of this vector indicates the status of unit k 
+(1, unit k is selected in the sample; 0, otherwise).
 }
 \seealso{
 \code{\link{inclusionprobabilities}}

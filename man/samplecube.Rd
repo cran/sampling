@@ -35,7 +35,7 @@ Deville, J.-C. and Tillé, Y. (2005). Variance approximation under balanced sampl
 # matrix of balancing variables
 X=cbind(c(1,1,1,1,1,1,1,1,1),c(1.1,2.2,3.1,4.2,5.1,6.3,7.1,8.1,9.1))
 # Vector of inclusion probabilities.
-# The sample has the size equal to 3.
+# The sample size is 3.
 pik=c(1/3,1/3,1/3,1/3,1/3,1/3,1/3,1/3,1/3)
 # Selection of the sample
 s=samplecube(X,pik,order=1,comment=TRUE)
@@ -45,7 +45,7 @@ s=samplecube(X,pik,order=1,comment=TRUE)
 ## Example 2
 ############
 # 2 strata and 2 auxiliary variables
-# we verify by simulations the values of the inclusion probabilities
+# we verify the values of the inclusion probabilities by simulations
 X=rbind(c(1,0,1,2),c(1,0,2,5),c(1,0,3,7),c(1,0,4,9),
 c(1,0,5,1),c(1,0,6,5),c(1,0,7,7),c(1,0,8,6),c(1,0,9,9),
 c(1,0,10,3),c(0,1,11,3),c(0,1,12,2),c(0,1,13,3),

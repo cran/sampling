@@ -2,7 +2,7 @@
 \alias{balancedstratification}
 \title{Balanced stratification}
 \description{
-Select a stratified balanced sample (a vector of 0 and 1).
+Selects a stratified balanced sample (a vector of 0 and 1).
 Firstly, the flight phase is applied in each stratum. Secondly, the strata
 are aggregated and the flight phase is applied on the whole population.
 Finally, the landing phase is applied on the whole population.

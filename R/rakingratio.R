@@ -1,7 +1,7 @@
 "rakingratio" <-
 function(Xs,piks,t,q=rep(1,times=length(piks)))
 {
-library(MASS)
+require(MASS)
 ITERATIONS=300
 EPS=.Machine$double.eps	
 tol=.Machine$double.eps

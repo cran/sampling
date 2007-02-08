@@ -2,8 +2,8 @@
 \alias{UPrandompivotal}
 \title{Random pivotal sampling}
 \description{
-Select a sample by means of 
-the pivotal method, when the order of the units in the population is random (unequal probabilities, 
+Selects a sample using 
+the pivotal method, when the order of the population units is random (unequal probabilities, 
 without replacement, fixed sample size). 
 }
 \usage{
@@ -13,9 +13,9 @@ UPrandompivotal(pik)
 \item{pik}{vector of prescribed inclusion probabilities.}
 }
 \details{
-Return a vector (with elements 0 and 1) of size N, where N is the population size.  
-Each element k of this vector indicates the status of the unit k 
-(1, the unit k is selected in the sample; 0, otherwise).
+Returns a vector (with elements 0 and 1) of size N, the population size.  
+Each element k of this vector indicates the status of unit k 
+(1, unit k is selected in the sample; 0, otherwise).
 }
 \seealso{\code{\link{UPpivotal}}
 }

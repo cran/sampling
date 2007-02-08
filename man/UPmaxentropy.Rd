@@ -31,9 +31,9 @@ UPMEpik2frompikw(pik,w)
 The maximum entropy sampling maximizes the entropy criterion:
 \deqn{I(p) = - \sum_s p(s)\log[p(s)]}{%
 I(p) =  -\sum_s p(s)log[p(s)].}
-The main procedure is \code{UPmaxentropy} that allows selecting a sample (a vector of 0 and 1)
+The main procedure is \code{UPmaxentropy} which selects a sample (a vector of 0 and 1)
 from a given vector of inclusion probabilities. The procedure \code{UPmaxentropypi2}
-returns the matrix of the joint inclusion probabilities from the first-order inclusion probability vector.
+returns the matrix of joint inclusion probabilities from the first-order inclusion probability vector.
 The other procedures are intermediate steps. They can be useful to run simulations as shown
 in the examples below. The procedure \code{UPMEpiktildefrompik} computes the vector
 of the inclusion probabilities (denoted \code{pikt}) of a Poisson sampling from the vector
@@ -42,12 +42,12 @@ The maximum entropy sampling is the conditional
 design given the fixed sample size. The vector \code{w} can be easily obtained by 
 \code{w=pikt/(1-pikt)}. Once \code{piktilde} and \code{w} are deduced from \code{pik},
 a matrix of selection probabilities \code{q} can be derived from the sample size \code{n} 
-and the vector \code{w}, by means of the procedure \code{UPMEqfromw}. 
-Next, a sample can be selected from \code{q} by using \code{UPMEsfromq}.
+and the vector \code{w} via \code{UPMEqfromw}. 
+Next, a sample can be selected from \code{q} using \code{UPMEsfromq}.
 In order to generate several samples, 
 it is more efficient to compute the matrix \code{q} (which needs some calculation),
 and then to use the procedure \code{UPMEsfromq}. The vector of the inclusion probabilities can
-be recomputed from \code{q} by using \code{UPMEpikfromq}, which allows to check 
+be recomputed from \code{q} using \code{UPMEpikfromq}, which also checks 
 the numerical precision  of the algorithm. The procedure \code{UPMEpik2frompikw}
 computes the matrix of the joint inclusion probabilities from \code{q} and \code{w}.
 }

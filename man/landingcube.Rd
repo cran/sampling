@@ -2,7 +2,7 @@
 \alias{landingcube}
 \title{Landing phase for the cube method}
 \description{
-Landing phase of the cube method by means of a linear programming.
+Landing phase of the cube method using linear programming.
 }
 \usage{landingcube(X,pikstar,pik,comment=TRUE)}
 \arguments{

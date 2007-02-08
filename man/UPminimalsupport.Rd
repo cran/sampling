@@ -2,7 +2,7 @@
 \alias{UPminimalsupport}
 \title{Minimal support sampling}
 \description{
-Use minimal support method to select a sample of units (unequal probabilities, without replacement, fixed sample size).
+Uses minimal support method to select a sample of units (unequal probabilities, without replacement, fixed sample size).
 }
 \usage{
 UPminimalsupport(pik)
@@ -11,9 +11,9 @@ UPminimalsupport(pik)
 \item{pik}{vector of prescribed inclusion probabilities.}
 }
 \details{
-Return a vector (with elements 0 and 1) of size N, where N is the population size.  
-Each element k of this vector indicates the status of the unit k 
-(1, the unit k is selected in the sample; 0, otherwise). 
+Returns a vector (with elements 0 and 1) of size N, the population size.  
+Each element k of this vector indicates the status of unit k 
+(1, unit k is selected in the sample; 0, otherwise). 
 }
 }
 \references{

@@ -1,8 +1,7 @@
-
 \name{rakingratio}
 \alias{rakingratio}
 \title{g-weights of the raking ratio estimator}
-\description{Compute the g-weights of the raking ratio estimator.}
+\description{Computes the g-weights of the raking ratio estimator.}
 \usage{rakingratio(Xs,piks,t,q=rep(1,times=length(piks)))}
 \arguments{
 \item{Xs}{matrix of calibration variables.}
