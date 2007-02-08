@@ -2,7 +2,7 @@
 \alias{UPsystematicpi2}
 \title{Joint inclusion probabilities for systematic sampling}
 \description{
-Compute the joint (second-order) inclusion probabilities for systematic sampling.
+Computes the joint (second-order) inclusion probabilities for systematic sampling.
 }
 \usage{
 UPsystematicpi2(pik)
@@ -11,10 +11,9 @@ UPsystematicpi2(pik)
 \item{pik}{the vector of the first-order inclusion probabilities.}
 }
 \details{
-Return a NxN matrix with the first-order inclusion probability for
-each unit k in the population on the first diagonal and with the joint inclusion
-probability of units k and l in position (k,l) in the
-matrix, where $k\neq l$  (N is the population size).
+Returns a NxN matrix of the following form: the main diagonal contains the first-order inclusion 
+probabilities for each unit k in the population; elements (k,l) are the joint inclusion
+probabilities of units k and l, with k not equal to l. N is the population size. 
 }
 \seealso{\code{\link{UPsystematic}}
 }

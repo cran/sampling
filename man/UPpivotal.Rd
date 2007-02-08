@@ -2,7 +2,7 @@
 \alias{UPpivotal}
 \title{Pivotal sampling}
 \description{
-Select an unequal probability sample by means of 
+Selects an unequal probability sample using 
 the pivotal method (unequal probabilities, without replacement, fixed sample size). 
 }
 \usage{
@@ -13,9 +13,9 @@ UPpivotal(pik,eps=1e-6)
 \item{eps}{the control value, by default equal to 1e-6.}
 }
 \details{
-Return a vector (with elements 0 and 1) of size N, where N is the population size.  
-Each element k of this vector indicates the status of the unit k 
-(1, the unit k is selected in the sample; 0, otherwise).
+Returns a vector (with elements 0 and 1) of size N, the population size.  
+Each element k of this vector indicates the status of unit k 
+(1, unit k is selected in the sample; 0, otherwise).
 The value eps is used to control pik (pik>eps & pik < 1-eps).
 }
 \seealso{\code{\link{UPrandompivotal}}

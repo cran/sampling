@@ -2,8 +2,8 @@
 \alias{balancedtwostage}
 \title{Balanced two-stage sampling}
 \description{
-Select a balanced two-stage sample.
-The function returns a matrix which contains as columns the following five vectors:
+Selects a balanced two-stage sample.
+The function returns a matrix whose columns are the following five vectors:
  the selected second-stage sampling units (0 - unselected, 1 - selected), 
  the final inclusion probabilities,
  the selected primary sampling units,

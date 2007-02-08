@@ -1,9 +1,9 @@
 \name{cleanstrata}
 \alias{cleanstrata}
 \title{ Clean strata}
-\description{Renumber a variable of stratification
+\description{Renumbers a variable of stratification
  (qualitative variable). The strata receive a number from 1 to the last stratum number. 
-The empty strata are suppressed. This function is used in 'balancedstratification'.
+The empty strata are suppressed. This function is used in `balancedstratification'.
 }
 }
 \usage{
