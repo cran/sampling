@@ -2,7 +2,7 @@
 \alias{UPtille}
 \title{Tillé sampling}
 \description{
-Use Tillé method to select a sample of units (unequal probabilities, without replacement, fixed sample size).
+Uses the Tillé method to select a sample of units (unequal probabilities, without replacement, fixed sample size).
 }
 \usage{
 UPtille(pik,eps=1e-6)
@@ -12,9 +12,9 @@ UPtille(pik,eps=1e-6)
 \item{eps}{the control value, by default equal to 1e-6.}
 }
 \details{
-Return a vector (with elements 0 and 1) of size N, where N is the population size.  
-Each element k of this vector indicates the status of the unit k 
-(1, the unit k is selected in the sample; 0, otherwise).
+Returns a vector (with elements 0 and 1) of size N, the population size.  
+Each element k of this vector indicates the status of unit k 
+(1, unit k is selected in the sample; 0, otherwise).
 The value eps is used to control pik (pik>eps & pik < 1-eps).
 }
 \seealso{\code{\link{UPsystematic}}
@@ -46,7 +46,7 @@ b=data(belgianmunicipalities)
 pik=inclusionprobabilities(belgianmunicipalities$Tot04,200)
 N=length(pik)
 n=sum(pik)
-#number of simulations; for an accurate result, please increase this value 
+#number of simulations; for an accurate result, increase this value 
 sim=10
 ss=array(0,c(sim,8))
 # the interest variable

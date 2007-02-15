@@ -1,13 +1,13 @@
 \name{boundedregressionestimator}
 \alias{boundedregressionestimator}
 \title{g-weights of the regression estimator}
-\description{Compute the g-weights of the regression estimator.  The g-weights should lie in the specified bounds.}
+\description{Computes the g-weights of the regression estimator.  The g-weights should lie in the specified bounds.}
 \usage{boundedregressionestimator(Xs,piks,t,q=rep(1,times=length(piks)),LOW=0,UP=10)}
 \arguments{
 \item{Xs}{matrix of calibration variables.}
 \item{piks}{vector of inclusion probabilities.}
 \item{t}{vector of population totals.}
-\item{q}{vector of weights for the distance. The variation of the g-weights is reduced for the small values of q. When a component of q is null, the corresponding g-weight remains equal to 1.}
+\item{q}{vector of weights for the distance. The variation of the g-weights is reduced for small values of q. When a component of q is null, the corresponding g-weight remains equal to 1.}
 \item{LOW}{smallest value for the g-weights.}
 \item{UP}{largest value for the g-weights.}
 }
@@ -72,7 +72,7 @@ piks=pik[s==1]              # inclusion probabilities of the sample
 n=length(piks)              # sample size
 # vector of population totals of the auxiliary variables
 t=c(t(rep(1,times=N))\%*\%X)  
-# The Horvitz-Thompson estimators of auxiliary variables 
+# The Horvitz-Thompson estimator of auxiliary variables 
 c((1/piks) \%*\% Xs)
 # The true total 
 t

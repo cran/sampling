@@ -1,7 +1,7 @@
 \name{inclusionprobabilities}
 \alias{inclusionprobabilities}
 \title{Inclusion probabilities}
-\description{Compute the first-order inclusion probabilities from a vector of positive numbers 
+\description{Computes the first-order inclusion probabilities from a vector of positive numbers 
 (for probability proportional-to-size sampling).
 }
 \usage{inclusionprobabilities(a,n)}
@@ -17,7 +17,7 @@
 ## Example 1
 ############
 # a vector of positive numbers
-a<-1:20
+a=1:20
 # computation of the inclusion probabilities for a sample size n=12
 pik=inclusionprobabilities(a,12)
 pik

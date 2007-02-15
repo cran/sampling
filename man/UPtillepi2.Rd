@@ -2,7 +2,7 @@
 \alias{UPtillepi2}
 \title{Joint inclusion probabilties for Tillé sampling}
 \description{
-Compute the joint (second-order) inclusion probabilities for Tillé sampling.
+Computes the joint (second-order) inclusion probabilities for Tillé sampling.
 }
 \usage{
 UPtillepi2(pik,eps=1e-6)
@@ -12,11 +12,10 @@ UPtillepi2(pik,eps=1e-6)
 \item{eps}{the control value, by default equal to 1e-6.}
 }
 \details{
-Return a NxN matrix  with the first order inclusion probability for
-each unit k in the population on the first diagonal and with the joint inclusion
-probability of units k and l in position (k,l) in the
-matrix, where $k\neq l$ (N is the population size). The value eps is used to
-control pik (pik>eps & pik < 1-eps).
+Returns a NxN matrix of the following form: the main diagonal contains the first-order inclusion 
+probabilities for each unit k in the population; elements (k,l) are the joint inclusion
+probabilities of units k and l, with k not equal to l. N is the population size. The value \code{eps} is used to
+control \code{pik} (pik>eps & pik < 1-eps).
 }
 \seealso{\code{\link{UPtille}}
 }
