@@ -1,7 +1,7 @@
 \name{boundedrakingratio}
 \alias{boundedrakingratio}
 \title{g-weights of the raking ratio estimator}
-\description{Compute the g-weights of the raking ratio estimator. 
+\description{Computes the g-weights of the raking ratio estimator. 
 The g-weights should lie in the specified bounds.}
 \usage{boundedrakingratio(Xs,piks,t,q=rep(1,times=length(piks)),LOW=0,UP=10)}
 \arguments{

@@ -3,11 +3,11 @@ function(pik,eps=1e-6)
 {
 if(any(is.na(pik))) warning("There are missing values in the pik vector!")
 n=sum(pik)
-if(n!=trunc(n)) stop("The pik's sum is not integer!")
+if(n!=trunc(n)) stop("The sum of pik vector is not integer!")
 list = pik > eps & pik < 1 - eps
 pikb = pik[list]
 N = length(pikb)
-s=rep(0,length(pik))
+s=pik
 if(N<1) stop("The pik vector has all elements outside of the range [eps,1-eps]")
 else 
 {

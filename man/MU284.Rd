@@ -3,7 +3,7 @@
 \docType{data}
 \title{ The MU284 population }
 \description{
-This data are from Särndal et al (1992), see Appendix B, p. 652.  
+This data is from Särndal et al (1992), see Appendix B, p. 652.  
 }
 \usage{data(MU284)}
 \format{

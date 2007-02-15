@@ -1,6 +1,6 @@
 "regressionestimator" <-
 function(Xs,piks,tot,q=rep(1,times=length(piks)))
-{   library(MASS)
+{   require(MASS)
     tol=.Machine$double.eps
     n = length(piks)
     np = length(Xs)
