@@ -22,7 +22,7 @@ tc1=c(d1%*%Xs1)
 #####################################################
 # definition of the exponential rakingratio function
 #####################################################
-Fcal<-function(u,v)   F=exp(u*v)
+Fcal<-function(u,v)   exp(u*v)
 #####################################################
 # definition of the derivative of
 # the exponential rakingratio function
