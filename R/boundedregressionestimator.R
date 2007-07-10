@@ -35,7 +35,7 @@ if(checkcalibration(Xs,piks,t,g))
           arret=n-length(g[flag==0])
           } else
           {
-          cat("\nError : Impossible to find calibration weights with these bounds\n")
+          stop("Impossible to find calibration weights with these bounds\n")
           arret1=0
           arret=0
           }
@@ -43,7 +43,7 @@ if(checkcalibration(Xs,piks,t,g))
    }
    else
    {
-   cat("\nError : Impossible to find calibration weights\n")
+   stop("Impossible to find calibration weights\n")
    arret1=0
    arret=0
    }

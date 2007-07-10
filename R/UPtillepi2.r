@@ -2,15 +2,15 @@
 function(pik,eps=1e-6)
 {
 
-if(any(is.na(pik))) warning("There are missing values in the pik vector!")
+if(any(is.na(pik))) warning("there are missing values in the pik vector")
 n=sum(pik)
-if(n!=trunc(n)) stop("The pik's sum is not integer!")
+if(n!=trunc(n)) stop("the sum of pik is not integer")
 list = pik > eps & pik < 1 - eps
 pikb = pik[list]
 N = length(pikb)
 #ppf=pik%*%t(pik)
 ppf=matrix(0,length(pik),length(pik))
-if(N<1) stop("The pik vector has all elements outside of the range [eps,1-eps]")
+if(N<1) stop("the pik vector has all elements outside of the range [eps,1-eps]")
 else 
 {
 n=sum(pikb)
