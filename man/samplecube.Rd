@@ -23,9 +23,9 @@ on the result of the flight phase.
 }
 \references{ 
 Tillé, Y. (2006), \emph{Sampling Algorithms}, Springer.\cr
-Chauvet, G. and Tillé, Y. (2006). A fast algorithm of balanced sampling. \emph{to appear in Computational Statistics}. \cr
+Chauvet, G. and Tillé, Y. (2006). A fast algorithm of balanced sampling. \emph{Computational Statistics}, 21/1:53--62. \cr
 Chauvet, G. and Tillé, Y. (2005). New SAS macros for balanced sampling. In INSEE, editor, \emph{Journées de Méthodologie Statistique}, Paris.\cr
-Deville, J.-C. and Tillé, Y. (2004). Efficient balanced sampling: the cube method. \emph{Biometrika}, 91, 893-912.\cr
+Deville, J.-C. and Tillé, Y. (2004). Efficient balanced sampling: the cube method. \emph{Biometrika}, 91:893--912.\cr
 Deville, J.-C. and Tillé, Y. (2005). Variance approximation under balanced sampling. \emph{Journal of Statistical Planning and Inference}, 128/2:411--425. 
 } 
 \examples{
@@ -73,9 +73,9 @@ pikfin=samplecube(array(pik,c(N,1)),pik,1,TRUE)
 # p auxiliary variables generated randomly
 N=1000
 p=7
-x<-rnorm(N*p,10,3)
+x=rnorm(N*p,10,3)
 # random inclusion probabilities 
-pik<- runif(N)
+pik= runif(N)
 X=array(x,c(N,p))
 X=cbind(cbind(X,rep(1,times=N)),pik)
 pikfin=samplecube(X,pik,1,TRUE)
@@ -89,7 +89,6 @@ b=rep(0,times=N)
 V1=c(a,b,b)
 V2=c(b,a,b)
 V3=c(b,b,a)
-V4=1:(3*N)
 X=cbind(V1,V2,V3)
 pik=rep(2/10,times=3*N)
 pikfin=samplecube(X,pik,1,TRUE)
@@ -123,7 +122,7 @@ res2[i]=HTestimator(MU284$RMT85,pik,samplecube(matrix(pik),pik,1,FALSE) )
 summary(res1)
 summary(res2)
 ss=cbind(res1,res2)
-colnames(ss) <- c("balanced sampling","uneq prob sampling")
+colnames(ss) = c("balanced sampling","uneq prob sampling")
 boxplot(data.frame(ss), las=1)
 }
 \keyword{survey}

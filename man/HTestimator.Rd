@@ -14,16 +14,16 @@ status: 1 - unit is selected in the sample, 0 - otherwise.}
 }
 \examples{
 # Belgian municipalities data base
-b=data(belgianmunicipalities)
-# Compute the inclusion probabilities
+data(belgianmunicipalities)
+# Computes the inclusion probabilities
 pik=inclusionprobabilities(belgianmunicipalities$Tot04,200)
 N=length(pik)
 n=sum(pik)
-# Define the variable of interest
+# Defines the variable of interest
 y=belgianmunicipalities$TaxableIncome
-# Draw a Poisson sample of expected size 200
+# Draws a Poisson sample of expected size 200
 s=UPpoisson(pik)
-# Compute the Horvitz-Thompson estimator
+# Computes the Horvitz-Thompson estimator
 HTestimator(y,pik,s)
 }
 \keyword{survey}

@@ -9,12 +9,12 @@ res1=balancedcluster(X,m,PU,method,comment)
 if(selection==2) 
         {
          pik2=rep(n/N*M/m,times=N);
-         if(n/N*M/m>1) cat("Error : at the second stage, inclusion probabilities larger than 1");
+         if(n/N*M/m>1) stop("at the second stage, inclusion probabilities larger than 1");
          }
 if(selection==1) 
         {
         pik2=inclusionprobastrata(str,rep(n/m ,times=max(str)));
-        if(max(pik2)>1) cat("Error : at the second stage, inclusion probabilities larger than 1");
+        if(max(pik2)>1) stop("at the second stage, inclusion probabilities larger than 1");
         }
 liste=(res1[,1]==1)
 sf=rep(0,times=N)

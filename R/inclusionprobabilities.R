@@ -2,9 +2,9 @@
 {   nnull = length(a[a == 0])
     nneg = length(a[a < 0])
     if (nnull > 0) 
-        warning("There are zero values in the initial vector a\n")
+        warning("there are zero values in the initial vector a\n")
     if (nneg > 0) {
-        cat("There are ", nneg, " negative value(s) shifted to zero\n")
+        warning("there are ", nneg, " negative value(s) shifted to zero\n")
         a[(a < 0)] = 0
     }
     if(identical(a,rep(0,length(a)))) pik1=a

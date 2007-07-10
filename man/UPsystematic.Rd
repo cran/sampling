@@ -42,5 +42,7 @@ pik=inclusionprobabilities(Tot,200)
 s=UPsystematic(pik)  
 #the sample is
 as.vector(name[s==1])
+# extracts the observed data
+getdata(belgianmunicipalities,s)
 }
 \keyword{survey}

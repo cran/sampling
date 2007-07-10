@@ -16,10 +16,10 @@ Finally, the landing phase is applied on the whole population.
 \item{method}{the used method in the function samplecube.}
 }
 \references{ 
-Tillé, Y. (2006), \emph{Sampling Algorithms}, Springer.
-Chauvet, G. and Tillé, Y. (2006). A fast algorithm of balanced sampling. \emph{to appear in Computational Statistics}. \cr
+Tillé, Y. (2006), \emph{Sampling Algorithms}, Springer.\cr
+Chauvet, G. and Tillé, Y. (2006). A fast algorithm of balanced sampling. \emph{Computational Statistics}, 21/1:53--62. \cr
 Chauvet, G. and Tillé, Y. (2005). New SAS macros for balanced sampling. In INSEE, editor, \emph{Journées de Méthodologie Statistique}, Paris.\cr
-Deville, J.-C. and Tillé, Y. (2004). Efficient balanced sampling: the cube method. \emph{Biometrika}, 91, 893-912.\cr
+Deville, J.-C. and Tillé, Y. (2004). Efficient balanced sampling: the cube method. \emph{Biometrika}, 91:893--912.\cr
 Deville, J.-C. and Tillé, Y. (2005). Variance approximation under balanced sampling. \emph{Journal of Statistical Planning and Inference}, 128/2:411--425. 
 } 
 \seealso{

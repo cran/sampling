@@ -35,7 +35,7 @@ if(a+b>1)
             else {a<-a+b-1;b<-1} 
           }
  else{ if(u< b/(a+b)) 
-                 		{b<- a+b;a<-0} 
+                 		{b<-a+b;a<-0} 
        else {a<- a+b;b<-0} 
        } 
 s[i]=a; s[j]=b;

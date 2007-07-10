@@ -65,7 +65,7 @@ z=lambda-lambda1
 if( (t(z)%*%z<EPS)) break
 lambda=lambda1
 }
-if(i==ITERATIONS) cat("\nImpossible to solve the program\n")
+if(i==ITERATIONS) warning("impossible to solve the program")
 ###########################################################
 g1=rep(0,times=n1)
 for(k in 1:n1) g1[k]=Fcal(t(lambda)%*%Xs1[k,],q1[k])
