@@ -23,7 +23,7 @@ UPMEpik2frompikw(pik,w)
 \arguments{
 \item{n}{sample size.}
 \item{pik}{vector of prescribed inclusion probabilities.}
-\item{eps}{tolerance in Newton's method; by default is 1E-6.}
+\item{eps}{tolerance in the Newton's method; by default is 1E-6.}
 \item{q}{matrix of the conditional selection probabilities for the sequential algorithm.} 
 \item{w}{parameter vector of the maximum entropy design.} 
 }
@@ -51,7 +51,6 @@ be recomputed from \code{q} using \code{UPMEpikfromq}, which also checks
 the numerical precision  of the algorithm. The procedure \code{UPMEpik2frompikw}
 computes the matrix of the joint inclusion probabilities from \code{q} and \code{w}.
 }
-}
 \references{
 Chen, S.X., Liu, J.S. (1997).
 Statistical applications of the Poisson-binomial and conditional Bernoulli distributions,
@@ -68,7 +67,7 @@ Tillé, Y. (2006), \emph{Sampling Algorithms}, Springer.
 ############
 ## Example 1
 ############
-# Simple example - sample Selection 
+# Simple example - sample selection 
 pik=c(0.07,0.17,0.41,0.61,0.83,0.91)
 # First method
 UPmaxentropy(pik)
@@ -113,7 +112,7 @@ w=pikt/(1-pikt)
 q=UPMEqfromw(w,n)
 N=length(pik)
 tt=rep(0,times=N)
-#number of simulations
+#number of simulations; for accurate results, increase the value of 'sim'
 sim=200
 for(i in 1:sim) tt = tt+UPMEsfromq(q)
 tt=tt/sim
@@ -121,4 +120,3 @@ sum(abs(tt-pik))
 }
 \keyword{survey} 
 \encoding{latin1}
-

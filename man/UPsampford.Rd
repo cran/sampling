@@ -2,7 +2,7 @@
 \alias{UPsampford}
 \title{Sampford sampling}
 \description{
-Uses Sampford method to select a sample of units (unequal probabilities, without replacement, fixed sample size).
+Uses the Sampford's method to select a sample of units (unequal probabilities, without replacement, fixed sample size).
 }
 \usage{
 UPsampford(pik,eps=1e-6)

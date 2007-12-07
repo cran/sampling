@@ -5,14 +5,16 @@
 Draws a Poisson sample using a prescribed vector of first-order inclusion 
 probabilities (unequal probabilities, without replacement, random sample size). 
 }
-\usage{UPpoisson(pik)}
+\usage{UPpoisson(pik,eps=1e-6)}
 \arguments{
-\item{pik}{vector of the first-order inclusion probabilities.}
+\item{pik}{vector of first-order inclusion probabilities.}
+\item{eps}{the control value, by default equal to 1e-6.}
 }
 \details{
 Returns a vector (with elements 0 and 1) of size N, the population size.  
 Each element k of this vector indicates the status of unit k 
-(1, unit k is selected in the sample; 0, otherwise).
+(1, unit k is selected in the sample; 0, otherwise). The value 'eps' is used to
+control pik (pik>eps & pik < 1-eps). 
 }
 \seealso{
 \code{\link{inclusionprobabilities}}
@@ -23,7 +25,7 @@ Each element k of this vector indicates the status of unit k
 ############
 # definition of pik
 pik=c(1/3,1/3,1/3)
-# select a sample
+# selects a sample
 s=UPpoisson(pik)
 #the sample is
 (1:length(pik))[s==1]

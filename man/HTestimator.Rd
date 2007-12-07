@@ -2,12 +2,10 @@
 \alias{HTestimator}
 \title{The Horvitz-Thompson estimator}
 \description{Computes the Horvitz-Thompson estimator of the population total.}
-\usage{HTestimator(y,pik,s)}
+\usage{HTestimator(y,pik)}
 \arguments{
-\item{y}{vector of the variable of interest; its length is equal to N, the population size.}
-\item{pik}{vector of the first-order inclusion probabilities.}
-\item{s}{vector of size N, with 0/1 elements indicating the unit 
-status: 1 - unit is selected in the sample, 0 - otherwise.}
+\item{y}{vector of the variable of interest; its length is equal to n, the sample size.}
+\item{pik}{vector of the first-order inclusion probabilities; its length is equal to n, the sample size.}
 }
 \seealso{
 \code{\link{UPtille}}
@@ -24,6 +22,6 @@ y=belgianmunicipalities$TaxableIncome
 # Draws a Poisson sample of expected size 200
 s=UPpoisson(pik)
 # Computes the Horvitz-Thompson estimator
-HTestimator(y,pik,s)
+HTestimator(y[s==1],pik[s==1])
 }
 \keyword{survey}

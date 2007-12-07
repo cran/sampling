@@ -15,7 +15,7 @@ The data are sorted following the argument order. Inclusion probabilities equal 
 2, no change in data order,\cr
 3, the data are sorted in decreasing order.
 }
-\item{comment}{a comment is written during the execution if \code{comment} is equal to \code{TRUE}.}
+\item{comment}{a comment is written during the execution if \code{comment} is \code{TRUE}.}
 }
 \references{ 
 Tillé, Y. (2006), \emph{Sampling Algorithms}, Springer.\cr

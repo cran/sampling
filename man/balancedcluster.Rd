@@ -13,8 +13,8 @@ the selected sample.
 \item{cluster}{vector of integers that defines the clusters.}
 \item{selection}{1, selection of the clusters with probabilities proportional 
 to size,\cr 2, selection of the clusters with equal probabilities.}
-\item{comment}{a comment is written during the execution if \code{comment} is equal to \code{TRUE}.}
-\item{method}{the used method in the function samplecube.}
+\item{comment}{a comment is written during the execution if \code{comment} is \code{TRUE}.}
+\item{method}{the used method in the function \code{samplecube}.}
 }
 \seealso{
 \code{\link{samplecube}}, \code{\link{fastflightcube}}, \code{\link{landingcube}}
@@ -25,9 +25,9 @@ to size,\cr 2, selection of the clusters with equal probabilities.}
 ############
 # definition of the clusters; there are 15 units in 3 clusters
 cluster=c(1,1,1,1,1,2,2,2,2,2,3,3,3,3,3)
-# Matrix of balancing variables
+# matrix of balancing variables
 X=cbind(c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15))
-# Selection of 2 clusters
+# selection of 2 clusters
 s=balancedcluster(X,2,cluster,2,TRUE)
 # the sample of clusters with the inclusion probabilities of the clusters
 s
