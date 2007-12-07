@@ -11,7 +11,6 @@ srswr(n,N)
 Returns a vector of size N, population size. Each element k of this vector indicates 
 the number of replicates for unit k in the sample.
 }
-}
 \arguments{
 \item{n}{sample size.}
 \item{N}{population size.}

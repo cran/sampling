@@ -7,13 +7,13 @@ Firstly, the flight phase is applied in each stratum. Secondly, the strata
 are aggregated and the flight phase is applied on the whole population.
 Finally, the landing phase is applied on the whole population.
 }
-\usage{balancedstratification(X,strat,pik,comment=TRUE,method=1)}
+\usage{balancedstratification(X,strata,pik,comment=TRUE,method=1)}
 \arguments{
 \item{X}{matrix of auxiliary variables on which the sample must be balanced.}
-\item{strat}{vector of integers that specifies the stratification.}
+\item{strata}{vector of integers that specifies the stratification.}
 \item{pik}{vector of inclusion probabilities.}
-\item{comment}{a comment is written during the execution if \code{comment} is equal to \code{TRUE}.}
-\item{method}{the used method in the function samplecube.}
+\item{comment}{a comment is written during the execution if \code{comment} is \code{TRUE}.}
+\item{method}{the used method in the function \code{samplecube}.}
 }
 \references{ 
 Tillé, Y. (2006), \emph{Sampling Algorithms}, Springer.\cr
@@ -30,24 +30,24 @@ Deville, J.-C. and Tillé, Y. (2005). Variance approximation under balanced sampl
 ## Example 1
 ############
 # variable of stratification (3 strata)
-strat=c(1,1,1,1,1,2,2,2,2,2,3,3,3,3,3)
+strata=c(1,1,1,1,1,2,2,2,2,2,3,3,3,3,3)
 # matrix of balancing variables
 X=cbind(c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15))
 # Vector of inclusion probabilities.
-# The sample has its size equal to 9.
+# the sample has its size equal to 9.
 pik=rep(3/5,times=15)
-# Selection of a stratified sample
-s=balancedstratification(X,strat,pik,comment=TRUE)
-# The sample is
+# selection of a stratified sample
+s=balancedstratification(X,strata,pik,comment=TRUE)
+# the sample is
 (1:length(pik))[s==1]
 ############
 ## Example 2
 ############
 data(MU284)
 X=cbind(MU284$P75,MU284$CS82,MU284$SS82,MU284$S82,MU284$ME84)
-strat=MU284$REG
+strata=MU284$REG
 pik=inclusionprobabilities(MU284$P75,80)
-s=balancedstratification(X,strat,pik,TRUE)
+s=balancedstratification(X,strata,pik,TRUE)
 ############
 ## Example 3
 ############

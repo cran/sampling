@@ -30,7 +30,7 @@ data(belgianmunicipalities)
 pik=inclusionprobabilities(belgianmunicipalities$Tot04,200)
 # the first-order inclusion probabilities for each municipality
 data.frame(pik=pik,name=belgianmunicipalities$Commune)
-# the inclusion probability sum is equal to sample size
+# the inclusion probability sum is equal to the sample size
 sum(pik)
 }
 \keyword{survey}

@@ -15,7 +15,7 @@ A data frame with 589 observations on the following 17 variables:
     \item{Arrondiss}{administrative division number.}
     \item{Men04}{number of men on July 1, 2004.}
     \item{Women04}{number of women on July 1, 2004.}
-    \item{Tot04}{total population on July, 1, 2004.}
+    \item{Tot04}{total population on July 1, 2004.}
     \item{Men03}{number of men on July 1, 2003.}
     \item{Women03}{number of women on July 1, 2003.}
     \item{Tot03}{total population on July 1, 2003.}

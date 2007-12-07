@@ -2,19 +2,19 @@
 \alias{samplecube}
 \title{Sample cube method}
 \description{
-Select a balanced sample (a vector of 0 and 1) or an almost balanced sample.
+Selects a balanced sample (a vector of 0 and 1) or an almost balanced sample.
 Firstly, the flight phase is applied. Next, if needed, the landing phase is applied
 on the result of the flight phase.
 }
 \usage{samplecube(X,pik,order=1,comment=TRUE,method=1)}
-\arguments{%
+\arguments{
 \item{X}{matrix of auxiliary variables on which the sample must be balanced.}
 \item{pik}{vector of inclusion probabilities.}
 \item{order}{ 1, the data are randomly arranged,\cr
  2, no change in data order,\cr
  3, the data are sorted in decreasing order.
 }
-\item{comment}{a comment is written during the execution if \code{comment} is equal to \code{TRUE}.}
+\item{comment}{a comment is written during the execution if \code{comment} is \code{TRUE}.}
 \item{method}{ 1, for a landing phase by linear programming,\cr
 2, for a landing phase by suppression of variables.}
 }
@@ -34,10 +34,10 @@ Deville, J.-C. and Tillé, Y. (2005). Variance approximation under balanced sampl
 ############
 # matrix of balancing variables
 X=cbind(c(1,1,1,1,1,1,1,1,1),c(1.1,2.2,3.1,4.2,5.1,6.3,7.1,8.1,9.1))
-# Vector of inclusion probabilities.
-# The sample size is 3.
+# vector of inclusion probabilities
+# the sample size is 3.
 pik=c(1/3,1/3,1/3,1/3,1/3,1/3,1/3,1/3,1/3)
-# Selection of the sample
+# selection of the sample
 s=samplecube(X,pik,order=1,comment=TRUE)
 # The selected sample
 (1:length(pik))[s==1]
@@ -53,7 +53,7 @@ c(0,1,14,6),c(0,1,15,8),c(0,1,16,9),c(0,1,17,1),
 c(0,1,18,2),c(0,1,19,3),c(0,1,20,4))
 pik=rep(1/2,times=20)
 ppp=rep(0,times=20)
-sim=100
+sim=100 #for accurate results increase this value
 for(i in (1:sim))
 	ppp=ppp+samplecube(X,pik,1,FALSE) 
 ppp=ppp/sim
@@ -105,18 +105,22 @@ pik=inclusionprobabilities(MU284$P75,50)
 # Definition of the matrix of balancing variables
 X=cbind(MU284$P75,MU284$CS82,MU284$SS82,MU284$S82,MU284$ME84,MU284$REV84)
 # Computation of the Horvitz-Thompson estimator for a balanced sample
-HTestimator(MU284$RMT85,pik,samplecube(X,pik,1,FALSE))
+s=samplecube(X,pik,1,FALSE)
+HTestimator(MU284$RMT85[s==1],pik[s==1])
 # Computation of the Horvitz-Thompson estimator for an unequal probability sample
-HTestimator(MU284$RMT85,pik,samplecube(matrix(pik),pik,1,FALSE))
-# simulations; for a better accurancy, let sim=50 
+s=samplecube(matrix(pik),pik,1,FALSE)
+HTestimator(MU284$RMT85[s==1],pik[s==1])
+# simulations; for a better accurancy, increase the value of 'sim'
 sim=8
 res1=rep(0,times=sim)
 res2=rep(0,times=sim)
 for(i in 1:sim)
 {
 cat("Simulation number ",i,"\n")
-res1[i]=HTestimator(MU284$RMT85,pik,samplecube(X,pik,1,FALSE))
-res2[i]=HTestimator(MU284$RMT85,pik,samplecube(matrix(pik),pik,1,FALSE) )
+s=samplecube(X,pik,1,FALSE)
+res1[i]=HTestimator(MU284$RMT85[s==1],pik[s==1])
+s=samplecube(matrix(pik),pik,1,FALSE)
+res2[i]=HTestimator(MU284$RMT85[s==1],pik[s==1])
 }
 # summary and boxplots
 summary(res1)

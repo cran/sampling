@@ -1,7 +1,7 @@
 "UPtille" <-
 function(pik,eps=1e-6)
 {
-if(any(is.na(pik))) warning("there are missing values in the pik vector")
+if(any(is.na(pik))) stop("there are missing values in the pik vector")
 n=sum(pik)
 if(n!=trunc(n)) stop("the sum of pik vector is not integer")
 list = pik > eps & pik < 1 - eps

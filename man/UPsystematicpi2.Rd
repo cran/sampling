@@ -8,7 +8,7 @@ Computes the joint (second-order) inclusion probabilities for systematic samplin
 UPsystematicpi2(pik)
 }
 \arguments{
-\item{pik}{the vector of the first-order inclusion probabilities.}
+\item{pik}{vector of the first-order inclusion probabilities.}
 }
 \details{
 Returns a NxN matrix of the following form: the main diagonal contains the first-order inclusion 

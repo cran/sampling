@@ -18,8 +18,8 @@ The function returns a matrix whose columns are the following five vectors:
 \item{m}{number of primary sampling units to be selected.}
 \item{n}{number of second-stage sampling units to be selected.}
 \item{PU}{vector of integers that defines the primary sampling units.}
-\item{comment}{a comment is written during the execution if \code{comment} is equal to \code{TRUE}.}
-\item{method}{the used method in the function samplecube.}
+\item{comment}{a comment is written during the execution if \code{comment} is \code{TRUE}.}
+\item{method}{the used method in the function \code{samplecube}.}
 }
 \seealso{
 \code{\link{samplecube}}, \code{\link{fastflightcube}}, \code{\link{landingcube}},
@@ -33,9 +33,9 @@ The function returns a matrix whose columns are the following five vectors:
 PU=c(1,1,1,1,1,2,2,2,2,2,3,3,3,3,3)
 # matrix of balancing variables
 X=cbind(c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15))
-# Selection of 2 primary sampling units and 4 second-stage sampling units
+# selection of 2 primary sampling units and 4 second-stage sampling units
 s=balancedtwostage(X,1,2,4,PU,comment=TRUE)
-# The samples and the inclusion probabilities
+# the sample and the inclusion probabilities
 s
 ############
 ## Example 2
@@ -47,7 +47,7 @@ PU=MU284$CL
 m=20
 n=60
 res=balancedtwostage(X,1,m,n,PU,TRUE)
-# The samples and the inclusion probabilities
+# the sample and the inclusion probabilities
 res
 }
 \keyword{survey}

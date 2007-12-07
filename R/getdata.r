@@ -1,11 +1,20 @@
 getdata<-function(data,m)
 {
+if(!is.data.frame(data)) data=as.data.frame(data)
+if(is.null(names(data))) stop("the column names are missing")
 if(is.vector(m)& !is.list(m))
    {res=NULL 
     if(is.null(names(m)))
-      if(all(m %in% c(0,1))) res=data[m==1,]
+      if(all(m %in% c(0,1))) {
+      res=NULL
+   if(!("ID_unit" %in% names(data))) 
+   {res=cbind.data.frame((1:length(m))[m==1],data[m==1,])
+   names(res)=c("ID_unit",names(data))
+   }
+   else res=data[m==1,]
+                                 }
       else  
-		res=data[m,]
+   res=data[m,]
     }
 else
 if(is.data.frame(m))

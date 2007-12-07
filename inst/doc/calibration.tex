@@ -1,0 +1,161 @@
+\documentclass[a4paper]{article}
+%\VignetteIndexEntry{calibration and adjustment for nonresponse}
+%\VignettePackage{sampling}
+\newcommand{\sampling}{{\tt sampling}}
+\newcommand{\R}{{\tt R}}
+\setlength{\parindent}{0in}
+\setlength{\parskip}{.1in}
+\setlength{\textwidth}{140mm}
+\setlength{\oddsidemargin}{10mm}
+\title{Calibration}
+\author{}
+\usepackage{Sweave} 
+
+\begin{document}
+\maketitle
+
+This is an example of 'calib' function using calibration and adjustment for nonresponse (with response homogeneity groups). 
+
+
+\noindent
+Creates the population data frame (4 variables, 'state', 'region', 'income' and 'sex'; 
+'state' has 2 categories 'nc' and 'sc'; 'region' has 3 categories 1,2,3;
+'income' and 'sex' are randomnly generated):
+
+\begin{Schunk}
+\begin{Sinput}
+> data = rbind(matrix(rep("nc", 165), 165, 1, byrow = TRUE), 
++     matrix(rep("sc", 70), 70, 1, byrow = TRUE))
+> data = cbind.data.frame(data, c(rep(1, 100), rep(2, 
++     50), rep(3, 15), rep(1, 30), rep(2, 40)), 
++     1000 * runif(235))
+> sex = runif(nrow(data))
+> for (i in 1:length(sex)) if (sex[i] < 0.3) sex[i] = 1 else sex[i] = 2
+> data = cbind.data.frame(data, sex)
+> names(data) = c("state", "region", "income", "sex")
+\end{Sinput}
+\end{Schunk}
+\noindent
+Computes the population stratum sizes:
+
+\begin{Schunk}
+\begin{Sinput}
+> table(data$state)
+\end{Sinput}
+\end{Schunk}
+\noindent
+Not run:
+
+nc  sc
+
+165 70
+
+We select a stratified sample. The 'state' variable is used as a stratification variable.
+The sample stratum sizes are 25 and 10, respectively. The method is 'srswor' (equal probability, without replacement).
+
+\begin{Schunk}
+\begin{Sinput}
+> s = strata(data, c("state"), size = c(25, 10), 
++     method = "srswor")
+\end{Sinput}
+\end{Schunk}
+Obtains the observed data:
+
+\begin{Schunk}
+\begin{Sinput}
+> s = getdata(data, s)
+\end{Sinput}
+\end{Schunk}
+The 'status' variable is used in the 'rhg\_strata' function.
+Adds the 'status' column to s (1 - sample respondent, 0 otherwise); it is randomnly generated:
+
+\begin{Schunk}
+\begin{Sinput}
+> status = runif(nrow(s))
+> for (i in 1:length(status)) if (status[i] < 0.3) status[i] = 0 else status[i] = 1
+> s = cbind.data.frame(s, status)
+\end{Sinput}
+\end{Schunk}
+Computes the response homeogeneity groups using the 'region' variable:
+
+\begin{Schunk}
+\begin{Sinput}
+> s = rhg_strata(s, selection = "region")
+\end{Sinput}
+\end{Schunk}
+Selects only the sample respondents:
+
+
+\begin{Schunk}
+\begin{Sinput}
+> sr = s[s$status == 1, ]
+\end{Sinput}
+\end{Schunk}
+Creates the population data frame of sex and region indicators:
+
+\begin{Schunk}
+\begin{Sinput}
+> X = matrix(0, nrow = nrow(data), ncol = 5)
+> for (i in 1:nrow(data)) {
++     if (data$sex[i] == 1) 
++         X[i, 1] = 1
++     if (data$sex[i] == 2) 
++         X[i, 2] = 1
++     if (data$region[i] == 1) 
++         X[i, 3] = 1
++     if (data$region[i] == 2) 
++         X[i, 4] = 1
++     if (data$region[i] == 3) 
++         X[i, 5] = 1
++ }
+\end{Sinput}
+\end{Schunk}
+Computes the population totals for each sex and region:
+
+\begin{Schunk}
+\begin{Sinput}
+> total = c(t(rep(1, nrow(data))) %*% X)
+\end{Sinput}
+\end{Schunk}
+Creates the sample data frame of sex and region indicators:
+
+\begin{Schunk}
+\begin{Sinput}
+> Xs = matrix(0, nrow = nrow(sr), ncol = 5)
+> for (i in 1:nrow(sr)) {
++     if (sr$sex[i] == 1) 
++         Xs[i, 1] = 1
++     if (sr$sex[i] == 2) 
++         Xs[i, 2] = 1
++     if (sr$region[i] == 1) 
++         Xs[i, 3] = 1
++     if (sr$region[i] == 2) 
++         Xs[i, 4] = 1
++     if (sr$region[i] == 3) 
++         Xs[i, 5] = 1
++ }
+\end{Sinput}
+\end{Schunk}
+Computes the initial weights using the inclusion and response probabilities:
+
+\begin{Schunk}
+\begin{Sinput}
+> d = 1/(sr$Prob * sr$prob_resp)
+\end{Sinput}
+\end{Schunk}
+Computes the g-weights:
+
+\begin{Schunk}
+\begin{Sinput}
+> g = calib(Xs, d, total, method = "linear")
+\end{Sinput}
+\end{Schunk}
+Checks the calibration:
+
+\begin{Schunk}
+\begin{Sinput}
+> checkcalibration(Xs, d, total, g)
+\end{Sinput}
+\end{Schunk}
+\end{document}
+

@@ -2,13 +2,13 @@
 \alias{UPmultinomial}
 \title{Multinomial sampling}
 \description{
-Uses Hansen-Hurwitz method to select a sample of units (unequal probabilities, with replacement, fixed sample size).
+Uses the Hansen-Hurwitz method to select a sample of units (unequal probabilities, with replacement, fixed sample size).
 }
 \usage{
 UPmultinomial(pik)
 }
 \arguments{
-\item{pik}{the vector of the prescribed inclusion probabilities.}
+\item{pik}{vector of the prescribed inclusion probabilities.}
 }
 \details{
 Returns a vector (with elements 0 and 1) of size N, the population size.  
@@ -22,9 +22,9 @@ Hansen, M. and Hurwitz, W. (1943), On the theory of sampling from finite populat
 \emph{Annals of Mathematical Statistics}, 14:333-362.
 }
 \examples{
-#define the prescribed inclusion probabilities
+#defines the prescribed inclusion probabilities
 pik=c(0.2,0.7,0.8,0.5,0.4,0.4)
-#select a sample
+#selects a sample
 s=UPmultinomial(pik)
 #the sample is
 (1:length(pik))[s==1] 

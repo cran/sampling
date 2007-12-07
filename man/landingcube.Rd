@@ -9,7 +9,7 @@ Landing phase of the cube method using linear programming.
 \item{X}{matrix of auxiliary variables on which the sample must be balanced.}
 \item{pikstar}{vector obtained at the end of the flight phase.}
 \item{pik}{vector of inclusion probabilities.}
-\item{comment}{a comment is written during the execution if \code{comment} is equal to \code{TRUE}.}
+\item{comment}{a comment is written during the execution if \code{comment} is \code{TRUE}.}
 }
 \references{ 
 Tillé, Y. (2006), \emph{Sampling Algorithms}, Springer.\cr

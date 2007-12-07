@@ -58,10 +58,11 @@ else
 if(is.null(s)) stop("0 selected units in the first stage")
 if(number>1)
  if((is.element("cluster",stage) & is.element("stratified",stage)))
-  result=getdata(data,s) 
- else result=s
+  result=getdata(data,s)
+  else result=s
 res=list()
 res[[1]]=s
+
 if(number>=2)
 for(j in 2:number)
 {
@@ -229,6 +230,10 @@ if(!is.null(s1))
 	res[[j]]=result}
 else number=number-1
 }
+if(!is.null(names(res[[1]])))
+  {m=match("Prob", names(res[[1]]))    
+   names(res[[1]])[m]="Prob_ 1 _stage" 
+   }
 names(res)=c(1:number)
 res
 }
