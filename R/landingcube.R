@@ -1,13 +1,9 @@
 "landingcube" <-
 function(X,pikstar,pik,comment=TRUE) 
-#
 # landing phase of the cube method
-#
 ######################################################
 { 
-# 
 # extraction of the non-integer values for the landing phase 
-# 
 require(MASS)
 require(lpSolve)
 EPS=1e-11

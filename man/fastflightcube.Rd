@@ -15,13 +15,13 @@ The data are sorted following the argument order. Inclusion probabilities equal 
 2, no change in data order,\cr
 3, the data are sorted in decreasing order.
 }
-\item{comment}{a comment is written during the execution if \code{comment} is equal to \code{TRUE}.}
+\item{comment}{a comment is written during the execution if \code{comment} is \code{TRUE}.}
 }
 \references{ 
 Tillé, Y. (2006), \emph{Sampling Algorithms}, Springer.\cr
-Chauvet, G. and Tillé, Y. (2006). A fast algorithm of balanced sampling. \emph{to appear in Computational Statistics}. \cr
+Chauvet, G. and Tillé, Y. (2006). A fast algorithm of balanced sampling. \emph{Computational Statistics}, 21/1:53--62. \cr
 Chauvet, G. and Tillé, Y. (2005). New SAS macros for balanced sampling. In INSEE, editor, \emph{Journées de Méthodologie Statistique}, Paris.\cr
-Deville, J.-C. and Tillé, Y. (2004). Efficient balanced sampling: the cube method. \emph{Biometrika}, 91, 893-912.\cr
+Deville, J.-C. and Tillé, Y. (2004). Efficient balanced sampling: the cube method. \emph{Biometrika}, 91:893--912.\cr
 Deville, J.-C. and Tillé, Y. (2005). Variance approximation under balanced sampling. \emph{Journal of Statistical Planning and Inference}, 128/2:411--425. 
 } 
 \seealso{
