@@ -1,8 +1,7 @@
-HTestimator=function (y, pik, s) 
+HTestimator<-function(y,pik) 
 {
-if(length(y)==sum(s))
-crossprod(y, s[s == 1]/pik[s == 1])
-else 
-crossprod(y[s == 1], s[s == 1]/pik[s == 1])
+if(any(is.na(pik))) stop("there are missing values in pik")
+if(any(is.na(y))) stop("there are missing values in y")
+if(length(y)!=length(pik)) stop("y and pik have different sizes")
+crossprod(y,1/pik)
 }
-
