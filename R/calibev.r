@@ -10,6 +10,7 @@ warning("There are zero values in the 'pikl' matrix. The variance estimator can 
 piks=as.vector(diag(pikl))
 if(!checkcalibration(Xs,d,total,g,EPS)$result) 
 stop("The calibration is not possible. The calibration estimator is not computed.\n")
+if(is.data.frame(Xs)) Xs=as.matrix(Xs)
 if(!is.vector(Ys)) Ys=as.vector(Ys)
 if(is.matrix(Xs)) n=nrow(Xs)
 else n=length(Xs)

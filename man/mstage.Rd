@@ -6,7 +6,7 @@
        method=c("srswor","srswr","poisson","systematic"), pik, description=FALSE)}
 \arguments{
 \item{data}{data frame or data matrix; its number of rows is N, the population size.}
-\item{stage}{list of sampling type at each stage; the possible values are: "stratified", "clustering" 
+\item{stage}{list of sampling type at each stage; the possible values are: "stratified", "cluster" 
 and "" (without stratification or clustering). For multistage element sampling, this argument is not necessary.}
 \item{varnames}{list of stratification or clustering variables.}
 \item{size}{list of sample sizes (in the order in which the samples appear in the multistage sampling).}

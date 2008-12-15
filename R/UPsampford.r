@@ -3,8 +3,7 @@ function(pik,eps=1e-6)
 {
 if(any(is.na(pik))) stop("there are missing values in the pik vector")
 n=sum(pik)
-if(abs(n-trunc(n))<1e-6) n=trunc(n) 
-else stop("the sum of pik is not integer")
+n=.as_int(n)
 list= pik>eps & pik < 1-eps
 pikb=pik[list]
 n=sum(pikb)
