@@ -5,7 +5,7 @@
 design-based approach.}
 \usage{regest(formula,Tx,weights,pikl,n,sigma=rep(1,length(weights)))}
 \arguments{
-\item{formula}{the regression model formula (y~x).}
+\item{formula}{the regression model formula (y\~x).}
 \item{Tx}{population total of x, the auxiliary variable.}
 \item{weights}{vector of the weights; its length is equal to n, the sample size.}
 \item{pikl}{the matrix of joint inclusion probabilities for the sample.}

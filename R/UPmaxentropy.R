@@ -2,8 +2,7 @@
 function(pik) 
 { 
 n=sum(pik)
-if(abs(n-trunc(n))<1e-6) n=trunc(n) 
-else stop("the sum of pik is not integer")
+n=.as_int(n)
 if(n>=2)
 {
 pik2=pik[pik!=1]

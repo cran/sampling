@@ -7,7 +7,7 @@ all strata.}
 \usage{regest_strata(formula,weights,Tx_strata,strata,pikl,sigma=rep(1,length(weights)),
 description=FALSE)}
 \arguments{
-\item{formula}{the regression model formula (y~x).}
+\item{formula}{the regression model formula (y\~x).}
 \item{weights}{vector of the weights; its length is equal to n, the sample size.}
 \item{Tx_strata}{population total of x, the auxiliary variable.}
 \item{strata}{vector of stratum identificator.}

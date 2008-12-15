@@ -1,8 +1,7 @@
 UPsystematicpi2<-function(pik) 
 {
     n=sum(pik)
-    if(abs(n-trunc(n))<1e-6) n=trunc(n) 
-    else stop("the sum of pik is not integer")
+    n=.as_int(n)
     pik1 = pik[pik > 0 & pik < 1]
     N = length(pik1)
     Vk = cumsum(pik1)

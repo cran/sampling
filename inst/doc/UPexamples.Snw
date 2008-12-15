@@ -20,10 +20,23 @@ ps.options(pointsize=12)
 options(width=60)
 
 @
-This is an example of unequal probability (UP) sampling functions (selection of samples using the Belgian municipalities 
-data set, with equal or unequal probabilities, and comparison of the accuracy of the Horvitz-Thompson estimator by boxplots).                                                 
-The used sampling schemes are: Poisson, random systematic, random pivotal, Till\'e, Midzuno, systematic, 
-pivotal, and simple random sampling without replacement. 
+This is an example of unequal probability (UP) sampling functions
+(selection of samples using the Belgian municipalities data set,
+with equal or unequal probabilities, and comparison of the
+Horvitz-Thompson estimator accuracy using boxplots). The following
+sampling schemes are used: Poisson, random systematic, random
+pivotal, Till\'e, Midzuno, systematic, pivotal, and simple random
+sampling without replacement. Monte Carlo simulations are used to study the accuracy of the
+Horvitz-Thompson estimator of a population total. The aim of this
+example is to demonstrate the effect of the incorporation of an
+auxiliary information in the sampling design. We use:
+\begin{itemize}
+\item some $\pi$ ps sampling designs with Horvitz-Thompson estimation,
+using in the sampling design the information on size measures of
+population elements;
+\item simple random sampling without replacement with Horvitz-Thompson
+estimation, where no auxiliary information is used.
+\end{itemize}
 
 <<up1, results=hide>>=
 b=data(belgianmunicipalities)
