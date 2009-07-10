@@ -9,21 +9,19 @@ UPbrewer(pik,eps=1e-06)
 }
 \arguments{
 \item{pik}{vector of prescribed inclusion probabilities.}
-\item{eps}{the control value, by default equal to 1e-06.}
+\item{eps}{the control value, by default equal to 1e-06; it is used to
+control pik (pik>eps & pik < 1-eps).}
 }
-\details{
-Returns a vector (with elements 0 and 1) of size N, the population size.  
+\value{
+\item{}{Returns a vector (with elements 0 and 1) of size N, the population size.  
 Each element k of this vector indicates the status of unit k 
-(1, unit k is selected in the sample; 0, otherwise).
-The value 'eps' is used to
-control pik (pik>eps & pik < 1-eps). 
+(1, unit k is selected in the sample; 0, otherwise).}
 }
 \seealso{\code{\link{UPsystematic}}
 }
 \references{
 Brewer, K. (1963), A model of systematic sampling with unequal probabilities, \emph{Australian Journal of Statistics}, 5:5-13.\cr
-Brewer, K. (1975), A simple procedure for $\pi$pswor, \emph 
-{Australian Journal of Statistics}, 17:166-172.
+Brewer, K. (1975), A simple procedure for \\pi pswor, \emph{Australian Journal of Statistics}, 17:166-172.
 }
 \examples{
 #define the prescribed inclusion probabilities

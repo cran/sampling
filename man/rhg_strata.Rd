@@ -15,7 +15,7 @@ Into a response homogeneity group, the reponse probability is the same for
 all units. Data are missing at random within groups, conditionally on the selected sample.
 }
 \value{
-\item{The initial sample data frame and also the following components:} 
+\item{}{The initial sample data frame and also the following components:} 
 \item{rhgroup}{the response homogeneity group for each unit conditionally on its stratum.}
 \item{prob\_response}{the response probability for each unit; for the units with status=0, this probability
 is 0.}
