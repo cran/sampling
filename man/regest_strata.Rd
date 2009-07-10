@@ -16,7 +16,9 @@ description=FALSE)}
 \item{description}{if TRUE, the following components are printed for each stratum:
  the Horvitz-Thompson estimator, the beta coefficients, their standard error, t\_values, p\_values, 
 and the covariance matrix. By default, FALSE.}
-\value{The function returns the value of the regression estimator computed as the sum of the
+}
+\value{
+\item{}{The function returns the value of the regression estimator computed as the sum of the
 stratum estimators.}
 }
 \seealso{
