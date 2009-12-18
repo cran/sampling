@@ -20,7 +20,6 @@ Each element k of this vector indicates the status of unit k
 \seealso{\code{\link{UPsystematic}}
 }
 \references{
-Brewer, K. (1963), A model of systematic sampling with unequal probabilities, \emph{Australian Journal of Statistics}, 5:5-13.\cr
 Brewer, K. (1975), A simple procedure for \\pi pswor, \emph{Australian Journal of Statistics}, 17:166-172.
 }
 \examples{

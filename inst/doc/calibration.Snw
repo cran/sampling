@@ -18,8 +18,10 @@
 library(sampling)
 ps.options(pointsize=12)
 options(width=60)
-
 @
+
+\section{Example 1} 
+
 This is an example of 'calib' function using calibration and adjustment for nonresponse (with response homogeneity groups). 
 
 
@@ -159,5 +161,88 @@ checkcalibration(Xs,d,total,g)
 sampling.newpage()
 
 @
-\end{document}
 
+\section{Example 2} 
+This is an example of: 
+\begin{itemize}
+\item variance estimation of the calibration estimator (using the \verb@calibev@ and \verb@varest@ functions) .  
+\item variance estimator of the Horvitz-Thompson estimator (using the \verb@varest@ function).
+\end{itemize}
+
+We generate an artificial population and use the Till\'e sampling. The population size is 100, and the sample size is 20. 
+There are three auxiliary variables (two categorical and one continuous; the matrix $X$). 
+The vector $Z=(150, 151, \dots, 249)'$ is used to compute the first-order inclusion probabilities. The variable of interest $Y$ is computed using
+the model $Y_j=5*Z_j*(\varepsilon_j+\sum_{i=1}^{100} X[i,j]), \varepsilon_j\sim N(0,1/3), j=1,\dots, 100.$ The calibration estimator uses the 
+linear method. Simulations are used to compare the two variance estimators of the calibration estimator under the criterion of mean square error. 
+For the Horvitz-Thompson estimator, the variance can be computed and compared with the simulations' result. 
+Run 10000 simulations to obtain accurate results (for time consuming reason, in the following program, the number of simulations is 10).
+
+<<ex1, results=hide>>=
+X=cbind(c(rep(1,50),rep(0,50)),c(rep(0,50),rep(1,50)),1:100)
+# vector of population totals
+total=apply(X,2,"sum")
+Z=150:249 
+# the variable of interest
+Y=5*Z*(rnorm(100,0,1/3)+apply(X,1,"sum"))
+# inclusion probabilities
+pik=inclusionprobabilities(Z,20)
+# joint inclusion probabilities 
+pikl=UPtillepi2(pik)
+# number of simulations; let nsim=10000 for an accurate result
+nsim=10
+c1=c2=c3=c4=c5=numeric(nsim)
+for(i in 1:nsim)
+{
+# draws a sample
+s=UPtille(pik)
+# computes the inclusion prob. for the sample
+piks=pik[s==1]
+# the sample matrix of auxiliary information
+Xs=X[s==1,]
+# computes the g-weights
+g=calib(Xs,d=1/piks,total,method="linear")
+# computes the variable of interest in the sample
+Ys=Y[s==1]
+# computes the joint inclusion prob. for the sample
+pikls=pikl[s==1,s==1]
+# computes the calibration estimator and its variance estimation
+cc=calibev(Ys,Xs,total,pikls,d=1/piks,g,with=FALSE,EPS=1e-6)
+c1[i]=cc$calest
+c2[i]=cc$evar
+# computes the variance estimator of the calibration estimator (second method)
+c3[i]=varest(Ys,Xs,pik=piks,w=g/piks)
+# computes the variance estimator of the the Horvitz-Thompson estimator
+c4[i]=varest(Ys=Ys,pik=piks) 
+# computes the Horvitz-Thompson estimator
+c5[i]=HTestimator(Ys,piks)
+}
+cat("the population total:",sum(Y),"\n")
+cat("the mean under simulations of the calibration estimator:", mean(c1),"\n")
+cat("for the calibration estimator:\n")
+cat("the relative bias of the variance estimator using calibev function:",(mean(c2)-sum(Y))/sd(c2),"\n")
+cat("MSE of the previous estimator:", var(c2)+(mean(c2)-sum(Y))^2,"\n")
+cat("the relative bias of the variance estimator using varest function:", (mean(c3)-sum(Y))/sd(c3),"\n")
+cat("MSE of the previous estimator:", var(c3)+(mean(c3)-sum(Y))^2,"\n")
+cat("the mean under simulations of the Horvitz-Thompson estimator:", mean(c5),"\n")
+cat("the mean under simulations of the variance estimator of the H-T estimator:", mean(c4),"\n")
+# computes the variance of the Horvitz-Thompson estimator
+N=length(Y)
+delta=matrix(0,N,N)
+for(k in 1:N)
+  for(l in 1:N)
+  if(k!=l) delta[k,l]=pikl[k,l]-pik[k]*pik[l]
+diag(delta)=pik*(1-pik)
+varHT=0
+for(k in 1:N)
+  for(l in 1:N) varHT=varHT+Y[k]*Y[l]*delta[k,l]/(pik[k]*pik[l])
+cat("the variance of the Horvitz-Thompson estimator:", varHT, "\n")
+@
+
+
+<<eval=FALSE, echo=FALSE>>=
+<<ex1>>
+
+sampling.newpage()
+
+@
+\end{document}

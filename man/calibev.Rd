@@ -55,7 +55,7 @@ TaxableIncome/mean(TaxableIncome),
 Totaltaxation/mean(Totaltaxation),
 averageincome/mean(averageincome),
 medianincome/mean(medianincome))
-# selection of a sample with expectation size equal to 200
+# selection of a sample with expected size equal to 200
 # by means of Poisson sampling
 # the inclusion probabilities are proportional to the average income 
 pik=inclusionprobabilities(averageincome,200)

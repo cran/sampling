@@ -1,6 +1,6 @@
 Package: sampling
-Version: 2.2
-Date: 2009-07-10
+Version: 2.3
+Date: 2009-18-12
 Title: Survey Sampling
 Author: Yves Tillé <yves.tille@unine.ch>, Alina Matei
         <alina.matei@unine.ch>
@@ -11,6 +11,6 @@ Depends: MASS, lpSolve
 License: GPL (>= 2)
 LazyLoad: no
 Encoding: latin1
-Packaged: 2009-07-10 08:56:14 UTC; sematei
+Packaged: 2009-12-18 15:15:10 UTC; sematei
 Repository: CRAN
-Date/Publication: 2009-07-18 16:14:46
+Date/Publication: 2009-12-18 16:36:50
