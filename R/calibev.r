@@ -15,8 +15,11 @@ if(!is.vector(Ys)) Ys=as.vector(Ys)
 if(is.matrix(Xs)) n=nrow(Xs)
 else n=length(Xs)
 if(ns!=length(Ys) | ns!=length(piks) | ns!=n | ns!=length(d)) stop("The parameters have different sizes.\n")
-w<-g*d
-e<-lm(Ys~Xs,weights=d*q)$res
+w=g*d
+wtilde=w*q
+B=t(Xs*wtilde) #this is for t(Xs)%*%diag(wtilde)
+beta=ginv(B%*%Xs)%*%B%*%Ys
+e=Ys-Xs%*%beta
 ss<-0
 for(k in 1:ns)
  {ss2<-0

@@ -19,7 +19,7 @@ The value eps is used to control pik (pik>eps & pik < 1-eps).
 The sample size must be small with respect to the 
 population size; otherwise, the selection time can be very long.
 }
-\seealso{\code{\link{UPsystematic}}
+\seealso{\code{\link{UPsampfordpi2}}
 }
 \references{
 Sampford, M. (1967), On sampling without replacement with unequal probabilities of

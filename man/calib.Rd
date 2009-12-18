@@ -101,7 +101,8 @@ if(checkcalibration(Xs,d=1/piks,total,g4)$result) print(c((g4/piks) \%*\% Xs)) e
 ############
 ## Example 3
 ############
-# Example of calibration and adjustment for nonresponse in the vignette 'calibration.pdf'
+# Example of calibration and adjustment for nonresponse in the 'calibration' vignette
+vignette("calibration", package="sampling")
 }
 \keyword{survey}
 \encoding{latin1}
