@@ -50,57 +50,50 @@ data=data.frame(data)
 index=1:nrow(data)
 m=match(stratanames,colnames(data))
 if(any(is.na(m))) stop("the names of the strata are wrong")
-data2=cbind.data.frame(data[,m])
+data2=cbind.data.frame(data[,m],index)
+colnames(data2)=c(stratanames,"index")
 x1=data.frame(unique(data[,m]))
 colnames(x1)=stratanames
 result=NULL
 for(i in 1:nrow(x1))
 	{
-expr=rep(FALSE,nrow(data2))
-for(j in 1:nrow(data2)) 
-    expr[j]=all(data2[j,]==x1[i,])
-y=index[expr]
+if(is.vector(x1[i,]))
+data3=data2[data2[,1]==x1[i,],]
+else
+{as=data.frame(x1[i,])
+ names(as)=names(x1)
+data3=merge(data2, as, by = intersect(names(data2), names(as)))
+}
+y=sort(data3$index)
 if(description & method!="poisson") 
  {cat("Stratum" ,i,"\n")
   cat("\nPopulation total and number of selected units:",length(y),size[i],"\n")
   }
 if(method!="srswr" & length(y)<size[i]) 
-	{stop("not enough obervations for the stratum ", i, "\n") 
+	{stop("not enough obervations in the stratum ", i, "\n") 
 	 st=c(st,NULL)
        }
 else
 	{if(method=="srswor")
 		{st=y[srswor(size[i],length(y))==1]
-             r=x1[i,1]
-             if(ncol(x1)>=2) 
-             for(j in 2:ncol(x1))
-                 r=cbind.data.frame(r,rep(x1[i,j],size[i]))
-             r=cbind.data.frame(r,st,rep(size[i]/length(y),size[i]))
+             r=cbind.data.frame(data2[st,],rep(size[i]/length(y),size[i]))
              }
        if(method=="systematic")
 		{pikk=inclusionprobabilities(pik[y],size[i])
              s=(UPsystematic(pikk)==1)
              st=y[s]
-             r=x1[i,1]
-             if(ncol(x1)>=2)   
-             for(j in 2:ncol(x1))
-                 r=cbind.data.frame(r,rep(x1[i,j],size[i]))
-             r=cbind.data.frame(r,st,pikk[s])
+             r=cbind.data.frame(data2[st,],pikk[s])
             }
  
 	 if(method=="srswr") 
 	   {s=srswr(size[i],length(y))
-          st=cbind.data.frame(y[s!=0],s[s!=0])
-          l=length(s[s!=0])
-          r=x1[i,1]
-          if(ncol(x1)>=2)  
-          for(j in 2:ncol(x1))
-             r=cbind.data.frame(r,rep(x1[i,j],l))   
+          st=rep(y[s!=0],s[s!=0]) #cbind.data.frame(y[s!=0],s[s!=0])
+          l=length(st)
           if(size[i]<=length(y))    
-          r=cbind.data.frame(r,st,prob=rep(size[i]/length(y),l))
+          r=cbind.data.frame(data2[st,],prob=rep(size[i]/length(y),l))
           else 
           {prob=rep(size[i]/length(y),l)/sum(rep(size[i]/length(y),l))
-          r=cbind.data.frame(r,st,prob)}  
+           r=cbind.data.frame(data2[st,],prob)}
           }
        if(method=="poisson") 
 		{pikk=inclusionprobabilities(pik[y],size[i])
@@ -108,12 +101,8 @@ else
              if(any(s))
              { 
              st=y[s]
-             r=x1[i,1]
-             if(ncol(x1)>=2) 
- 		 for(j in 2:ncol(x1))
-                 r=cbind.data.frame(r,rep(x1[i,j],length(st)))
-             r=cbind.data.frame(r,st,pikk[s])
-            if(description) 
+             r=cbind.data.frame(data2[st,],pikk[s])
+             if(description) 
 		 {cat("Stratum" ,i,"\n")
 		  cat("\nPopulation total and number of selected units:",length(y),length(st),"\n")
 		  }
@@ -136,7 +125,7 @@ result=rbind.data.frame(result,r)
 
  }  
 if(method=="srswr")
-colnames(result)=c(stratanames,"ID_unit","Replicates","Prob","Stratum")
+colnames(result)=c(stratanames,"ID_unit","Prob","Stratum")
 else
 colnames(result)=c(stratanames,"ID_unit","Prob","Stratum")
 if(description)  {cat("Number of strata ",nrow(x1),"\n")
@@ -148,3 +137,5 @@ if(description)  {cat("Number of strata ",nrow(x1),"\n")
 }
 result
 }
+
+

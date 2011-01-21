@@ -2,7 +2,7 @@
 \alias{inclusionprobabilities}
 \title{Inclusion probabilities}
 \description{Computes the first-order inclusion probabilities from a vector of positive numbers 
-(for probability proportional-to-size sampling).
+(for a probability proportional-to-size sampling design).
 }
 \usage{inclusionprobabilities(a,n)}
 \arguments{

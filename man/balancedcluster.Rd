@@ -2,9 +2,7 @@
 \alias{balancedcluster}
 \title{Balanced cluster}
 \description{
-Selects a balanced cluster sample and
-returns a matrix containing the vector of inclusion probabilities and
-the selected sample.
+Selects a balanced cluster sample.
 }
 \usage{balancedcluster(X,m,cluster,selection=1,comment=TRUE,method=1)}
 \arguments{
@@ -16,6 +14,8 @@ to size,\cr 2, selection of the clusters with equal probabilities.}
 \item{comment}{a comment is written during the execution if \code{comment} is \code{TRUE}.}
 \item{method}{the used method in the function \code{samplecube}.}
 }
+\value{Returns a matrix containing the vector of inclusion probabilities and
+the selected sample.}
 \seealso{
 \code{\link{samplecube}}, \code{\link{fastflightcube}}, \code{\link{landingcube}}
 }

@@ -3,7 +3,7 @@
 \title{Fast flight phase for the cube method}
 \description{Executes the fast flight phase 
 of the cube method (algorithm of Chauvet and Tillé, 2005, 2006).
-The data are sorted following the argument order. Inclusion probabilities equal to
+The data are sorted following the argument \code{order}. Inclusion probabilities equal to
 0 or 1 are tolerated.
 }
 \usage{fastflightcube(X,pik,order=1,comment=TRUE)}

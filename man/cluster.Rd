@@ -2,8 +2,8 @@
 \alias{cluster}
 \title{Cluster sampling}
 \description{Cluster sampling with equal/unequal probabilities.}
-\usage{cluster(data, clustername, size, method=c("srswor","srswr","poisson","systematic"),
-              pik,description=FALSE)}
+\usage{cluster(data, clustername, size, method=c("srswor","srswr","poisson",
+"systematic"),pik,description=FALSE)}
 \arguments{
 \item{data}{data frame or data matrix; its number of rows is N, the population size.}
 \item{clustername}{the name of the clustering variable.}
@@ -21,12 +21,9 @@ the population size, this vector is normalized to one.}
 of selected clusters, the number of units in the population and the number of selected units. 
 By default, the value is FALSE.}
 }
-\details{
-The cluster object contains the following information:
- the selected clusters,
- the identifier of the units in the selected clusters,
- the final inclusion probabilities for the units (they are equal for the units coming from the same cluster).
-If method is "srswr", the number of replicates is also given. 
+\value{
+The function returns a data set with the following information: the selected clusters, the identifier of the units in the selected clusters,
+the final inclusion probabilities for these units (they are equal for the units included in the same cluster). If method is "srswr", the number of replicates is also given. 
 }
 \seealso{
 \code{\link{mstage}}, \code{\link{strata}}, \code{\link{getdata}}}
@@ -36,11 +33,12 @@ If method is "srswr", the number of replicates is also given.
 ############
 # Uses the swissmunicipalities data to draw a sample of clusters
 data(swissmunicipalities)
-# the variable 'REG' has 7 categories in the population; it is used as clustering variable
+# the variable 'REG' has 7 categories in the population
+# it is used as clustering variable
 # the sample size is 3; the method is simple random sampling without replacement
 cl=cluster(swissmunicipalities,clustername=c("REG"),size=3,method="srswor")
 # extracts the observed data 
-# the order of the columns is different from the order in the swissmunicipalities database
+# the order of the columns is different from the order in the initial database
 getdata(swissmunicipalities, cl)
 ############
 ## Example 2

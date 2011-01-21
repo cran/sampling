@@ -11,9 +11,9 @@
 data set).}
 \item{method}{method to select units; the following methods are implemented: simple random 
 sampling without replacement (srswor), simple random sampling with replacement (srswr), 
-Poisson sampling (poisson), systematic sampling (systematic); if method is missing, 
-by default the method is "srswor".}
-\item{pik}{vector of selection probabilities or auxiliary information used to compute them; 
+Poisson sampling (poisson), systematic sampling (systematic); if "method" is missing, 
+the default method is "srswor".}
+\item{pik}{vector of inclusion probabilities or auxiliary information used to compute them; 
 this argument is only used for unequal probability sampling (Poisson, systematic). If an
 auxiliary information is provided, the function uses the \link{inclusionprobabilities} function for
 computing these probabilities. If the method is "srswr" and the sample size is larger than
@@ -23,11 +23,10 @@ of selected units and the number of the units in the population.
 By default, the value is FALSE.}
 }
 \value{ 
-\item{The function}{produces an object, which contains the following information:}
-\item{ID\_unit}{the identifier of the selected units.}
+The function produces an object, which contains the following information:
+\item{ID_unit}{the identifier of the selected units.}
 \item{Stratum}{the unit stratum.}
 \item{Prob}{the final unit inclusion probability.}
-\item{Replicates}{if the method is "srswr", the number of unit replicates is also given.} 
 }
 \seealso{
 \code{\link{getdata}}, \code{\link{mstage}}}
@@ -52,7 +51,8 @@ table(data$region,data$state)
 #  1 100  30
 #  2  50  40
 #  3  15   0
-# there are 5 cells with non-zero values; one draws 5 samples (1 sample in each stratum)
+# there are 5 cells with non-zero values
+# one draws 5 samples (1 sample in each stratum)
 # the sample stratum sizes are 10,5,10,4,6, respectively
 # the method is 'srswor' (equal probability, without replacement)
 s=strata(data,c("region","state"),size=c(10,5,10,4,6), method="srswor")
@@ -64,7 +64,8 @@ getdata(data,s)
 # The same data as in Example 1
 # the method is 'systematic' (unequal probability, without replacement)
 # the selection probabilities are computed using the variable 'income'
-s=strata(data,c("region","state"),size=c(10,5,10,4,6), method="systematic",pik=data$income)
+s=strata(data,c("region","state"),size=c(10,5,10,4,6), method="systematic",
+pik=data$income)
 # extracts the observed data
 getdata(data,s)
 ############
@@ -85,7 +86,7 @@ table(swissmunicipalities$REG)
 st=strata(swissmunicipalities,stratanames=c("REG"),size=c(30,20,45,15,20,11,44), 
 method="srswor")
 # extracts the observed data
-# the order of the columns is different from the order in the swsissmunicipalities database
+# the order of the columns is different from the order in the initial database
 getdata(swissmunicipalities, st)
 }
 \keyword{survey}

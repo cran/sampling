@@ -1,7 +1,7 @@
 "balancedstratification" <-
 function(X,strata,pik,comment=TRUE,method=1)
 {
-strat=cleanstrata(strata)
+strata=cleanstrata(strata)
 H=max(strata)
 N=dim(X)[1]
 pikstar=rep(0,times=N)

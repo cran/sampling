@@ -8,9 +8,9 @@ Uses the Hansen-Hurwitz method to select a sample of units (unequal probabilitie
 UPmultinomial(pik)
 }
 \arguments{
-\item{pik}{vector of the prescribed inclusion probabilities.}
+\item{pik}{vector of the the inclusion probabilities.}
 }
-\details{
+\value{
 Returns a vector (with elements 0 and 1) of size N, the population size.  
 Each element k of this vector indicates the status of unit k 
 (1, unit k is selected in the sample; 0, otherwise).

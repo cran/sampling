@@ -8,9 +8,9 @@ Uses the minimal support method to select a sample of units (unequal probabiliti
 UPminimalsupport(pik)
 }
 \arguments{
-\item{pik}{vector of prescribed inclusion probabilities.}
+\item{pik}{vector of the inclusion probabilities.}
 }
-\details{
+\value{
 Returns a vector (with elements 0 and 1) of size N, the population size.  
 Each element k of this vector indicates the status of unit k 
 (1, unit k is selected in the sample; 0, otherwise). 

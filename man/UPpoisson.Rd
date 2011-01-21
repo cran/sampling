@@ -7,9 +7,9 @@ probabilities (unequal probabilities, without replacement, random sample size).
 }
 \usage{UPpoisson(pik)}
 \arguments{
-\item{pik}{vector of first-order inclusion probabilities.}
+\item{pik}{vector of the first-order inclusion probabilities.}
 }
-\details{
+\value{
 Returns a vector (with elements 0 and 1) of size N, the population size.  
 Each element k of this vector indicates the status of unit k 
 (1, unit k is selected in the sample; 0, otherwise). The value 'eps' is used to

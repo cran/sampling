@@ -5,20 +5,19 @@
 design-based approach.}
 \usage{regest(formula,Tx,weights,pikl,n,sigma=rep(1,length(weights)))}
 \arguments{
-\item{formula}{the regression model formula (y\~x).}
+\item{formula}{the regression model formula (y~x).}
 \item{Tx}{population total of x, the auxiliary variable.}
 \item{weights}{vector of the weights; its length is equal to n, the sample size.}
 \item{pikl}{the matrix of joint inclusion probabilities for the sample.}
 \item{n}{the sample size.}
 \item{sigma}{vector of positive values accounting for heteroscedasticity.}
 }
-\value{The function returns an object, which is a list containing 
-the following components: 
+\value{The function returns a list containing the following components: 
 \item{regest}{the value of the regression estimator.}
 \item{coefficients}{a vector of beta coefficients.}
 \item{std_error}{the standard error of coefficients.}
-\item{t\_value}{the t-values associated to the coefficients.}
-\item{p\_value}{the p-values associated to the coefficients.}
+\item{t_value}{the t-values associated to the coefficients.}
+\item{p_value}{the p-values associated to the coefficients.}
 \item{cov_mat}{the covariance matrix of the coefficients.}
 \item{weights}{the specified weights.}
 \item{y}{the response variable.}
