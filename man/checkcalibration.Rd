@@ -4,7 +4,7 @@
 \description{Checks the validity of the calibration. In some cases, the calibration estimators
 do not exist, and the g-weights do not allow calibration.} 
 \value{
-\item{}{The function returns three objects:} 
+The function returns the following three objects:
 \item{message}{a message concerning the calibration,}
 \item{result}{TRUE if the calibration is possible and FALSE, otherwise.}
 \item{value}{value of max(abs(tr-total)/total, which is used as criterium to validate the 

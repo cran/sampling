@@ -2,10 +2,10 @@
 \alias{calib}
 \title{g-weights of the calibration estimator}
 \description{Computes the g-weights of the calibration estimator. The g-weights should lie in the specified bounds for the 
-truncated and logit methods. The function returns the vector of g-weights.
+truncated and logit methods. 
 }
-\usage{calib(Xs,d,total,q=rep(1,length(d)),method=c("linear","raking","truncated","logit"),
-bounds=c(low=0,upp=10),description=FALSE,max_iter=500)}
+\usage{calib(Xs,d,total,q=rep(1,length(d)),method=c("linear","raking","truncated",
+"logit"),bounds=c(low=0,upp=10),description=FALSE,max_iter=500)}
 \arguments{
 \item{Xs}{matrix of calibration variables.}
 \item{d}{vector of initial weights.}
@@ -18,6 +18,7 @@ bounds=c(low=0,upp=10),description=FALSE,max_iter=500)}
 and their boxplots and histograms are drawn; by default, its value is FALSE.}
 \item{max_iter}{maximum number of iterations in the Newton's method.} 
 }
+\value{Returns the vector of g-weights.}
 \references{ 
 Cassel, C.-M., Särndal, C.-E., and Wretman, J. (1976). Some results on generalized difference estimation and generalized regression estimation for finite population.\emph{Biometrika}, 63:615--620. \cr
 Deville, J.-C. and Särndal, C.-E. (1992). Calibration estimators in survey sampling. \emph{Journal of the American Statistical Association}, 87:376--382.\cr
@@ -40,8 +41,6 @@ c(1,2,3,4,5,6,7,8,9,10)
 piks=rep(0.2,times=10)
 # vector of population totals
 total=c(24,26,290)
-# the Horvitz-Thompson estimator
-tHT=t(1/piks)\%*\%Xs
 # the g-weights using the truncated method
 g=calib(Xs,d=1/piks,total,method="truncated",bounds=c(0.75,1.2))
 # the calibration estimator of X is equal to 'total' vector
@@ -73,13 +72,11 @@ medianincome/mean(medianincome))
 pik=inclusionprobabilities(averageincome,200)
 N=length(pik)               # population size
 s=UPpoisson(pik)            # sample
-Xs=X[s==1,]                 # matrix of calibration variables of the sample
-piks=pik[s==1]              # inclusion probabilities of the sample
+Xs=X[s==1,]                 # sample matrix of calibration variables
+piks=pik[s==1]              # sample inclusion probabilities
 n=length(piks)              # sample size
 # vector of population totals of the calibration variables
 total=c(t(rep(1,times=N))\%*\%X)  
-# the Horvitz-Thompson estimator of calibration variables 
-c((1/piks) \%*\% Xs)
 # the population total 
 total
 # computation of the g-weights
@@ -90,14 +87,18 @@ g3=calib(Xs,d=1/piks,total,method="truncated",bounds=c(0.5,1.5))
 g4=calib(Xs,d=1/piks,total,method="logit",bounds=c(0.5,1.5))
 # In some cases, the calibration does not exist
 # particularly when bounds are used.
-# If the calibration is possible, the calibration estimators are the following
-if(checkcalibration(Xs,d=1/piks,total,g1)$result) print(c((g1/piks) \%*\% Xs)) else print("error")
+# if the calibration is possible, the calibration estimator of Xs is printed
+if(checkcalibration(Xs,d=1/piks,total,g1)$result) 
+    print(c((g1/piks) \%*\% Xs)) else print("error")
 if(!is.null(g2))
-if(checkcalibration(Xs,d=1/piks,total,g2)$result) print(c((g2/piks) \%*\% Xs)) else print("error")
+    if(checkcalibration(Xs,d=1/piks,total,g2)$result) 
+        print(c((g2/piks) \%*\% Xs)) else print("error")
 if(!is.null(g3))
-if(checkcalibration(Xs,d=1/piks,total,g3)$result) print(c((g3/piks) \%*\% Xs)) else print("error")
+    if(checkcalibration(Xs,d=1/piks,total,g3)$result) 
+        print(c((g3/piks) \%*\% Xs)) else print("error")
 if(!is.null(g4))
-if(checkcalibration(Xs,d=1/piks,total,g4)$result) print(c((g4/piks) \%*\% Xs)) else print("error")
+    if(checkcalibration(Xs,d=1/piks,total,g4)$result) 
+        print(c((g4/piks) \%*\% Xs)) else print("error")
 ############
 ## Example 3
 ############

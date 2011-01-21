@@ -7,14 +7,14 @@ Draws a simple random sampling without replacement of size n (equal probabilitie
 \usage{
 srswor(n,N)
 }
-\details{
-Returns a vector (with elements 0 and 1) of size N, the population size.  
-Each element k of this vector indicates the status of unit k 
-(1, unit k is selected in the sample; 0, otherwise).
-}
 \arguments{
 \item{n}{sample size.}
 \item{N}{population size.}
+}
+\value{
+Returns a vector (with elements 0 and 1) of size N, the population size.  
+Each element k of this vector indicates the status of unit k 
+(1, unit k is selected in the sample; 0, otherwise).
 }
 \seealso{\code{\link{sample}}, \code{\link{srswr}}}
 \examples{

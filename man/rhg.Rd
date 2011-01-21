@@ -6,18 +6,18 @@ unit in these groups.
 }
 \usage{rhg(X,selection)}
 \arguments{
-\item{X}{X is the sample data frame; it should contain the columns 'ID\_unit' and 'status'; 
-'ID\_unit' denotes the unit identifier (a number); 'status' is a 1/0 variable denoting the response/non-response of a unit.}
-\item{selection}{vector of variable names used to construct the groups.}
+\item{X}{sample data frame; it should contain the columns 'ID_unit' and 'status'; 
+'ID_unit' denotes the unit identifier (a number); 'status' is a 1/0 variable denoting the response/non-response of a unit.}
+\item{selection}{vector of variable names in X used to construct the groups.}
 }
 \details{
 Into a response homogeneity group, the reponse probability is the same for
 all units. Data are missing at random within groups, conditionally on the selected sample.
 }
 \value{
-\item{}{The initial sample data frame and also the following components:} 
+The initial sample data frame and also the following components:
 \item{rhgroup}{the response homogeneity group for each unit.}
-\item{prob\\_response}{the response probability for each unit; for the units with status=0, this probability
+\item{prob_response}{the response probability for each unit; for the units with status=0, this probability
 is 0.}
 }
 \references{ 
@@ -42,12 +42,3 @@ Xs=cbind.data.frame(Xs,status=c(1,0,1))
 rhg(Xs,selection="town")
 }
 \keyword{survey}
-
-
-
-
-
-
-
-
-

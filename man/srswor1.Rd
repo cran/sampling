@@ -2,12 +2,12 @@
 \alias{srswor1}
 \title{Selection-rejection method}
 \description{
-Draws a simple random sampling without replacement of size $n$ using the selection-rejection method.
+Draws a simple random sampling without replacement of size n using the selection-rejection method.
 }
 \usage{
 srswor1(n,N)
 }
-\details{
+\value{
 Returns a vector (with elements 0 and 1) of size N, the population size.  
 Each element k of this vector indicates the status of unit k 
 (1, unit k is selected in the sample; 0, otherwise).

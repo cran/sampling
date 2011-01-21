@@ -10,6 +10,10 @@
 \title{Unequal probability sampling designs}
 \author{}
 \usepackage{Sweave} 
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+
+
 
 \begin{document}
 \maketitle
@@ -20,20 +24,17 @@ ps.options(pointsize=12)
 options(width=60)
 
 @
-This is an example of unequal probability (UP) sampling functions
-(selection of samples using the Belgian municipalities data set,
-with equal or unequal probabilities, and comparison of the
-Horvitz-Thompson estimator accuracy using boxplots). The following
+This is an example of unequal probability (UP) sampling functions: selection of samples using the Belgian municipalities data set,
+with equal or unequal probabilities, and study of the Horvitz-Thompson estimator accuracy using boxplots. The following
 sampling schemes are used: Poisson, random systematic, random
 pivotal, Till\'e, Midzuno, systematic, pivotal, and simple random
 sampling without replacement. Monte Carlo simulations are used to study the accuracy of the
 Horvitz-Thompson estimator of a population total. The aim of this
-example is to demonstrate the effect of the incorporation of an
-auxiliary information in the sampling design. We use:
+example is to demonstrate the effect of the auxiliary information incorporation in the sampling design. We use:
 \begin{itemize}
 \item some $\pi$ ps sampling designs with Horvitz-Thompson estimation,
 using in the sampling design the information on size measures of
-population elements;
+population units;
 \item simple random sampling without replacement with Horvitz-Thompson
 estimation, where no auxiliary information is used.
 \end{itemize}
@@ -45,7 +46,7 @@ N=length(pik)
 n=sum(pik)
 
 @
-Number of simulations (for an accurate result, increase this value):
+Number of simulations (for an accurate result, increase this value to 10000):
 
 <<up2, results=hide>>= 
 sim=10
@@ -53,7 +54,7 @@ ss=array(0,c(sim,8))
 
 
 @
-Defines the interest variable:
+Defines the variable of interest:
 
 <<up3, results=hide>>= 
 y=belgianmunicipalities$TaxableIncome
@@ -82,13 +83,13 @@ s=UPpivotal(pik)
 ht[7]=HTestimator(y[s==1],pik[s==1])
 s=srswor(n,N)
 ht[8]=HTestimator(y[s==1],rep(n/N,n))
-ss[i,]=ss[i,]+ht
+ss[i,]=ht
 }
 
 @
 Boxplots of the estimators:
 
-<<up5, fig=TRUE,height=7,width=6.5>>=
+<<up5,fig=TRUE,height=7,width=6.5>>=
 colnames(ss) <- 
 c("poisson","rsyst","rpivotal","tille","midzuno","syst","pivotal","srswor")
 boxplot(data.frame(ss), las=3)
@@ -101,10 +102,9 @@ boxplot(data.frame(ss), las=3)
 <<up2>>
 <<up3>>
 <<up4>>
-<<up5,fig=TRUE>>
+<<up5>>
 
 sampling.newpage()
 
 @
 \end{document}
-

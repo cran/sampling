@@ -1,23 +1,23 @@
 \name{rhg_strata}
 \alias{rhg_strata}
-\title{Response homogeneity groups for stratified sampling}
+\title{Response homogeneity groups for a stratified sampling}
 \description{Computes the response homogeneity groups and the response probability for each 
-unit in these groups for stratified sampling. 
+unit in these groups for a stratified sampling. 
 }
 \usage{rhg_strata(X,selection)}
 \arguments{
-\item{X}{X is the sample data frame; it should contain the columns 'ID\_unit','Stratum', and 'status'; 
-'ID\_unit' denotes the unit identifier (a number); 'Stratum' denotes the unit stratum; 'status' is a 1/0 variable denoting the response/non-response of a unit in the sample.}
-\item{selection}{vector of variable names used to construct the groups.}
+\item{X}{sample data frame; it should contain the columns 'ID_unit','Stratum', and 'status'; 
+'ID_unit' denotes the unit identifier (a number); 'Stratum' denotes the unit stratum; 'status' is a 1/0 variable denoting the response/non-response of a unit in the sample.}
+\item{selection}{vector of variable names in X used to construct the groups.}
 }
 \details{
 Into a response homogeneity group, the reponse probability is the same for
 all units. Data are missing at random within groups, conditionally on the selected sample.
 }
 \value{
-\item{}{The initial sample data frame and also the following components:} 
+The initial sample data frame and also the following components:
 \item{rhgroup}{the response homogeneity group for each unit conditionally on its stratum.}
-\item{prob\_response}{the response probability for each unit; for the units with status=0, this probability
+\item{prob_response}{the response probability for each unit; for the units with status=0, this probability
 is 0.}
 }
 \references{ 
@@ -36,7 +36,8 @@ data=cbind.data.frame(data,c(rep(1,100), rep(2,50), rep(3,15), rep(1,30),rep(2,4
 1000*runif(235))
 names(data)=c("state","region","income")
 # draws a sample
-s1=strata(data,c("region","state"),size=c(10,5,10,4,6), method="systematic",pik=data$income)
+s1=strata(data,c("region","state"),size=c(10,5,10,4,6), method="systematic",
+pik=data$income)
 # extracts the observed data
 s1=getdata(data,s1)
 # generates randomly the 'status' variable (1-sample respondent, 0-otherwise)
@@ -66,8 +67,3 @@ s1=cbind.data.frame(s1,sex)
 rhg_strata(s1,selection=c("classincome","sex"))
 }
 \keyword{survey}
-
-
-
-
-

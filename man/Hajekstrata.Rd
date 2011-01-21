@@ -1,16 +1,18 @@
-\name{HTstrata}
-\alias{HTstrata}
-\title{The Horvitz-Thompson estimator for a stratified design}
-\description{Computes the Horvitz-Thompson estimator of the population total for a stratified design.}
-\usage{HTstrata(y,pik,strata,description=FALSE)}
+\name{Hajekstrata}
+\alias{Hajekstrata}
+\title{The Hajek estimator for a stratified design}
+\description{Computes the Hájek estimator of the population total or population mean for a stratified design.}
+\usage{Hajekstrata(y,pik,strata,N=NULL,type=c("total","mean"),description=FALSE)}
 \arguments{
 \item{y}{vector of the variable of interest; its length is equal to n, the sample size.}
 \item{pik}{vector of the first-order inclusion probabilities for the sampled units; its length is equal to n, the sample size.}
 \item{strata}{vector of size n, with elements indicating the unit stratum.}
+\item{N}{vector of population sizes of strata; N is only used for the total estimator; for the mean estimator its value is NULL.}
+\item{type}{the estimator type: total or mean.}
 \item{description}{if TRUE, the estimator is printed for each stratum; by default, FALSE.}
 }
 \seealso{
-\code{\link{HTestimator}}
+\code{\link{HTstrata}}
 }
 \examples{
 # Swiss municipalities data base
@@ -28,9 +30,11 @@ table(swissmunicipalities$REG)
 st=strata(swissmunicipalities,stratanames=c("REG"),size=c(30,20,45,15,20,11,44), 
 method="srswor")
 # extracts the observed data
-# the order of the columns is different from the order in the initial database
+# the order of the columns is different from the order in the swsissmunicipalities database
 x=getdata(swissmunicipalities, st)
-# computes the HT estimator of the variable Pop020 
-HTstrata(x$Pop020,x$Prob,x$Stratum,description=TRUE)
-}
+# computes the population sizes of strata
+N=table(swissmunicipalities$REG)
+N=N[unique(x$REG)]
+# computes the Hajek estimator of the variable Pop020 
+Hajekstrata(x$Pop020,x$Prob,x$Stratum,N,type="total",description=TRUE)}
 \keyword{survey}

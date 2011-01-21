@@ -10,7 +10,7 @@ UPmidzunopi2(pik)
 \arguments{
 \item{pik}{vector of the first-order inclusion probabilities.}
 }
-\details{
+\value{
 Returns a NxN matrix of the following form: the main diagonal contains the first-order inclusion 
 probabilities for each unit k in the population; elements (k,l) are the joint inclusion
 probabilities of units k and l, with k not equal to l. N is the population size. 

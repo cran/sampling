@@ -21,7 +21,8 @@
 # the variable "region" has 3 categories (1, 2 and 3).
 # the income variable is randomly generated
 data=rbind(matrix(rep("nc",165),165,1,byrow=TRUE),matrix(rep("sc",70),70,1,byrow=TRUE))
-data=cbind.data.frame(data,c(rep(1,100), rep(2,50), rep(3,15), rep(1,30),rep(2,40)),1000*runif(235))
+data=cbind.data.frame(data,c(rep(1,100), rep(2,50), rep(3,15), rep(1,30),rep(2,40)),
+1000*runif(235))
 names(data)=c("state","region","income")
 # computes the population stratum sizes
 table(data$region,data$state)

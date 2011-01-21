@@ -1,7 +1,8 @@
 \name{vartaylor_ratio}
 \alias{vartaylor_ratio}
 \title{Taylor-series linearization variance estimation of a ratio}
-\description{Computes the Taylor-series linearization variance estimation of the ratio hat(Ys)/hat(Xs).
+\description{Computes the Taylor-series linearization variance estimation of the ratio \deqn{\frac{\hat{Ys}}{\hat{Xs}}.} 
+The estimators in the ratio are Horvitz-Thompson estimators.
 }
 \usage{vartaylor_ratio(Ys,Xs,pikls)}
 \arguments{
@@ -11,7 +12,7 @@
 }
 \details{
 The function implements the following estimator:
-\deqn{\hat{Var}(\frac{\hat{Ys}}{\hat{Xs}})=\sum_{i\in s}\sum{j\in s}\frac{\pi_{ij}-\pi_i\pi_j}{\pi_{ij}}\frac{\hat{z_i}\hat{z_j}}{\pi_i\pi_j}} 
+\deqn{\hat{Var}(\frac{\hat{Ys}}{\hat{Xs}})=\sum_{i\in s}\sum_{j\in s}\frac{\pi_{ij}-\pi_i\pi_j}{\pi_{ij}}\frac{\hat{z_i}\hat{z_j}}{\pi_i\pi_j}} 
 where \eqn{\hat{z_i}=\frac{(Ys_i-\hat{r}Xs_i)}{\hat{Xs}}, \hat{r}=\hat{Ys}/\hat{Xs}, \hat{Ys}=\sum{Ys_i/\pi_i}, \hat{Xs}=\sum{Xs_i/\pi_i}}.
 }
 \references{ 

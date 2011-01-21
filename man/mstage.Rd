@@ -3,7 +3,7 @@
 \title{Multistage sampling}
 \description{Implements multistage sampling with equal/unequal probabilities.}
 \usage{mstage(data, stage=c("stratified","cluster",""), varnames, size, 
-       method=c("srswor","srswr","poisson","systematic"), pik, description=FALSE)}
+method=c("srswor","srswr","poisson","systematic"), pik, description=FALSE)}
 \arguments{
 \item{data}{data frame or data matrix; its number of rows is N, the population size.}
 \item{stage}{list of sampling type at each stage; the possible values are: "stratified", "cluster" 
@@ -24,13 +24,12 @@ of selected units and the number of the units in the population.
 By default, its value is FALSE.}
 }
 \value{
-\item{The function}{produces a list, which contains the stages (if m is this list, the stage i is m\$'i' etc)
-and the following information:}
-\item{ID\_unit}{the identifier of selected units at each stage.}
-\item{Prob\_ number \_stage}{the inclusion probability at stage 'number'.}
+The function returns a list, which contains the stages (if m is this list, the stage i is m$'i' etc)
+and the following information:
+\item{ID_unit}{the identifier of selected units at each stage.}
+\item{Prob_ number _stage}{the inclusion probability at stage 'number'.}
 \item{Prob}{the final unit inclusion probability given in the last stage; it is the product of 
 the unit inclusion probabilities at each stage.}
-\item{Replicates}{if the method is "srswr", the number of replicates is also given.} 
 }
 \seealso{
 \code{\link{cluster}}, \code{\link{strata}}, \code{\link{getdata}}}
@@ -96,13 +95,13 @@ data(swissmunicipalities)
 # in the first-stage, the clustering variable is 'REG' (region) with 7 categories
 # each region is selected with the probability 1/7
 # in the second-stage, the clustering variable is 'CT'(canton) with 26 categories
-# in the region 1, there are 3 cantons and each canton is selected with the probability 1/3
-# in the region 2, there are 5 cantons and each canton is selected with the probability 1/5
-# in the region 3, there are 3 cantons and each canton is selected with the probability 1/3
-# in the region 4, there is 1 canton, which it is selected with the probability 1
-# in the region 5, there are 7 cantons and each canton is selected with the probability 1/7
-# in the region 6, there are 6 cantons and each canton is selected with the probability 1/6
-# in the region 7, there is 1 canton, which it is selected with the probability 1
+# in the region 1, there are 3 cantons and each canton is selected with the prob. 1/3
+# in the region 2, there are 5 cantons and each canton is selected with the prob. 1/5
+# in the region 3, there are 3 cantons and each canton is selected with the prob. 1/3
+# in the region 4, there is 1 canton, which it is selected with the prob. 1
+# in the region 5, there are 7 cantons and each canton is selected with the prob. 1/7
+# in the region 6, there are 6 cantons and each canton is selected with the prob. 1/6
+# in the region 7, there is 1 canton, which it is selected with the prob. 1
 # it is necessary to use a list of selection probabilities at each stage
 # prob is the list of the selection probabilities
 # the method is systematic sampling (unequal probabilities, without replacement)

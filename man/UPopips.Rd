@@ -11,7 +11,7 @@ UPopips(lambda,type=c("pareto","uniform","exponential"))
 \item{lambda}{vector of working inclusion probabilities or target ones.}
 \item{type}{the type of order sampling (pareto, uniform, exponential).}
 }
-\details{
+\value{
 Returns a vector of selected units of size n, the sample size.  
 }
 \seealso{\code{\link{inclusionprobabilities}}

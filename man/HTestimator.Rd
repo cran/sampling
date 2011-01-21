@@ -13,12 +13,13 @@
 \examples{
 # Belgian municipalities data base
 data(belgianmunicipalities)
+attach(belgianmunicipalities)
 # Computes the inclusion probabilities
-pik=inclusionprobabilities(belgianmunicipalities$Tot04,200)
+pik=inclusionprobabilities(Tot04,200)
 N=length(pik)
 n=sum(pik)
 # Defines the variable of interest
-y=belgianmunicipalities$TaxableIncome
+y=TaxableIncome
 # Draws a Poisson sample of expected size 200
 s=UPpoisson(pik)
 # Computes the Horvitz-Thompson estimator

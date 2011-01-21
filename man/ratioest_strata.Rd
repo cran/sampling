@@ -38,14 +38,16 @@ table(MU281$REG)
 # not run
 # 1  2  3  4  5  6  7  8 
 # 24 48 32 37 55 41 15 29 
-# a sample is drawn in each region; the sample stratum sizes are given by size=c(4,10,8,4,6,4,6,7)
+# a sample is drawn in each region
+# the sample stratum sizes are given by size=c(4,10,8,4,6,4,6,7)
 s=strata(MU281,c("REG"),size=c(4,10,8,4,6,4,6,7), method="systematic",pik=P85)
 # extracts the observed data
 MU281sample=getdata(MU281,s)
 # computes the population x-totals in each stratum
 TX_strata=as.vector(tapply(CS82,list(REG),FUN=sum))
 # computes the ratio estimator
-ratioest_strata(MU281sample$RMT85,MU281sample$CS82,TX_strata,MU281sample$Prob,MU281sample$Stratum)
+ratioest_strata(MU281sample$RMT85,MU281sample$CS82,TX_strata,
+MU281sample$Prob,MU281sample$Stratum)
 ###########
 # Example 2
 ###########
@@ -54,7 +56,8 @@ ratioest_strata(MU281sample$RMT85,MU281sample$CS82,TX_strata,MU281sample$Prob,MU
 # 'income' is the variable of interest, and 'aux' is the auxiliary information 
 # which is correlated to the income
 data=rbind(matrix(rep("nc",165),165,1,byrow=TRUE),matrix(rep("sc",70),70,1,byrow=TRUE))
-data=cbind.data.frame(data,c(rep(1,100), rep(2,50), rep(3,15), rep(1,30),rep(2,40)),1000*runif(235))
+data=cbind.data.frame(data,c(rep(1,100), rep(2,50), rep(3,15), rep(1,30),rep(2,40)),
+1000*runif(235))
 names(data)=c("state","region","income")
 attach(data)
 aux=income+rnorm(length(income),0,1)

@@ -1,6 +1,6 @@
 \name{UPtillepi2}
 \alias{UPtillepi2}
-\title{Joint inclusion probabilties for Tillé sampling}
+\title{Joint inclusion probabilties for Tille sampling}
 \description{
 Computes the joint (second-order) inclusion probabilities for Tillé sampling.
 }
@@ -11,7 +11,7 @@ UPtillepi2(pik,eps=1e-6)
 \item{pik}{vector of the first-order inclusion probabilities.}
 \item{eps}{the control value, by default equal to 1e-6.}
 }
-\details{
+\value{
 Returns a NxN matrix of the following form: the main diagonal contains the first-order inclusion 
 probabilities for each unit k in the population; elements (k,l) are the joint inclusion
 probabilities of units k and l, with k not equal to l. N is the population size. The value \code{eps} is used to
@@ -32,4 +32,3 @@ pik_joint
 }
 \keyword{survey}
 \encoding{latin1}
-

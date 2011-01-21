@@ -2,14 +2,7 @@
 \alias{balancedtwostage}
 \title{Balanced two-stage sampling}
 \description{
-Selects a balanced two-stage sample.
-The function returns a matrix whose columns are the following five vectors:
- the selected second-stage sampling units (0 - unselected, 1 - selected), 
- the final inclusion probabilities,
- the selected primary sampling units,
- the inclusion probabilities of the first stage,
- the inclusion probabilities of the second stage.
-}
+Selects a balanced two-stage sample.}
 \usage{balancedtwostage(X,selection,m,n,PU,comment=TRUE,method=1)}
 \arguments{
 \item{X}{matrix of auxiliary variables on which the sample must be balanced.}
@@ -21,6 +14,12 @@ The function returns a matrix whose columns are the following five vectors:
 \item{comment}{a comment is written during the execution if \code{comment} is \code{TRUE}.}
 \item{method}{the used method in the function \code{samplecube}.}
 }
+\value{The function returns a matrix whose columns are the following five vectors:
+ the selected second-stage sampling units (0 - unselected, 1 - selected), 
+ the final inclusion probabilities,
+ the selected primary sampling units,
+ the inclusion probabilities of the first stage,
+ the inclusion probabilities of the second stage.}
 \seealso{
 \code{\link{samplecube}}, \code{\link{fastflightcube}}, \code{\link{landingcube}},
 \code{\link{balancedstratification}}, \code{\link{balancedcluster}}
