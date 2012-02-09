@@ -1,7 +1,7 @@
 mstage<-function(data, stage=c("stratified","cluster",""),varnames, size, method=c("srswor","srswr","poisson","systematic"), pik, description=FALSE)
 {
 if(missing(size)) stop("the size argument is missing")
-if(!missing(stage) & missing(varnames)) stop("please indicate the stage argument")
+if(!missing(stage) & missing(varnames)) stop("indicate the stage argument")
 if(!missing(stage)) 
   {number=length(stage)
    for(i in 1:length(stage))
@@ -29,12 +29,12 @@ if(description)
 if(missing(stage))
  {if(missing(varnames))
   if(missing(method))
- 	s=strata(data, stratanames=NULL, size1, description)
+ 	s=strata(data, stratanames=NULL, size=size1, description)
   else 
       if(method %in% c("systematic","poisson")) 
- 	s=strata(data, stratanames=NULL, size=size1, method, pik1, description)
+ 	s=strata(data, stratanames=NULL, size=size1, method, pik=pik1, description)
       else s=strata(data, stratanames=NULL, size=size1, method, description)
-  else s=strata(data, stratanames=NULL, size1, method, pik1, description)
+  else s=strata(data, stratanames=NULL, size1, method, pik=pik1, description)
   }
 else 
  if(stage[1]=="stratified") 
@@ -62,7 +62,6 @@ if(number>1)
   else result=s
 res=list()
 res[[1]]=s
-
 if(number>=2)
 for(j in 2:number)
 {
@@ -84,19 +83,20 @@ for(ii in 1:k)
                  r=getdata(data,r) 
                  m=match(varnames[[j]],names(r))
                  if(method %in% c("systematic","poisson")) 
-                 {index=res[[j-1]][(limit+1):(limit+dimension_st[ii]),]$ID_unit 
-                 pikk=pik[[j]][index]
-                 if(!is.null(r))
-		     s3=cluster(r,clustername=varnames[[j]],size=size[[j]][ii],method=method, pik=pikk,description)                        
-                 else s3=NULL 
-                 }
-                 else s3=cluster(r,clustername=varnames[[j]],size=size[[j]][ii],method=method, pik,description)                        
+                 		{index=res[[j-1]][(limit+1):(limit+dimension_st[ii]),]$ID_unit 
+	                  pikk=pik[[j]][index]
+                        if(!is.null(r))
+		              s3=cluster(r,clustername=varnames[[j]],size=size[[j]][ii],method=method, pik=pikk,description)      
+                        else s3=NULL 
+                         }
+                else 
+                  s3=cluster(r,clustername=varnames[[j]],size=size[[j]][ii],method=method, description=description)
                 limit=limit+dimension_st[ii]          
                 if(method=="srswr")
                 {s3=cbind.data.frame(r[s3$ID_unit,m],r[s3$ID_unit,]$ID_unit,s3$Replicates,s3$Prob,r[s3$ID_unit,]$Prob*s3$Prob)
                  colnames(s3)=c(varnames[[j]],"ID_unit","Replicates",paste("Prob_",j,"_stage"),"Prob")
                  }
-		   else if(!is.null(s3))
+		    else if(!is.null(s3))
 		    {s3=cbind.data.frame(r[s3$ID_unit,m],r[s3$ID_unit,]$ID_unit,s3$Prob,result[s3$ID_unit,]$Prob*s3$Prob)
 		     colnames(s3)=c(varnames[[j]],"ID_unit",paste("Prob_",j,"_stage"),"Prob")
 		    }
@@ -117,7 +117,7 @@ s1=NULL
 limit=0
 dimension=list()
 if(k>length(size[[j]])) 
-           {warning("the number of selected clusters at the previous stage is larger than the size argument")                  
+           {warning("the number of selected clusters in the previous stage is larger than the size argument")                  
             warning("the size 1 is added")
             size1=size[[j]]
             for(i in 1:(k-length(size[[j]])))

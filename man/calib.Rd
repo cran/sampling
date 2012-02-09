@@ -24,8 +24,9 @@ Cassel, C.-M., Särndal, C.-E., and Wretman, J. (1976). Some results on generaliz
 Deville, J.-C. and Särndal, C.-E. (1992). Calibration estimators in survey sampling. \emph{Journal of the American Statistical Association}, 87:376--382.\cr
 Deville, J.-C., Särndal, C.-E., and Sautory, O. (1993). Generalized raking procedure in survey sampling. \emph{Journal of the American Statistical Association}, 88:1013--1020.\cr
 } 
+\details{The argument \emph{method} implements the methods given in the paper of Deville and Särndal(1992).}
 \seealso{
-\code{\link{checkcalibration}}, \code{\link{calibev}}
+\code{\link{checkcalibration}}, \code{\link{calibev}}, \code{\link{gencalib}}
 }
 \examples{
 ############

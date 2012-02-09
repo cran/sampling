@@ -1,5 +1,4 @@
-"UPMEpikfromq" <-
-function(q) 
+"UPMEpikfromq" <-function(q) 
 { 
 n=ncol(q)
 N=nrow(q)

@@ -19,7 +19,7 @@ for (i in 1:n) {
         p = cumsum(p)
         u=runif(1)
         for(j in 1:length(p))
-		if(u<p[j]) break;
+		if(u<p[j]) break
         sb[j] = 1
 }
 s[list]=sb

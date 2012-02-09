@@ -79,13 +79,16 @@ getdata(data,m)
 # One-stage stratified cluster sampling
 # The same data as in Example 2
 # the variable 'state' is used as stratification variable 
-# 20 states are drawn in the first stratum and 10 states in the second stratum
+# 165 units are in the first stratum and 70 in the second one
 # the variable 'region' is used as clustering variable
-# 1 cluster (region) is drawn in each stratum
+# 1 cluster (region) is drawn in each stratum using the "srswor" method
 m=mstage(data, stage=list("stratified","cluster"), varnames=list("state","region"), 
-size=list(c(20,10),c(1,1)),method="srswor") 
+size=list(c(165,70),c(1,1)),method="srswor") 
 # extracts the observed data
 getdata(data,m)
+# verify the result using a contigency table
+xx=getdata(data,m)
+table(xx[[2]]$state,xx[[2]]$region)
 ############
 ## Example 4
 ############
@@ -106,7 +109,7 @@ data(swissmunicipalities)
 # prob is the list of the selection probabilities
 # the method is systematic sampling (unequal probabilities, without replacement)
 # 4 clusters (regions) are drawn in the first-stage 
-# 1 cluster (canton) is drawn from each selected region in the second-stage
+# 1 cluster (canton) is drawn in the second-stage from each selected region 
 # ls is the list of sizes
 ls=list(4,c(1,1,1,1))
 prob=list(rep(4/7,7),list(rep(1/3,3),rep(1/5,5),rep(1/3,3),rep(1,1),rep(1/7,7),
