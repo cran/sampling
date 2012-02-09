@@ -4,7 +4,8 @@
             if(any(x > .Machine$integer.max))
                 stop("the input has entries too large to be integer")
             if(!identical(TRUE, (ax <- all.equal(xo, x))))
-                warning("the sum of pik is not integer")
+                warning("the argument is not integer")
+            else x=xo
         }
 x
 }

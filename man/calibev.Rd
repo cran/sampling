@@ -1,7 +1,7 @@
 \name{calibev}
 \alias{calibev}
 \title{Calibration estimator and its variance estimation}
-\description{Computes the calibration estimator and its variance estimation using the residuals' method.
+\description{Computes the calibration estimator of the population total and its variance estimation using the residuals' method.
 }
 \usage{calibev(Ys,Xs,total,pikl,d,g,q=rep(1,length(d)),with=FALSE,EPS=1e-6)}
 \arguments{

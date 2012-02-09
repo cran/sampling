@@ -1,7 +1,7 @@
-"UPMEpiktildefrompik" <-
-function(pik,eps=1e-6) 
+"UPMEpiktildefrompik" <-function(pik,eps=1e-6) 
 { 
 n=sum(pik) 
+n=.as_int(n)
 pikt=pik 
 arr=1 
 while(arr>eps) 

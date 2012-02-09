@@ -1,8 +1,6 @@
 "UPsystematic"<-function(pik,eps=1e-6) 
 {
 if(any(is.na(pik))) stop("there are missing values in the pik vector")
-n=sum(pik)
-n=.as_int(n)
 list=pik > eps & pik < 1-eps
 pik1 = pik[list]
 N = length(pik1)

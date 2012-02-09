@@ -5,10 +5,10 @@
 truncated and logit methods. 
 }
 \usage{gencalib(Xs,Zs,d,total,q=rep(1,length(d)),method=c("linear","raking","truncated","logit"),
-bounds=c(low=0,upp=10),description=FALSE,max_iter=500)}
+bounds=c(low=0,upp=10),description=FALSE,max_iter=500,C=1)}
 \arguments{
 \item{Xs}{matrix of calibration variables.}
-\item{Zs}{matrix of instrumental variables.}
+\item{Zs}{matrix of instrumental variables with same dimension as Xs.}
 \item{d}{vector of initial weights.}
 \item{total}{vector of population totals.}
 \item{q}{vector of positive values accounting for heteroscedasticity; the variation of the g-weights is reduced for small values of q.}
@@ -18,13 +18,15 @@ bounds=c(low=0,upp=10),description=FALSE,max_iter=500)}
 \item{description}{if description=TRUE, summary of initial and final weights are printed, 
 and their boxplots and histograms are drawn; by default, its value is FALSE.}
 \item{max_iter}{maximum number of iterations in the Newton's method.} 
+\item{C}{value of the centering constant, by default equals 1.}
 }
 \value{The function returns the vector of g-weights.}
 \details{
 The generalized calibration or the instrument vector method computes the g-weights 
 \eqn{g_k=F(\lambda'z_k),} where \eqn{z_k} is a vector with values defined for \eqn{k\in s} (or \eqn{k\in r} where \eqn{r} is the set of respondents) and sharing the dimension of the specified auxiliary vector 
 \eqn{x_k}. The vectors \eqn{z_k} and \eqn{x_k} have to be stronlgy correlated. The vector \eqn{\lambda} is determined from the calibration equation \eqn{\sum_{k\in s} d_kg_k x_k=\sum_{k\in U} x_k} or \eqn{\sum_{k\in r} d_kg_k x_k=\sum_{k\in U} x_k}. 
-The function \eqn{F} plays the same role as in the calibration method (see \code{\link{calib}}).
+The function \eqn{F} plays the same role as in the calibration method (see \code{\link{calib}}). If Xs=Zs the calibration method is obtain. If the method is "logit"
+the g-weights will be centered around the constant C, with low<C<upp. In the calibration method C=1 (see \code{\link{calib}}). 
 }
 \references{ 
 Deville, J.-C. (1998). La correction de la nonréponse par calage ou par échantillonnage équilibré. Paper presented at the \emph{Congrès de l'ACFAS, Sherbrooke, Québec}.\cr
@@ -99,4 +101,9 @@ if(!is.null(g3))
 if(checkcalibration(Xs,d=1/piks,total,g3)$result) print(c((g3/piks)\%*\% Xs)) else print("error")
 if(!is.null(g4))
 if(checkcalibration(Xs,d=1/piks,total,g4)$result) print(c((g4/piks)\%*\% Xs)) else print("error")
+############
+## Example 3
+############
+# Example of generalized calibration and adjustment for unit nonresponse in the 'calibration' vignette
+vignette("calibration", package="sampling")
 }

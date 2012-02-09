@@ -1,12 +1,18 @@
-"UPmaxentropy" <-
-function(pik) 
+"UPmaxentropy" <-function(pik) 
 { 
+if(is.data.frame(pik)) 
+    if(ncol(pik)>1) stop("pik is not a vector") else pik=unlist(pik)
+else if(is.matrix(pik))
+       if(ncol(pik)>1) stop("pik is not a vector") else pik=pik[,1]
+else  if(is.list(pik))
+   if(length(pik)>1) stop("pik is not a vector") else pik=unlist(pik)
 n=sum(pik)
 n=.as_int(n)
 if(n>=2)
 {
 pik2=pik[pik!=1]
 n=sum(pik2)
+n=.as_int(n)
 piktilde=UPMEpiktildefrompik(pik2) 
 w=piktilde/(1-piktilde) 
 q=UPMEqfromw(w,n)

@@ -7,14 +7,14 @@
 \arguments{
 \item{data}{data frame or data matrix; its number of rows is N, the population size.}
 \item{stratanames}{vector of stratification variables.}
-\item{size}{vector of stratum sample sizes (in the order in which the strata appear in the input
+\item{size}{vector of stratum sample sizes (in the order in which the strata are given in the input
 data set).}
 \item{method}{method to select units; the following methods are implemented: simple random 
 sampling without replacement (srswor), simple random sampling with replacement (srswr), 
 Poisson sampling (poisson), systematic sampling (systematic); if "method" is missing, 
 the default method is "srswor".}
 \item{pik}{vector of inclusion probabilities or auxiliary information used to compute them; 
-this argument is only used for unequal probability sampling (Poisson, systematic). If an
+this argument is only used for unequal probability sampling (Poisson and systematic). If an
 auxiliary information is provided, the function uses the \link{inclusionprobabilities} function for
 computing these probabilities. If the method is "srswr" and the sample size is larger than
 the population size, this vector is normalized to one.}
@@ -27,6 +27,8 @@ The function produces an object, which contains the following information:
 \item{ID_unit}{the identifier of the selected units.}
 \item{Stratum}{the unit stratum.}
 \item{Prob}{the final unit inclusion probability.}
+}
+\details{The data should be sorted in ascending order by the columns given in the stratanames argument before applying the function. Use, for example, data[order(data$state,data$region),]. 
 }
 \seealso{
 \code{\link{getdata}}, \code{\link{mstage}}}
@@ -58,20 +60,23 @@ table(data$region,data$state)
 s=strata(data,c("region","state"),size=c(10,5,10,4,6), method="srswor")
 # extracts the observed data
 getdata(data,s)
+# see the result using a contigency table
+table(s$region,s$state)
 ############
 ## Example 2
 ############
 # The same data as in Example 1
 # the method is 'systematic' (unequal probability, without replacement)
 # the selection probabilities are computed using the variable 'income'
-s=strata(data,c("region","state"),size=c(10,5,10,4,6), method="systematic",
-pik=data$income)
+s=strata(data,c("region","state"),size=c(10,5,10,4,6), method="systematic",pik=data$income)
 # extracts the observed data
 getdata(data,s)
+# see the result using a contigency table
+table(s$region,s$state)
 ############
 ## Example 3
 ############
-# Uses the 'swissmunicipalities' data for drawing a sample of units
+# Uses the 'swissmunicipalities' data as population for drawing a sample of units
 data(swissmunicipalities)
 # the variable 'REG' has 7 categories in the population
 # it is used as stratification variable
@@ -81,6 +86,7 @@ table(swissmunicipalities$REG)
 #  1   2   3   4   5   6   7 
 # 589 913 321 171 471 186 245 
 # the sample stratum sizes are given by size=c(30,20,45,15,20,11,44)
+# 30 units are drawn from the first stratum, 20 in the second one, etc.
 # the method is simple random sampling without replacement 
 # (equal probability, without replacement)
 st=strata(swissmunicipalities,stratanames=c("REG"),size=c(30,20,45,15,20,11,44), 
@@ -88,5 +94,7 @@ method="srswor")
 # extracts the observed data
 # the order of the columns is different from the order in the initial database
 getdata(swissmunicipalities, st)
+# see the result using a contingency table
+table(st$REG)
 }
 \keyword{survey}
