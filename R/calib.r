@@ -20,7 +20,6 @@ calib<-function (Xs, d, total, q = rep(1, length(d)), method = c("linear",
         stop("the specified method is not in the list")
     if (method %in% c("linear", "raking") & !missing(bounds)) 
         stop("for the linear and raking the bounds are not allowed")
-    require(MASS)
     EPS = .Machine$double.eps
     EPS1 = 1e-06
     n = length(d)
@@ -189,5 +188,5 @@ calib<-function (Xs, d, total, q = rep(1, length(d)), method = c("linear",
         cat("summary - final weigths w=g*d\n")
         print(summary(as.vector(g * d)))
     }
-    g
+g
 }

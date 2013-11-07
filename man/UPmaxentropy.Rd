@@ -85,38 +85,8 @@ UPMEpik2frompikw(pik,w)
 ############
 ## Example 2
 ############
-# Sample of Belgian municipalities
-data(belgianmunicipalities)
-attach(belgianmunicipalities)
-n=200
-pik=inclusionprobabilities(averageincome,n)
-s=UPmaxentropy(pik)
-#the sample is
-as.character(Commune[s==1])
-#the joint inclusion probabilities
-pi2=UPmaxentropypi2(pik)
-rowSums(pi2)/pik/n
-############
-## Example 3
-############
-# Selection of 200 samples of Belgian municipalities
-# Once matrix q is computed, the selection of a sample is very quick.
-# Simulations are thus possible.
-data(belgianmunicipalities)
-attach(belgianmunicipalities)
-pik=inclusionprobabilities(averageincome,200)
-pik=pik[pik!=1]
-n=sum(pik)
-pikt=UPMEpiktildefrompik(pik)
-w=pikt/(1-pikt)
-q=UPMEqfromw(w,n)
-N=length(pik)
-tt=rep(0,times=N)
-#number of simulations; for accurate results, increase the value of 'sim'
-sim=200
-for(i in 1:sim) tt = tt+UPMEsfromq(q)
-tt=tt/sim
-sum(abs(tt-pik))
+# other examples in the 'UPexamples' vignette
+vignette("UPexamples", package="sampling")
 }
 \keyword{survey} 
 \encoding{latin1}

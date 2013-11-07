@@ -104,6 +104,6 @@ if(checkcalibration(Xs,d=1/piks,total,g4)$result) print(c((g4/piks)\%*\% Xs)) el
 ############
 ## Example 3
 ############
-# Example of generalized calibration and adjustment for unit nonresponse in the 'calibration' vignette
+# Generalized calibration and adjustment for unit nonresponse in the 'calibration' vignette
 vignette("calibration", package="sampling")
 }

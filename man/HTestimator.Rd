@@ -11,7 +11,6 @@
 \code{\link{UPtille}}
 }
 \examples{
-# Belgian municipalities data base
 data(belgianmunicipalities)
 attach(belgianmunicipalities)
 # Computes the inclusion probabilities

@@ -4,10 +4,11 @@ if(missing(method)) {warning("the method is not specified; by default, the metho
                      method="srswor"
                     }
 if(!(method %in% c("srswor","srswr","poisson","systematic"))) 
-  stop("the name of the method is wrong")
+  stop("the method name is not in the list")
 if(method %in% c("poisson","systematic") & missing(pik)) stop("the vector of probabilities is missing")
 if(missing(stratanames)|is.null(stratanames))
    {
+   if(length(size)>1) stop("the argument giving stratification variable is missing. The argument size should be a value.")
    if(method=="srswor")
 	result=data.frame((1:nrow(data))[srswor(size,nrow(data))==1],rep(size/nrow(data),size))
    if(method=="srswr")
@@ -16,13 +17,7 @@ if(missing(stratanames)|is.null(stratanames))
       st=s[s!=0]
       l=length(st)
       result=data.frame((1:nrow(data))[s!=0])
-      if(size<=nrow(data))    
-          result=cbind.data.frame(result,st,prob=rep(size/nrow(data),l))
-      else 
-          {prob=rep(size/nrow(data),l)/sum(rep(size/nrow(data),l))
-           result=cbind.data.frame(result,st,prob)
-          }  
-  
+      result=cbind.data.frame(result,st,prob=rep(1-(1-1/nrow(data))^size,l))
       colnames(result)=c("ID_unit","Replicates","Prob")
      }
    if(method=="poisson")
@@ -87,13 +82,9 @@ else
  
 	 if(method=="srswr") 
 	   {s=srswr(size[i],length(y))
-          st=rep(y[s!=0],s[s!=0]) #cbind.data.frame(y[s!=0],s[s!=0])
+          st=rep(y[s!=0],s[s!=0]) 
           l=length(st)
-          if(size[i]<=length(y))    
-          r=cbind.data.frame(data2[st,],prob=rep(size[i]/length(y),l))
-          else 
-          {prob=rep(size[i]/length(y),l)/sum(rep(size[i]/length(y),l))
-           r=cbind.data.frame(data2[st,],prob)}
+          r=cbind.data.frame(data2[st,],prob=rep(1-(1-1/length(y))^size[i],l))
           }
        if(method=="poisson") 
 		{pikk=inclusionprobabilities(pik[y],size[i])
@@ -137,5 +128,4 @@ if(description)  {cat("Number of strata ",nrow(x1),"\n")
 }
 result
 }
-
 

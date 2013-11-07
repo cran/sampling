@@ -19,7 +19,11 @@ probabilities of units k and l, with k not equal to l. N is the population size.
 }
 \references{
 Sampford, M. (1967), On sampling without replacement with unequal probabilities of
-selection, \emph{Biometrika}, 54:499-513.
+selection, \emph{Biometrika}, 54:499-513.\cr
+Wu, C. (2004). R/S-PLUS Implementation of pseudo empirical
+likelihood methods under unequal probability sampling. Working
+paper 2004-07, Department of Statistics and Actuarial Science,
+University of Waterloo.
 }
 \examples{
 #define the prescribed inclusion probabilities

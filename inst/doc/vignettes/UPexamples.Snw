@@ -24,7 +24,77 @@ ps.options(pointsize=12)
 options(width=60)
 
 @
-This is an example of unequal probability (UP) sampling functions: selection of samples using the Belgian municipalities data set,
+1) Some examples of using maximum entropy sampling design and related functions:
+
+a) First example
+
+@
+Sample of Belgian municipalities, sample size 50
+
+<<entropy1, results=hide>>=
+data(belgianmunicipalities)
+attach(belgianmunicipalities)
+n=50
+@
+Inclusion probabilties proportional to the 'averageincome' variable
+
+<<entropy2, results=hide>>=
+pik=inclusionprobabilities(averageincome,n)
+@
+Draw a sample
+
+<<entropy3, results=hide>>=
+s=UPmaxentropy(pik)
+@
+The sample is
+
+<<entropy4, results=hide>>=
+as.character(Commune[s==1])
+@
+Joint inclusion probabilities
+
+<<entropy5, results=hide>>=
+pi2=UPmaxentropypi2(pik)
+@
+Check the result
+
+<<entropy6, results=hide>>=
+rowSums(pi2)/pik/n
+@
+b) Second example
+
+@
+Selection of samples from Belgian municipalities data, sample size 50.
+Once matrix q is computed, a sample is quickly selected.
+Simulations can be run to compare the results.
+ 
+<<entropy7, results=hide>>=
+data(belgianmunicipalities)
+attach(belgianmunicipalities)
+pik=inclusionprobabilities(averageincome,50)
+pik=pik[pik!=1]
+n=sum(pik)
+pikt=UPMEpiktildefrompik(pik)
+w=pikt/(1-pikt)
+q=UPMEqfromw(w,n)
+@
+Draw a sample using the q matrix
+
+<<entropy8, results=hide>>= 
+UPMEsfromq(q)
+
+@
+Simulations to check the sample selection; the difference between pik and the computed inclusion prob. tt is almost 0.
+
+<<entropy9, results=hide>>= 
+sim=10000
+N=length(pik)
+tt=rep(0,N)
+for(i in 1:sim) tt = tt+UPMEsfromq(q)
+tt=tt/sim
+max(abs(tt-pik))
+@
+2) This is an example of unequal probability (UP) sampling functions: selection of samples using the Belgian municipalities data set,
 with equal or unequal probabilities, and study of the Horvitz-Thompson estimator accuracy using boxplots. The following
 sampling schemes are used: Poisson, random systematic, random
 pivotal, Till\'e, Midzuno, systematic, pivotal, and simple random
@@ -44,21 +114,17 @@ b=data(belgianmunicipalities)
 pik=inclusionprobabilities(belgianmunicipalities$Tot04,200)
 N=length(pik)
 n=sum(pik)
-
 @
 Number of simulations (for an accurate result, increase this value to 10000):
 
 <<up2, results=hide>>= 
 sim=10
 ss=array(0,c(sim,8))
-
-
 @
 Defines the variable of interest:
 
 <<up3, results=hide>>= 
 y=belgianmunicipalities$TaxableIncome
-
 @
 Simulation and computation of the Horvitz-Thompson estimator:
 
@@ -85,7 +151,6 @@ s=srswor(n,N)
 ht[8]=HTestimator(y[s==1],rep(n/N,n))
 ss[i,]=ht
 }
-
 @
 Boxplots of the estimators:
 
@@ -93,9 +158,6 @@ Boxplots of the estimators:
 colnames(ss) <- 
 c("poisson","rsyst","rpivotal","tille","midzuno","syst","pivotal","srswor")
 boxplot(data.frame(ss), las=3)
-
-
-
 
 <<eval=FALSE, echo=FALSE>>=
 <<up1>>

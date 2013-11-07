@@ -15,8 +15,6 @@ Returns a vector (with elements 0 and 1) of size N, the population size.
 Each element k of this vector indicates the status of unit k 
 (1, unit k is selected in the sample; 0, otherwise).
 }
-\seealso{\code{\link{rmultinom}}
-}
 \references{
 Hansen, M. and Hurwitz, W. (1943), On the theory of sampling from finite populations.
 \emph{Annals of Mathematical Statistics}, 14:333-362.

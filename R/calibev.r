@@ -17,19 +17,20 @@ else n=length(Xs)
 if(ns!=length(Ys) | ns!=length(piks) | ns!=n | ns!=length(d)) stop("The parameters have different sizes.\n")
 w=g*d
 wtilde=w*q
-B=t(Xs*wtilde) #this is for t(Xs)%*%diag(wtilde)
+B=t(Xs*wtilde) 
 beta=ginv(B%*%Xs)%*%B%*%Ys
 e=Ys-Xs%*%beta
-ss<-0
+if(!with) e=e*w else e=e*d
+ss=0
 for(k in 1:ns)
- {ss2<-0
+ {ss2=0
  for(l in 1:ns)
-       if(!with) 
-       ss2<-ss2+(1-piks[k]*piks[l]/pikl[k,l])*w[k]*e[k]*w[l]*e[l]
-       else 
-       ss2<-ss2+(1-piks[k]*piks[l]/pikl[k,l])*d[k]*e[k]*d[l]*e[l]
- ss<-ss+ss2
+   ss2=ss2+(1-piks[k]*piks[l]/pikl[k,l])*e[l]
+ ss=ss+e[k]*ss2
  }
 list(calest=sum(w*Ys),evar=as.numeric(ss))
 }
+
+
+
 
