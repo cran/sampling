@@ -1,7 +1,8 @@
-UPsampfordpi2=function(pik) 
+UPsampfordpi2<-function(pik) 
 {
 n=sum(pik)
 n=.as_int(n)
+if(n<2) stop("the sample size<2")
 N=length(pik)
 p=pik/n
 pikl=matrix(0,N,N)
@@ -13,6 +14,7 @@ for (i in 2:n) {
 for (r in 1:(i-1)) Lm[i]=Lm[i]+((-1)^(r-1))*sum(lambda^r)*Lm[i-r]
 Lm[i]=Lm[i]/(i - 1)
 }
+if(any(Lm<0)) stop("it is not possible to compute pik2 for this example")
 t1=(n + 1) - (1:n)
 Kn=1/sum(t1*Lm/n^t1)
 Lm2=rep(0, n - 1)

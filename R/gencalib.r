@@ -1,6 +1,6 @@
 gencalib<-function (Xs, Zs, d, total, q = rep(1, length(d)), method = c("linear", 
     "raking", "truncated", "logit"), bounds = c(low = 0, upp = 10), 
-    description = FALSE, max_iter = 500, C=1) 
+    description = FALSE, max_iter = 500, C = 1) 
 {
     if (any(is.na(Xs)) | any(is.na(Zs)) | any(is.na(d)) | any(is.na(total)) | 
         any(is.na(q))) 
@@ -24,7 +24,6 @@ gencalib<-function (Xs, Zs, d, total, q = rep(1, length(d)), method = c("linear"
         stop("the specified method is not in the list")
     if (method %in% c("linear", "raking") & !missing(bounds)) 
         stop("for the linear and raking the bounds are not allowed")
-    require(MASS)
     EPS = .Machine$double.eps
     EPS1 = 1e-06
     n = length(d)
@@ -40,7 +39,7 @@ gencalib<-function (Xs, Zs, d, total, q = rep(1, length(d)), method = c("linear"
                 stop("The conditions low<C<upp are not fulfilled")
         }
         else if (missing(bounds)) 
-            stop("Specify the bounds")
+            warning("By default the bounds are 0 and 10")
         g = 1 + q * c(Zs %*% lambda1)
         list = 1:length(g)
         l = 0
@@ -86,7 +85,7 @@ gencalib<-function (Xs, Zs, d, total, q = rep(1, length(d)), method = c("linear"
             cat("No convergence in", max_iter, "iterations with the given bounds. \n")
             cat("The bounds for the g-weights are:", min(g), 
                 " and ", max(g), "\n")
-            cat(" and the g-weights are given by g\n")
+            g=NULL
         }
     }
     else if (method == "raking") {
@@ -102,10 +101,10 @@ gencalib<-function (Xs, Zs, d, total, q = rep(1, length(d)), method = c("linear"
             if (any(is.na(w1)) | any(is.infinite(w1)) | any(is.nan(w1))) {
                 warning("No convergence")
                 g = NULL
-                l=max_iter 
+                l = max_iter
                 break
             }
-           tr = crossprod(Xs, w1)
+            tr = crossprod(Xs, w1)
             if (max(abs(tr - total)/total) < EPS1) 
                 break
         }
@@ -115,13 +114,17 @@ gencalib<-function (Xs, Zs, d, total, q = rep(1, length(d)), method = c("linear"
         }
         else g = w1/d
     }
-    else if (method == "logit") {
-             if (bounds[1] > bounds[2]) 
-            stop("The conditions low<upp are not fulfilled")
-        A = (bounds[2] - bounds[1])/((C - bounds[1]) * (bounds[2] - 
-            C))
+    else if (method == "logit") 
+          if (missing(bounds)) 
+               warning("By default the bounds are 0 and 10")
+          else  
+        {
+       if (bounds[2] <= C || bounds[1] >= C || bounds[1] > bounds[2]) 
+                stop("The conditions low<C<upp are not fulfilled")
+        A = (bounds[2] - bounds[1])/((C - bounds[1]) * (bounds[2] - C))
         u = rep(1, length(d))
-        F = (bounds[1] * (bounds[2] - C) + bounds[2] * (C - bounds[1]) * u)/(bounds[2] - C + (C - bounds[1]) * u)
+        F = (bounds[1] * (bounds[2] - C) + bounds[2] * (C - bounds[1]) * 
+            u)/(bounds[2] - C + (C - bounds[1]) * u)
         w1 = as.vector(d * F)
         T = t(Xs * w1)
         phiprim = ginv(T %*% Zs, tol = EPS)
@@ -153,15 +156,15 @@ gencalib<-function (Xs, Zs, d, total, q = rep(1, length(d)), method = c("linear"
                     q1 = q[list]
                     list1 = list
                   }
-                 else break 
+                  else break
                 }
-                if(is.vector(Xs1))
-                 { warning("no convergence")
+                if (is.vector(Xs1)) {
+                  warning("no convergence")
                   g1 = g = NULL
                   break
-                  }   
-               t1 = c(t(d1) %*% Xs1)
-               phi = t(Xs1) %*% as.vector(d1 * g1)
+                }
+                t1 = c(t(d1) %*% Xs1)
+                phi = t(Xs1) %*% as.vector(d1 * g1)
                 T = t(Xs1 * as.vector(d1 * g1))
                 phiprime = T %*% Zs1
                 lambda1 = lambda1 - ginv(phiprime, tol = EPS) %*% 
@@ -205,5 +208,5 @@ gencalib<-function (Xs, Zs, d, total, q = rep(1, length(d)), method = c("linear"
         cat("summary - final weigths w=g*d\n")
         print(summary(as.vector(g * d)))
     }
-    g
+g
 }

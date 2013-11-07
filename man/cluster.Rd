@@ -12,11 +12,10 @@
 sampling without replacement (srswor), simple random sampling with replacement (srswr), 
 Poisson sampling (poisson), systematic sampling (systematic); if the method is not specified, 
 by default the method is "srswor".}
-\item{pik}{vector of selection probabilities or auxiliary information used to compute them; 
+\item{pik}{vector of inclusion probabilities or auxiliary information used to compute them; 
 this argument is only used for unequal probability sampling (Poisson, systematic). If an
 auxiliary information is provided, the function uses the \link{inclusionprobabilities} function for
-computing these probabilities. If the method is "srswr" and the sample size is larger than
-the population size, this vector is normalized to one.}
+computing these probabilities.}
 \item{description}{a message is printed if its value is TRUE; the message gives the number 
 of selected clusters, the number of units in the population and the number of selected units. 
 By default, the value is FALSE.}

@@ -4,8 +4,6 @@ function(X,pikstar,pik,comment=TRUE)
 ######################################################
 { 
 # extraction of the non-integer values for the landing phase 
-require(MASS)
-require(lpSolve)
 EPS=1e-11
 p=dim(X)[2]
 N=dim(X)[1]

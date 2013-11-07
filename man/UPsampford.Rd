@@ -5,11 +5,12 @@
 Uses the Sampford's method to select a sample of units (unequal probabilities, without replacement, fixed sample size).
 }
 \usage{
-UPsampford(pik,eps=1e-6)
+UPsampford(pik,eps=1e-6, max_iter=500)
 }
 \arguments{
 \item{pik}{vector of the inclusion probabilities.}
 \item{eps}{the control value, by default equal to 1e-6.}
+\item{max_iter}{maximum number of iterations in the algorithm.}
 }
 \value{
 Returns a vector (with elements 0 and 1) of size N, the population size.  

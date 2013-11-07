@@ -21,16 +21,9 @@ cluster<-function (data, clustername, size, method = c("srswor", "srswr", "poiss
             st = s[s != 0]
             l = length(st)
             result = data.frame(index[s != 0])
-            if (size <= nrow(data)) 
-                result = cbind.data.frame(result, st, prob = rep(size/nrow(data), 
-                  l))
-            else {
-                prob = rep(size/nrow(data), l)/sum(rep(size/nrow(data), 
-                  l))
-                result = cbind.data.frame(result, st, prob)
-            }
+            result = cbind.data.frame(result, st, prob = rep(1-(1-1/nrow(data))^size,l))
             colnames(result) = c("ID_unit", "Replicates", "Prob")
-        }
+                               }
         if (method == "poisson") {
             pikk = inclusionprobabilities(pik, size)
             s = (UPpoisson(pikk) == 1)
@@ -61,7 +54,7 @@ cluster<-function (data, clustername, size, method = c("srswor", "srswr", "poiss
         x1 = factor(data[, m]) 
         result = NULL
         if (nlevels(x1) == 0) 
-            stop("the cluster name has 0 modalities")
+            stop("the cluster variable has 0 modalities")
         else {
             nr_cluster = nlevels(x1)
             if (method == "srswor") {
@@ -79,14 +72,8 @@ cluster<-function (data, clustername, size, method = c("srswor", "srswr", "poiss
                 r = cbind.data.frame(index, data[, m])
                 names(r) = c("index", "cluster")
                 r = merge(r, st, by.x = "cluster", by.y = "cluster")
-                if (size <= nr_cluster) 
-                  result = cbind.data.frame(r, rep(size/nr_cluster, nrow(r)))
-                else {
-                  prob = rep(size/nr_cluster, nrow(r))/sum(rep(size/nr_cluster, 
-                    nrow(r)))
-                  result = cbind.data.frame(r, prob)
-                }
-            }
+               result = cbind.data.frame(r, rep(1-(1-1/nr_cluster)^size, nrow(r)))
+                            }
             if (method == "systematic") {
                 pikk = inclusionprobabilities(pik, size)
                 s = (UPsystematic(pikk) == 1)
@@ -143,3 +130,7 @@ cluster<-function (data, clustername, size, method = c("srswor", "srswr", "poiss
     }
     result
 }
+
+
+
+

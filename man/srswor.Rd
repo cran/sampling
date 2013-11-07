@@ -16,7 +16,7 @@ Returns a vector (with elements 0 and 1) of size N, the population size.
 Each element k of this vector indicates the status of unit k 
 (1, unit k is selected in the sample; 0, otherwise).
 }
-\seealso{\code{\link{sample}}, \code{\link{srswr}}}
+\seealso{\code{\link{srswr}}}
 \examples{
 ############
 ## Example 1

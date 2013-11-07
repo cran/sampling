@@ -19,30 +19,29 @@ where \eqn{\hat{z_i}=\frac{(Ys_i-\hat{r}Xs_i)}{\hat{Xs}}, \hat{r}=\hat{Ys}/\hat{
 Woodruff, R. (1971). \emph{A Simple Method for Approximating the Variance of a Complicated Estimate}, Journal of the American Statistical Association, Vol. 66,  No. 334 , pp. 411--414.
 } 
 \examples{
-# Belgian municipalities data base
 data(belgianmunicipalities)
 attach(belgianmunicipalities)
-# Computes the inclusion probabilities
-pik=inclusionprobabilities(averageincome,100)
-# the first variable on the population
-Y=Men03
-# the second variable on the population
-X=Women03
+# inclusion probabilities, sample size 200
+pik=inclusionprobabilities(Tot04,200)
+# the first variable (population level)
+Y=Men04
+# the second variable (population level)
+X=Women04
 # population size
 N=length(pik)             
-# matrix of joint inclusion prob. on the population for Tille sampling
-pikl=UPtillepi2(pik)     
-# draw a sample using the Tille sampling 
-s=UPtille(pik)           
-# inclusion probabilities on the sample
+# joint inclusion probabilities for Poisson sampling
+pikl=outer(pik,pik,"*")
+# draw a sample using Poisson sampling 
+s=UPpoisson(pik)           
+# sample inclusion probabilities
 piks=pik[s==1]            
 # the first observed variable
 Ys=Y[s==1]
 # the second observed variable
 Xs=X[s==1]              
-# matrix of joint inclusion prob. on the sample          
+# matrix of joint inclusion prob. (sample level)          
 pikls=pikl[s==1,s==1] 
-# computes the ratio HTestimator(Ys,piks)/HTestimator(Xs,piks) and its estimated variance
+# ratio estimator and its estimated variance
 vartaylor_ratio(Ys,Xs,pikls)
 }
 \keyword{survey}

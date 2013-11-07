@@ -15,13 +15,13 @@ the number of replicates for unit k in the sample.
 \item{n}{sample size.}
 \item{N}{population size.}
 }
-\seealso{\code{\link{rmultinom}}, \code{\link{UPmultinomial}}
+\seealso{\code{\link{UPmultinomial}}
 }
 \examples{
 s=srswr(3,10)
 #the selected units are 
 (1:10)[s!=0]
-#wiht the number of replicates 
+#with the number of replicates 
 s[s!=0]
 }
 \keyword{survey}
