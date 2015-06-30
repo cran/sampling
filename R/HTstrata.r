@@ -18,5 +18,5 @@ HTstrata<-function (y, pik, strata, description=FALSE)
     }
 if(description)
   cat("The Horvitz-Thompson estimator is:\n")
-as.vector(s1)
+s1
 }

@@ -6,14 +6,14 @@
 method=c("srswor","srswr","poisson","systematic"), pik, description=FALSE)}
 \arguments{
 \item{data}{data frame or data matrix; its number of rows is N, the population size.}
-\item{stage}{list of sampling type at each stage; the possible values are: "stratified", "cluster" 
+\item{stage}{list of sampling types at each stage; the possible values are: "stratified", "cluster" 
 and "" (without stratification or clustering). For multistage element sampling, this argument is not necessary.}
 \item{varnames}{list of stratification or clustering variables.}
 \item{size}{list of sample sizes (in the order in which the samples appear in the multistage sampling).}
-\item{method}{method to select units; the following methods are implemented: simple random 
+\item{method}{list of methods to select units at each stage; the following methods are implemented: simple random 
 sampling without replacement (srswor), simple random sampling with replacement (srswr), 
 Poisson sampling (poisson), systematic sampling (systematic); if the method is not specified, 
-by default the method is "srswor". The same method is used at each stage.}
+by default the method is "srswor". The method can be different at each stage.}
 \item{pik}{list of selection probabilities or auxiliary information used to compute them; 
 this argument is only used for unequal probability sampling (Poisson, systematic). If an
 auxiliary information is provided, the function uses the \link{inclusionprobabilities} function for
@@ -38,7 +38,7 @@ and the following information:
 ## Example 1
 ############
 # Two-stage cluster sampling
-# Uses the 'swissmunicipalities' data for drawing a sample of units
+# Uses the 'swissmunicipalities' data 
 data(swissmunicipalities)
 b=swissmunicipalities
 b=b[order(b$REG,b$CT),]
@@ -49,17 +49,19 @@ attach(b)
 # it is used as clustering variable in the second-stage sample
 # 4 clusters (regions) are selected in the first-stage 
 # 1 canton is selected in the second-stage from each sampled region 
-# the method is simple random sampling without replacement 
+# the method is simple random sampling without replacement in each stage
 # (equal probability, without replacement)
-m=mstage(swissmunicipalities,stage=list("cluster","cluster"), varnames=list("REG","CT"),
-size=list(4,c(1,1,1,1)), method="srswor")
+m=mstage(b,stage=list("cluster","cluster"), varnames=list("REG","CT"),
+size=list(4,c(1,1,1,1)), method=list("srswor","srswor"))
 # the first stage is m[[1]], the second stage is m[[2]]
 #the selected regions
 unique(m[[1]]$REG)
 #the selected cantons
 unique(m[[2]]$CT)
 # extracts the observed data
-getdata(b,m)[[2]]
+x=getdata(b,m)[[2]]
+# check the output
+table(x$REG,x$CT)
 ############
 ## Example 2
 ############
@@ -77,28 +79,31 @@ table(data$state,data$region)
 # the method is simple random sampling without replacement
 # 25 units are drawn in the first-stage
 # in the second-stage, 10 units are drawn from the already 25 selected units
-m=mstage(data,size=list(25,10),method="srswor") 
+m=mstage(data,size=list(25,10),method=list("srswor","srswor")) 
 # the first stage is m[[1]], the second stage is m[[2]]
 # extracts the observed data
 xx=getdata(data,m)[[2]]
 xx
-# check the result using a contigency table
+# check the result 
 table(xx$state,xx$region)
 ############
 ## Example 3
 ############
-# One-stage stratified cluster sampling
+# Stratified one-stage cluster sampling
 # The same data as in Example 2
 # the variable 'state' is used as stratification variable 
 # 165 units are in the first stratum and 70 in the second one
 # the variable 'region' is used as clustering variable
 # 1 cluster (region) is drawn in each state using "srswor" 
 m=mstage(data, stage=list("stratified","cluster"), varnames=list("state","region"), 
-size=list(c(165,70),c(1,1)),method="srswor") 
+size=list(c(165,70),c(1,1)),method=list("","srswor")) 
+# check the first stage
+table(m[[1]]$state)
+# check the second stage
+table(m[[2]]$region)
 # extracts the observed data
 xx=getdata(data,m)[[2]]
-xx
-# verify the result using a contigency table
+# check the result
 table(xx$state,xx$region)
 ############
 ## Example 4
@@ -125,12 +130,32 @@ ls=list(4,c(1,1,1,1))
 prob=list(rep(4/7,7),list(c(0.2,0.4,0.4),rep(1/5,5),rep(1/3,3),rep(1,1),rep(1/7,7),
 rep(1/6,6),rep(1,1)))
 m=mstage(b,stage=list("cluster","cluster"),varnames=list("REG","CT"),
-size=ls, method="systematic",pik=prob)
+size=ls, method=c("systematic","systematic"),pik=prob)
 #the selected regions
 unique(m[[1]]$REG)
 #the selected cantons
 unique(m[[2]]$CT)
 # extracts the observed data
-getdata(b,m)[[2]]
+xx=getdata(b,m)[[2]]
+# check the result
+table(xx$REG,xx$CT)
+############
+## Example 5
+############
+# Stratified two-stage cluster sampling
+# The same data as in Example 1
+# the variable 'REG' is used as stratification variable
+# there are 7 strata  
+# the variable 'CT' is used as first clustering variable
+# first stage, clusters (cantons) are drawn from each region using "srswor" 
+# 3 clusters are drawn from the regions 1,2,3,5, and 6, respectively
+# 1 cluster is drawn from the regions 4 and 7, respectively
+# the variable 'COM' is used as second clustering variable
+# second stage, 2 clusters (municipalities) are drawn from each selected canton using "srswor" 
+m=mstage(b,stage=list("stratified","cluster","cluster"), varnames=list("REG","CT","COM"),
+size=list(size1=table(b$REG),size2=c(rep(3,3),1,3,3,1), size3=rep(2,17)), 
+method=list("","srswor","srswor"))
+# extracts the observed data
+getdata(b,m)[[3]]
 }
 \keyword{survey}

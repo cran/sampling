@@ -1,5 +1,5 @@
 useDynLib(sampling) 
-import(MASS,lpSolve)
+import(MASS,lpSolve,stats,graphics)
 
 # Export all names
 exportPattern(".")

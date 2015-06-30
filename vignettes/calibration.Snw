@@ -68,7 +68,8 @@ s=getdata(data,s)
 @ 
 
 The \verb@status@ variable is used in the \verb@rhg_strata@ function.
-The \verb@status@ column is added to $s$ (1 - sample respondent, 0 otherwise); it is randomly generated using the uniform distribution:
+The \verb@status@ column is added to $s$ (1 - sample respondent, 0 otherwise); it is randomly generated using the uniform distribution. 
+The response probability for all units is 0.3.
 
 <<calib32, results=hide>>=
 status=runif(nrow(s))
@@ -89,16 +90,9 @@ We select only the sample respondents:
 sr=s[s$status==1,]
 @
 
-We creates the population data frame of sex and region indicators:
+We create the population data frame of sex and region indicators:
 <<calib6, results=hide>>=
-X=matrix(0,nrow=nrow(data),ncol=5)
-for(i in 1:nrow(data))
-  {if(data$sex[i]==1) X[i,1]=1
-   if(data$sex[i]==2) X[i,2]=1
-   if(data$region[i]==1) X[i,3]=1
-   if(data$region[i]==2) X[i,4]=1
-   if(data$region[i]==3) X[i,5]=1
-   }
+X=cbind(disjunctive(data$sex),disjunctive(data$region))
 @
 
 We compute the population totals for each sex and region:
@@ -185,7 +179,7 @@ sampling.newpage()
 This is an example of: 
 \begin{itemize}
 \item variance estimation of the calibration estimator (using the \verb@calibev@ and \verb@varest@ functions),  
-\item variance estimator of the Horvitz-Thompson estimator (using the \verb@varest@ function).
+\item variance estimator of the Horvitz-Thompson estimator (using the \verb@varest@ and \verb@varHT@ functions).
 \end{itemize}
 
 We generate an artificial population and use Till\'e sampling. The population size is 100, and the sample size is 20. 
@@ -210,7 +204,7 @@ pik=inclusionprobabilities(Z,20)
 pikl=UPtillepi2(pik)
 # number of simulations; let nsim=10000 for an accurate result
 nsim=10
-c1=c2=c3=c4=c5=numeric(nsim)
+c1=c2=c3=c4=c5=c6=numeric(nsim)
 for(i in 1:nsim)
 {
 # draws a sample
@@ -231,10 +225,12 @@ c1[i]=cc$calest
 c2[i]=cc$evar
 # computes the variance estimator of the calibration estimator (second method)
 c3[i]=varest(Ys,Xs,pik=piks,w=g/piks)
-# computes the variance estimator of the the Horvitz-Thompson estimator
-c4[i]=varest(Ys=Ys,pik=piks) 
+# computes the variance estimator of the HT estimator using varest()
+c4[i]=varest(Ys,pik=piks) 
+# computes the variance estimator of the HT estimator using varHT()
+c5[i]=varHT(Ys,pikls,2) 
 # computes the Horvitz-Thompson estimator
-c5[i]=HTestimator(Ys,piks)
+c6[i]=HTestimator(Ys,piks)
 }
 cat("the population total:",sum(Y),"\n")
 cat("the calibration estimator under simulations:", mean(c1),"\n")
@@ -244,21 +240,22 @@ for(k in 1:(N-1))
   for(l in (k+1):N)
    delta[k,l]=delta[l,k]=pikl[k,l]-pik[k]*pik[l]
 diag(delta)=pik*(1-pik)
-varHT=0
-varasym=0
+var_HT=0
+var_asym=0
 e=lm(Y~X)$resid
 for(k in 1:N)
-  for(l in 1:N) {varHT=varHT+Y[k]*Y[l]*delta[k,l]/(pik[k]*pik[l])
-                 varasym=varasym+e[k]*e[l]*delta[k,l]/(pik[k]*pik[l])} 
-cat("the approximate variance of the calibration estimator:",varasym,"\n")
+  for(l in 1:N) {var_HT=var_HT+Y[k]*Y[l]*delta[k,l]/(pik[k]*pik[l])
+                 var_asym=var_asym+e[k]*e[l]*delta[k,l]/(pik[k]*pik[l])} 
+cat("the approximate variance of the calibration estimator:",var_asym,"\n")
 cat("first variance estimator of the calibration est. using calibev function:\n")
-cat("MSE of the first variance estimator:", var(c2)+(mean(c2)-varasym)^2,"\n")
+cat("MSE of the first variance estimator:", var(c2)+(mean(c2)-var_asym)^2,"\n")
 cat("second variance estimator of the calibration est. using varest function:\n")
-cat("MSE of the second variance estimator:", var(c3)+(mean(c3)-varasym)^2,"\n")
-cat("the Horvitz-Thompson estimator under simulations:", mean(c5),"\n")
-cat("the variance of the Horvitz-Thompson estimator:", varHT, "\n")
-cat("the variance estimator of the H-T estimator under simulations:", mean(c4),"\n")
-cat("MSE of the variance estimator:", var(c4)+(mean(c4)-varHT)^2,"\n")
+cat("MSE of the second variance estimator:", var(c3)+(mean(c3)-var_asym)^2,"\n")
+cat("the Horvitz-Thompson estimator under simulations:", mean(c6),"\n")
+cat("the variance of the HT estimator:", var_HT, "\n")
+cat("the variance estimator of the HT estimator under simulations:", mean(c4),"\n")
+cat("MSE of the variance estimator 1 of HT estimator:", var(c4)+(mean(c4)-var_HT)^2,"\n")
+cat("MSE of the variance estimator 2 of HT estimator:", var(c5)+(mean(c5)-var_HT)^2,"\n")
 @
 
 
@@ -269,12 +266,10 @@ sampling.newpage()
 
 @
 
-sampling.newpage()
 
-@
 
 \section{Example 3} 
-This is an example of generalized calibration used to handle unit nonresponse with different forms of response probabilities: 
+This is an example of generalized calibration used to handle unit nonresponse with different forms of response probabilities. 
 
 
 Consider the population $U$, the sample $s$ and the set of respondents $r$ with $r\subseteq s \subseteq U.$ 
@@ -328,7 +323,7 @@ $\exp(\mathbf{h}^T\mathbf{z}_k).$
 We exemplify the last form of response probabilities (generalized
 exponential weight adjustment) using artificial data. We generate a population of size $N=400$ and consider the auxiliary information $X$ following a Gamma distribution
 with parameters 3 and 4. The instrumental variable $Z$ is generated using the model $Z=2X+\varepsilon,$ where $\varepsilon\sim U(0,1).$ The variable of interest is
-$Y$ generated using the model $Z=3X+\varepsilon_1,$ where $\varepsilon_1\sim N(0,1).$ We consider here that the nonresponse is nonignorable and the response
+$Y$ generated using the model $Y=3X+\varepsilon_1,$ where $\varepsilon_1\sim N(0,1).$ We consider here that the nonresponse is nonignorable and the response
 probabilities $p$ depend on the variable of interest. We draw a simple random sampling without replecement of size $n=100$ and generate the set of respondents $r$ using
 Poisson sampling with the probabilties $p.$ The bounds are fixed to 1 and 5, and the constant $C=1.5.$ Three estimators are computed: 
 \begin{itemize}

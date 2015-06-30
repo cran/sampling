@@ -110,7 +110,7 @@ HTestimator(MU284$RMT85[s==1],pik[s==1])
 # Computation of the Horvitz-Thompson estimator for an unequal probability sample
 s=samplecube(matrix(pik),pik,1,FALSE)
 HTestimator(MU284$RMT85[s==1],pik[s==1])
-# simulations; for a better accurancy, increase the value of 'sim'
+# simulations; for a better accuracy, increase the value of 'sim'
 sim=8
 res1=rep(0,times=sim)
 res2=rep(0,times=sim)

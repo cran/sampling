@@ -23,9 +23,9 @@ The function returns two values:
 }
 \details{
 If with is TRUE, the following formula is used
-\deqn{\hat{Var}(\hat{Ys})=\sum_{k\in s}\sum_{\ell\in s}((\pi_{k\ell}-\pi_k\pi_{\ell})/\pi_{k\ell})(d_ke_k)(d_\ell e_\ell)}{\hat{Var}(\hat{Ys})=\sum_{k\in s}\sum_{\ell\in s}((\pi_{k\ell}-\pi_k\pi_{\ell})/\pi_{k\ell})(d_ke_k)(d_\ell e_\ell)}
+\deqn{\widehat{Var}(\widehat{Ys})=\sum_{k\in s}\sum_{\ell\in s}((\pi_{k\ell}-\pi_k\pi_{\ell})/\pi_{k\ell})(d_ke_k)(d_\ell e_\ell)}{\hat{Var}(\hat{Ys})=\sum_{k\in s}\sum_{\ell\in s}((\pi_{k\ell}-\pi_k\pi_{\ell})/\pi_{k\ell})(d_ke_k)(d_\ell e_\ell)}
 else 
-\deqn{\hat{Var}(\hat{Ys})=\sum_{k\in s}\sum_{\ell\in s}((\pi_{k\ell}-\pi_k\pi_{\ell})/\pi_{k\ell})(w_ke_k)(w_\ell e_\ell)}{\hat{Var}(\hat{Ys})=\sum_{k\in s}\sum_{\ell\in s}((\pi_{k\ell}-\pi_k\pi_{\ell})/\pi_{k\ell})(w_ke_k)(w_\ell e_\ell)}
+\deqn{\widehat{Var}(\widehat{Ys})=\sum_{k\in s}\sum_{\ell\in s}((\pi_{k\ell}-\pi_k\pi_{\ell})/\pi_{k\ell})(w_ke_k)(w_\ell e_\ell)}{\hat{Var}(\hat{Ys})=\sum_{k\in s}\sum_{\ell\in s}((\pi_{k\ell}-\pi_k\pi_{\ell})/\pi_{k\ell})(w_ke_k)(w_\ell e_\ell)}
 where \eqn{e_k} denotes the residual of unit k.
 }
 \references{ 
@@ -41,7 +41,7 @@ Deville, J.-C., Särndal, C.-E., and Sautory, O. (1993). Generalized raking proce
 ############
 # Example of g-weights (linear, raking, truncated, logit),
 # with the data of Belgian municipalities as population.
-# Firstly, a sample is selected by means of Poisson sampling.
+# Firstly, a sample is selected by means of systematic sampling.
 # Secondly, the g-weights are calculated.
 data(belgianmunicipalities)
 attach(belgianmunicipalities)
@@ -55,8 +55,8 @@ TaxableIncome/mean(TaxableIncome),
 Totaltaxation/mean(Totaltaxation),
 averageincome/mean(averageincome),
 medianincome/mean(medianincome))
-# selection of a sample with expected size equal to 200
-# by means of Poisson sampling
+# selection of a sample of size 200
+# using systematic sampling
 # the inclusion probabilities are proportional to the average income 
 pik=inclusionprobabilities(averageincome,200)
 N=length(pik)               # population size

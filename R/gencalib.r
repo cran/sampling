@@ -1,4 +1,4 @@
-gencalib<-function (Xs, Zs, d, total, q = rep(1, length(d)), method = c("linear", 
+ gencalib<-function (Xs, Zs, d, total, q = rep(1, length(d)), method = c("linear", 
     "raking", "truncated", "logit"), bounds = c(low = 0, upp = 10), 
     description = FALSE, max_iter = 500, C = 1) 
 {
@@ -31,7 +31,7 @@ gencalib<-function (Xs, Zs, d, total, q = rep(1, length(d)), method = c("linear"
     lambda1 = ginv(t(Xs * d * q) %*% Zs, tol = EPS) %*% (total - 
         c(t(d) %*% Xs))
     if (method == "linear" | max(abs(lambda1)) < EPS) 
-        g = 1 + q * c(Zs %*% lambda1)
+        {g = 1 + q * c(Zs %*% lambda1) ; der = q}
     else if (method == "truncated") {
         if (!missing(bounds)) {
             if (bounds[2] <= C || bounds[1] >= C || bounds[1] > 
@@ -39,8 +39,10 @@ gencalib<-function (Xs, Zs, d, total, q = rep(1, length(d)), method = c("linear"
                 stop("The conditions low<C<upp are not fulfilled")
         }
         else if (missing(bounds)) 
-            warning("By default the bounds are 0 and 10")
+            stop("Give the bounds")
         g = 1 + q * c(Zs %*% lambda1)
+        der = q
+        
         list = 1:length(g)
         l = 0
         g1 = g
@@ -101,6 +103,8 @@ gencalib<-function (Xs, Zs, d, total, q = rep(1, length(d)), method = c("linear"
             if (any(is.na(w1)) | any(is.infinite(w1)) | any(is.nan(w1))) {
                 warning("No convergence")
                 g = NULL
+  
+                der = g
                 l = max_iter
                 break
             }
@@ -111,12 +115,14 @@ gencalib<-function (Xs, Zs, d, total, q = rep(1, length(d)), method = c("linear"
         if (l == max_iter) {
             warning("No convergence")
             g = NULL
+ 
+            der = g
         }
-        else g = w1/d
+        else {g = w1/d; der=g}
     }
     else if (method == "logit") 
           if (missing(bounds)) 
-               warning("By default the bounds are 0 and 10")
+               stop("Specify the bounds")
           else  
         {
        if (bounds[2] <= C || bounds[1] >= C || bounds[1] > bounds[2]) 
@@ -179,6 +185,8 @@ gencalib<-function (Xs, Zs, d, total, q = rep(1, length(d)), method = c("linear"
                   break
                 }
                 g[list1] = g1
+                
+                der = g-1
                 tr = crossprod(Xs, g * d)
                 if (max(abs(tr - total)/total) < EPS1 & all(g >= 
                   bounds[1] & g <= bounds[2])) 
@@ -190,6 +198,8 @@ gencalib<-function (Xs, Zs, d, total, q = rep(1, length(d)), method = c("linear"
                   " and ", max(g), "\n")
                 cat(" and the g-weights are given by g\n")
                 g = NULL
+                
+                der = g
             }
         }
     }
@@ -208,5 +218,5 @@ gencalib<-function (Xs, Zs, d, total, q = rep(1, length(d)), method = c("linear"
         cat("summary - final weigths w=g*d\n")
         print(summary(as.vector(g * d)))
     }
-g
+   g
 }

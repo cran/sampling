@@ -35,6 +35,8 @@ x=getdata(swissmunicipalities, st)
 # computes the population sizes of strata
 N=table(swissmunicipalities$REG)
 N=N[unique(x$REG)]
+#the strata 1   2   3   4   5   6   7
+#corresponds to REG  4   1   3   2   5   6   7 
 # computes the Hajek estimator of the variable Pop020 
 Hajekstrata(x$Pop020,x$Prob,x$Stratum,N,type="total",description=TRUE)}
 \keyword{survey}

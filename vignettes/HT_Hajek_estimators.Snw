@@ -36,7 +36,7 @@ $$\pi_k=\frac{nx_k}{\sum_{i=1}^N x_i},$$ and the sampling
 scheme is said to be probability proportional to size ($\pi ps$). Under this scheme, the H\'ajek estimator of the population total is defined by
 $$\hat{y}_{Hajek}=N\frac{\sum_{k\in s} y_k/\pi_k}{\sum_{k\in s} 1/\pi_k}.$$
 S$\ddot{a}$rndal, Swenson, and Wretman (1992, p.
-182) give several reasons for regarding the H\'ajek as `usually the better
+182) give several cases for regarding the H\'ajek as `usually the better
 estimator' comparing to the Horvitz-Thompson estimator $$\hat{y}_{HT}=\sum_{k\in s} y_k/\pi_k:$$
 \begin{itemize}
 \item[a)] the $y_k-\bar{y}_U$ tend to be small, \item[b)] 
@@ -128,10 +128,10 @@ tv=c(sum(y1),sum(y2),sum(y3),sum(y4))
 for(i in 1:4)
 {
 cat("Case ",i,"\n")
-cat("The Horvitz-Thompson estimator under simulations:",mean(ss[,i])," and the true value:",tv[i],"\n") 
+cat("The mean of the Horvitz-Thompson estimators:",mean(ss[,i])," and the true value:",tv[i],"\n") 
 MSE1=var(ss[,i])+(mean(ss[,i])-tv[i])^2
 cat("MSE Horvitz-Thompson estimator:",MSE1,"\n")
-cat("The Hajek estimator under simulations:",mean(ss1[,i])," and the true value:",tv[i],"\n") 
+cat("The mean of the Hajek estimators:",mean(ss1[,i])," and the true value:",tv[i],"\n") 
 MSE2=var(ss1[,i])+(mean(ss1[,i])-tv[i])^2
 cat("MSE Hajek estimator:",MSE2,"\n")
 cat("Ratio of the two MSE:", MSE1/MSE2,"\n")

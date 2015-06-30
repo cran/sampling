@@ -93,7 +93,7 @@ g3=gencalib(Xs,Zs,d=1/piks,total,method="truncated",bounds=c(0.5,8))
 g4=gencalib(Xs,Zs,d=1/piks,total,method="logit",bounds=c(0.5,1.5))
 # In some cases, the calibration does not exist
 # particularly when bounds are used.
-# if the calibration is possible, the calibration estimator of Xs is printed
+# if the calibration is possible, the calibration estimator of X total is printed
 if(checkcalibration(Xs,d=1/piks,total,g1)$result) print(c((g1/piks)\%*\% Xs)) else print("error")
 if(!is.null(g2))
 if(checkcalibration(Xs,d=1/piks,total,g2)$result) print(c((g2/piks)\%*\% Xs)) else print("error")

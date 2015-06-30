@@ -11,7 +11,7 @@
 }
 \details{
 The function implements the following estimator:
-\deqn{\hat{Var}(\hat{Ys})=\frac{1}{1-\sum_{k\in s} a_k^2}\sum_{k\in s}(1-\pi_k)(\frac{y_k}{\pi_k}-\frac{\sum_{l\in s} (1-\pi_{l})y_l/\pi_l}{\sum_{l\in s} (1-\pi_l)})}
+\deqn{\widehat{Var}(\widehat{Ys})=\frac{1}{1-\sum_{k\in s} a_k^2}\sum_{k\in s}(1-\pi_k)\left(\frac{y_k}{\pi_k}-\frac{\sum_{l\in s} (1-\pi_{l})y_l/\pi_l}{\sum_{l\in s} (1-\pi_l)}\right)}
 where \eqn{a_k=(1-\pi_k)/\sum_{l\in s} (1-\pi_l)}.
 }
 \references{ 
