@@ -1,5 +1,6 @@
-"inclusionprobabilities" <- function(a,n)
-{   nnull = length(a[a == 0])
+inclusionprobabilities <- function(a,n)
+{   if(!is.vector(a)) a=as.vector(a)
+    nnull = length(a[a == 0])
     nneg = length(a[a < 0])
     if (nnull > 0) 
         warning("there are zero values in the initial vector a\n")
@@ -32,4 +33,5 @@
     }
 pik1
 }
+
 

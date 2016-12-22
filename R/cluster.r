@@ -10,6 +10,8 @@ cluster<-function (data, clustername, size, method = c("srswor", "srswr", "poiss
         stop("the name of the method is wrong")
     if (method %in% c("poisson", "systematic") & missing(pik)) 
         stop("the vector of probabilities is missing")
+    if (method %in% c("poisson", "systematic") & !missing(pik)) 
+         if(!is.vector(pik)) pik=as.vector(pik)
     data = data.frame(data)
     index = 1:nrow(data)
     if (missing(clustername)) {
@@ -30,7 +32,7 @@ cluster<-function (data, clustername, size, method = c("srswor", "srswr", "poiss
             if (length(s) > 0) 
                 result = data.frame(index[s], pikk[s])
             if (description) 
-                cat("\nPopulation total and number of selected units:", 
+                cat("\nNumber of units in the population and number of selected units:", 
                   nrow(data), length(s), "\n")
         }
         if (method == "systematic") {
@@ -41,7 +43,7 @@ cluster<-function (data, clustername, size, method = c("srswor", "srswr", "poiss
         if (method != "srswr") 
             colnames(result) = c("ID_unit", "Prob")
         if (description) 
-            cat("\nPopulation total and number of selected units:", 
+            cat("\nNumber of units in the population and number of selected units:", 
                 nrow(data), sum(size), "\n")
     }
     else {
@@ -54,7 +56,7 @@ cluster<-function (data, clustername, size, method = c("srswor", "srswr", "poiss
         x1 = factor(data[, m]) 
         result = NULL
         if (nlevels(x1) == 0) 
-            stop("the cluster variable has 0 modalities")
+            stop("the cluster variable has 0 categories")
         else {
             nr_cluster = nlevels(x1)
             if (method == "srswor") {
@@ -95,7 +97,7 @@ cluster<-function (data, clustername, size, method = c("srswor", "srswr", "poiss
                   if (description) {
                     cat("Number of selected clusters:", sum(s), 
                       "\n")
-                    cat("\nPopulation total and number of selected units:", 
+                    cat("\nNumber of units in the population and number of selected units:", 
                       nrow(data), nrow(result), "\n")
                   }
                 }
@@ -114,7 +116,7 @@ cluster<-function (data, clustername, size, method = c("srswor", "srswr", "poiss
                 if (description) {
                   cat("Number of selected clusters:", length(s[s != 
                     0]), "\n")
-                  cat("Population total and number of selected units", 
+                  cat("Number of units in the population and number of selected units:", 
                     nrow(data), nrow(result), "\n")
                 }
             }
@@ -123,13 +125,14 @@ cluster<-function (data, clustername, size, method = c("srswor", "srswr", "poiss
                   "Prob")
             if (description & !(method %in% c("poisson", "srswr"))) {
                 cat("Number of selected clusters:", size, "\n")
-                cat("Population total and number of selected units", 
+                cat("Number of units in the population and number of selected units:", 
                   nrow(data), nrow(result), "\n")
             }
         }
     }
     result
 }
+
 
 
 
