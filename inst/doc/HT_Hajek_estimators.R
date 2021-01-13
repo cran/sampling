@@ -1,5 +1,4 @@
 ### R code from vignette source 'HT_Hajek_estimators.Snw'
-### Encoding: ISO8859-1
 
 ###################################################
 ### code chunk number 1: HT_Hajek_estimators.Snw:22-26

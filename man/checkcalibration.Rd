@@ -8,7 +8,7 @@ The function returns the following three objects:
 \item{message}{a message concerning the calibration,}
 \item{result}{TRUE if the calibration is possible and FALSE, otherwise.}
 \item{value}{value of max(abs(tr-total)/total, which is used as criterium to validate the 
-calibration, where tr=crossprod(Xs, g*d).}
+calibration, where tr=crossprod(Xs, g*d). If the vector total contains zeros, the value is max(abs(tr-total)).}
 }
 \usage{checkcalibration(Xs, d, total, g, EPS=1e-6)}
 \arguments{

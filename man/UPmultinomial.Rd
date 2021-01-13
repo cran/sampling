@@ -11,9 +11,8 @@ UPmultinomial(pik)
 \item{pik}{vector of the the inclusion probabilities.}
 }
 \value{
-Returns a vector (with elements 0 and 1) of size N, the population size.  
-Each element k of this vector indicates the status of unit k 
-(1, unit k is selected in the sample; 0, otherwise).
+Returns a vector of size N, the population size. Each element k of this vector indicates 
+the number of replicates for unit k in the sample.
 }
 \references{
 Hansen, M. and Hurwitz, W. (1943), On the theory of sampling from finite populations.
@@ -24,7 +23,11 @@ Hansen, M. and Hurwitz, W. (1943), On the theory of sampling from finite populat
 pik=c(0.2,0.7,0.8,0.5,0.4,0.4)
 #selects a sample
 s=UPmultinomial(pik)
-#the sample is
-(1:length(pik))[s==1] 
+#the selected units are
+(1:length(pik))[s!=0] 
+#with the number of replicates 
+s[s!=0]
+#or use
+rep((1:length(pik))[s!=0],s[s!=0]) 
 }
 \keyword{survey}

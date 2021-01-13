@@ -43,7 +43,7 @@ else
 {
 data=data.frame(data)
 index=1:nrow(data)
-m=match(stratanames,colnames(data))
+m=match(gsub(" ",".",stratanames),colnames(data))
 if(any(is.na(m))) stop("the names of the strata are wrong")
 data2=cbind.data.frame(data[,m],index)
 colnames(data2)=c(stratanames,"index")

@@ -9,7 +9,7 @@ n=sum(pik)
 A=(1:N)[pik==0]
 B=(1:N)[pik==1]
 C=setdiff(setdiff(1:N,A),B)
-D=C[sample(length(C), round(n-length(B)))]
+D=C[sample.int(length(C), round(n-length(B)))]
 s1v=rep(0,times=N)
 s1v[c(B,D)]=1
 alpha=min(1-max(pik[setdiff(C,D)]),min(pik[D]))

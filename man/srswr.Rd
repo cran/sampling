@@ -8,7 +8,7 @@ Draws a simple random sampling with replacement of size n (equal probabilities, 
 srswr(n,N)
 }
 \value{
-Returns a vector of size N, population size. Each element k of this vector indicates 
+Returns a vector of size N, the population size. Each element k of this vector indicates 
 the number of replicates for unit k in the sample.
 }
 \arguments{

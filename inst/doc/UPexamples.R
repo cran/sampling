@@ -1,5 +1,4 @@
 ### R code from vignette source 'UPexamples.Snw'
-### Encoding: ISO8859-1
 
 ###################################################
 ### code chunk number 1: UPexamples.Snw:21-25
@@ -46,6 +45,7 @@ pi2=UPmaxentropypi2(pik)
 ### code chunk number 7: entropy6
 ###################################################
 rowSums(pi2)/pik/n
+detach(belgianmunicipalities)
 
 
 ###################################################
@@ -77,6 +77,7 @@ tt=rep(0,N)
 for(i in 1:sim) tt = tt+UPMEsfromq(q)
 tt=tt/sim
 max(abs(tt-pik))
+detach(belgianmunicipalities)
 
 
 ###################################################
@@ -138,7 +139,7 @@ boxplot(data.frame(ss), las=3)
 
 
 ###################################################
-### code chunk number 16: UPexamples.Snw:162-170 (eval = FALSE)
+### code chunk number 16: UPexamples.Snw:164-172 (eval = FALSE)
 ###################################################
 ## b=data(belgianmunicipalities)
 ## pik=inclusionprobabilities(belgianmunicipalities$Tot04,200)

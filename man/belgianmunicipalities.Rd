@@ -28,8 +28,7 @@ A data frame with 589 observations on the following 17 variables:
     \item{medianincome}{median of the income-tax return in euros in 2001.}
   }
 }
-\source{http://www.statbel.fgov.be/figures/download\_fr.asp
-}
+\source{http://https://statbel.fgov.be/fr}
 \examples{
 data(belgianmunicipalities)
 hist(belgianmunicipalities$medianincome)

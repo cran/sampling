@@ -39,7 +39,8 @@ s=UPtille(pik)
 ############
 ## Example 2
 ############
-# see the vignette (UPexamples.pdf)
+# see in the 'UPexamples' vignette
+# vignette("UPexamples", package="sampling")
 }
 \keyword{survey}
 \encoding{latin1}

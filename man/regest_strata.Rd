@@ -3,7 +3,7 @@
 \title{The regression estimator for a stratified design}
 \description{Computes the regression estimator of the population total, using the 
 design-based approach, for a stratified sampling. The same regression model is used for
-all strata.}
+all strata. The underling regression model is a model without intercept.}
 \usage{regest_strata(formula,weights,Tx_strata,strata,pikl,
 sigma=rep(1,length(weights)),description=FALSE)}
 \arguments{

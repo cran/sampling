@@ -60,11 +60,12 @@ Check the result
 
 <<entropy6, results=hide>>=
 rowSums(pi2)/pik/n
+detach(belgianmunicipalities)
 @
 b) Second example
 
 @
-Selection of samples from Belgian municipalities data, sample size 50.
+Selection of samples from Belgian municipalities data set, sample size 50.
 Once matrix q is computed, a sample is quickly selected.
 Simulations can be run to compare the results.
  
@@ -93,6 +94,7 @@ tt=rep(0,N)
 for(i in 1:sim) tt = tt+UPMEsfromq(q)
 tt=tt/sim
 max(abs(tt-pik))
+detach(belgianmunicipalities)
 @
 2) This is an example of unequal probability (UP) sampling functions: selection of samples using the Belgian municipalities data set,
 with equal or unequal probabilities, and study of the Horvitz-Thompson estimator accuracy using boxplots. The following

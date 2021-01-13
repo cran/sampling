@@ -59,7 +59,7 @@ pik
 "reduc" <-
 function(X)
 {
-EPS=0.0000000001
+EPS=1e-11
 N=dim(X)[1]
 Re=svd(X)
 array(Re$u[,(Re$d>EPS)] , c(N,sum(as.integer(Re$d>EPS))))
@@ -68,7 +68,7 @@ array(Re$u[,(Re$d>EPS)] , c(N,sum(as.integer(Re$d>EPS))))
 N = length(pik);
 p = round(length(X)/length(pik))
 X<-array(X,c(N,p))
-if (order==1) o<-sample(N,N)  else
+if (order==1) o<-sample.int(N,N)  else
    {
    if(order==2) o<-seq(1,N,1) 
     else o<-order(pik,decreasing=TRUE)

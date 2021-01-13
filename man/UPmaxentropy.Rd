@@ -86,7 +86,7 @@ UPMEpik2frompikw(pik,w)
 ## Example 2
 ############
 # other examples in the 'UPexamples' vignette
-vignette("UPexamples", package="sampling")
+# vignette("UPexamples", package="sampling")
 }
 \keyword{survey} 
 \encoding{latin1}

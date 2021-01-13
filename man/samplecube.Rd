@@ -53,7 +53,7 @@ c(0,1,14,6),c(0,1,15,8),c(0,1,16,9),c(0,1,17,1),
 c(0,1,18,2),c(0,1,19,3),c(0,1,20,4))
 pik=rep(1/2,times=20)
 ppp=rep(0,times=20)
-sim=100 #for accurate results increase this value
+sim=10 #for accurate results increase this value
 for(i in (1:sim))
 	ppp=ppp+samplecube(X,pik,1,FALSE) 
 ppp=ppp/sim
@@ -64,14 +64,14 @@ print(pik)
 ############
 # unequal probability sampling by cube method
 # one auxiliary variable equal to the inclusion probability
-N=200
+N=100
 pik=runif(N)
 pikfin=samplecube(array(pik,c(N,1)),pik,1,TRUE)
 ############ 
 ## Example 4
 ############
 # p auxiliary variables generated randomly
-N=1000
+N=100
 p=7
 x=rnorm(N*p,10,3)
 # random inclusion probabilities 
@@ -83,7 +83,7 @@ pikfin=samplecube(X,pik,1,TRUE)
 ## Example 5
 ############
 # strata and an auxiliary variable
-N=5000
+N=100
 a=rep(1,times=N)
 b=rep(0,times=N)
 V1=c(a,b,b)
@@ -111,7 +111,7 @@ HTestimator(MU284$RMT85[s==1],pik[s==1])
 s=samplecube(matrix(pik),pik,1,FALSE)
 HTestimator(MU284$RMT85[s==1],pik[s==1])
 # simulations; for a better accuracy, increase the value of 'sim'
-sim=8
+sim=5
 res1=rep(0,times=sim)
 res2=rep(0,times=sim)
 for(i in 1:sim)

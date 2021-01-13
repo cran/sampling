@@ -70,8 +70,9 @@ calib<-function (Xs, d, total, q = rep(1, length(d)), method = c("linear",
             }
             g[list1] = g1
             tr = crossprod(Xs, g * d)
-            if (max(abs(tr - total)/total) < EPS1 & all(g >= 
-                bounds[1] & g <= bounds[2])) 
+            expression = max(abs(tr - total)/total)
+            if(any(total==0)) expression = max(abs(tr - total))
+            if (expression < EPS1 & all(g >= bounds[1] & g <= bounds[2])) 
                 break
         }
         if (l == max_iter) {
@@ -96,7 +97,9 @@ calib<-function (Xs, d, total, q = rep(1, length(d)), method = c("linear",
                 break
             }
             tr = crossprod(Xs, w1)
-            if (max(abs(tr - total)/total) < EPS1) 
+            expression = max(abs(tr - total)/total)
+            if(any(total==0)) expression = max(abs(tr - total))
+            if (expression < EPS1) 
                 break
         }
         if (l == max_iter) {
@@ -118,7 +121,9 @@ calib<-function (Xs, d, total, q = rep(1, length(d)), method = c("linear",
         phiprim = ginv(T %*% Xs, tol = EPS)
         g = F
         tr = crossprod(Xs, w1)
-        if (max(abs(tr - total)/total) > EPS1 | any(g < bounds[1]) | 
+        expression = max(abs(tr - total)/total)
+        if(any(total==0)) expression = max(abs(tr - total))
+        if (expression > EPS1 | any(g < bounds[1]) | 
             any(g > bounds[2])) {
             lambda1 = rep(0, ncol(Xs))
             list = 1:length(g)
@@ -142,6 +147,12 @@ calib<-function (Xs, d, total, q = rep(1, length(d)), method = c("linear",
                     q1 = q[list]
                     list1 = list
                   }
+                  else break
+                }
+                if (is.vector(Xs1)) {
+                  warning("no convergence")
+                  g1 = g = NULL
+                  break
                 }
                 t1 = as.vector(t(d1) %*% Xs1)
                 phi = t(Xs1) %*% as.vector(d1 * g1) - t1
@@ -160,7 +171,9 @@ calib<-function (Xs, d, total, q = rep(1, length(d)), method = c("linear",
                 }
                 g[list1] = g1
                 tr = crossprod(Xs, g * d)
-                if (max(abs(tr - total)/total) < EPS1 & all(g >= 
+                expression = max(abs(tr - total)/total)
+                if(any(total==0)) expression = max(abs(tr - total))
+                if (expression < EPS1 & all(g >= 
                   bounds[1] & g <= bounds[2])) 
                   break
             }
@@ -188,5 +201,5 @@ calib<-function (Xs, d, total, q = rep(1, length(d)), method = c("linear",
         cat("summary - final weigths w=g*d\n")
         print(summary(as.vector(g * d)))
     }
-g
+    g
 }

@@ -1,4 +1,4 @@
- gencalib<-function (Xs, Zs, d, total, q = rep(1, length(d)), method = c("linear", 
+gencalib<-function (Xs, Zs, d, total, q = rep(1, length(d)), method = c("linear", 
     "raking", "truncated", "logit"), bounds = c(low = 0, upp = 10), 
     description = FALSE, max_iter = 500, C = 1) 
 {
@@ -79,7 +79,9 @@
             }
             g[list1] = g1
             tr = crossprod(Xs, g * d)
-            if (max(abs(tr - total)/total) < EPS1 & all(g >= 
+            expression = max(abs(tr - total)/total)
+            if(any(total==0)) expression = max(abs(tr - total))
+            if (expression < EPS1 & all(g >= 
                 bounds[1] & g <= bounds[2])) 
                 break
         }
@@ -109,7 +111,9 @@
                 break
             }
             tr = crossprod(Xs, w1)
-            if (max(abs(tr - total)/total) < EPS1) 
+            expression = max(abs(tr - total)/total)
+            if(any(total==0)) expression = max(abs(tr - total))
+            if (expression < EPS1) 
                 break
         }
         if (l == max_iter) {
@@ -136,7 +140,9 @@
         phiprim = ginv(T %*% Zs, tol = EPS)
         g = F
         tr = crossprod(Xs, w1)
-        if (max(abs(tr - total)/total) > EPS1 | any(g < bounds[1]) | 
+        expression = max(abs(tr - total)/total)
+        if(any(total==0)) expression = max(abs(tr - total))
+        if (expression > EPS1 | any(g < bounds[1]) | 
             any(g > bounds[2])) {
             lambda1 = rep(0, ncol(Xs))
             list = 1:length(g)
@@ -185,10 +191,11 @@
                   break
                 }
                 g[list1] = g1
-                
                 der = g-1
                 tr = crossprod(Xs, g * d)
-                if (max(abs(tr - total)/total) < EPS1 & all(g >= 
+                expression = max(abs(tr - total)/total)
+                if(any(total==0)) expression = max(abs(tr - total))
+                if (expression < EPS1 & all(g >= 
                   bounds[1] & g <= bounds[2])) 
                   break
             }

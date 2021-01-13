@@ -93,18 +93,17 @@ if(checkcalibration(Xs,d=1/piks,total,g1)$result)
     print(c((g1/piks) \%*\% Xs)) else print("error")
 if(!is.null(g2))
     if(checkcalibration(Xs,d=1/piks,total,g2)$result) 
-        print(c((g2/piks) \%*\% Xs)) else print("error")
 if(!is.null(g3))
-    if(checkcalibration(Xs,d=1/piks,total,g3)$result) 
+     if(checkcalibration(Xs,d=1/piks,total,g3)$result & all(g3<=1.5) & all(g3>=0.5))
         print(c((g3/piks) \%*\% Xs)) else print("error")
 if(!is.null(g4))
-    if(checkcalibration(Xs,d=1/piks,total,g4)$result) 
-        print(c((g4/piks) \%*\% Xs)) else print("error")
+    if(checkcalibration(Xs,d=1/piks,total,g4)$result & all(g4<=1.5) & all(g4>=0.5)) 
+         print(c((g4/piks) \%*\% Xs)) else print("error")
 ############
 ## Example 3
 ############
 # Example of calibration and adjustment for nonresponse in the 'calibration' vignette
-vignette("calibration", package="sampling")
+# vignette("calibration", package="sampling")
 }
 \keyword{survey}
 \encoding{latin1}

@@ -2,7 +2,7 @@
 \alias{regest}
 \title{The regression estimator}
 \description{Computes the regression estimator of the population total, using the 
-design-based approach.}
+design-based approach. The underling regression model is a model without intercept.}
 \usage{regest(formula,Tx,weights,pikl,n,sigma=rep(1,length(weights)))}
 \arguments{
 \item{formula}{the regression model formula (y~x).}

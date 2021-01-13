@@ -125,7 +125,7 @@ mstage<-function (data, stage = c("stratified", "cluster", ""), varnames,
                         else if(!is.null(s3)) {
                           s3 = cbind.data.frame(r[s3$ID_unit, 
                             m], r[s3$ID_unit, ]$ID_unit, s3$Prob, 
-                            result[s3$ID_unit, ]$Prob * s3$Prob)
+                            r[s3$ID_unit, ]$Prob * s3$Prob)
                           colnames(s3) = c(varnames[[j]], "ID_unit", 
                             paste("Prob_", j, "_stage"), "Prob")
                         }
@@ -193,7 +193,7 @@ mstage<-function (data, stage = c("stratified", "cluster", ""), varnames,
                         else if (!is.null(s3)) {
                           s3 = cbind.data.frame(r[s3$ID_unit, 
                             m], r[s3$ID_unit, ]$ID_unit, s3$Prob, 
-                            result[s3$ID_unit, ]$Prob * s3$Prob)
+                            r[s3$ID_unit, ]$Prob * s3$Prob)
                           colnames(s3) = c(varnames[[j]], "ID_unit", 
                             paste("Prob_", j, "_stage"), "Prob")
                         }

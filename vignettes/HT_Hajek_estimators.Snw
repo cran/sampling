@@ -7,7 +7,7 @@
 \setlength{\parskip}{.1in}
 \setlength{\textwidth}{140mm}
 \setlength{\oddsidemargin}{10mm}
-\title{Comparing the Horvitz-Thompson estimator and the Hajek estimator}
+\title{Comparing the Horvitz-Thompson estimator and Hajek estimator}
 \author{}
 \usepackage{Sweave}
 \usepackage[latin1]{inputenc}
@@ -25,7 +25,7 @@ ps.options(pointsize=12)
 options(width=60)
 
 @
-Consider a finite population $U=\{1, 2, \dots, N\}.$ Suppose $y_k, k\in U$ are values of the variable of interest in the population. 
+Consider a finite population with labels $U=\{1, 2, \dots, N\}.$ Suppose $y_k, k\in U$ are values of the variable of interest in the population. 
 We wish to estimate the total $\sum_{k=1}^N y_k$ based on a sample $s$ taken
 from the population $U.$ Assume that the sample is
 taken according to a sampling scheme having
@@ -44,7 +44,7 @@ sample size is not fixed, \item[c)] $\pi_k$ are weakly or
 negatively correlated with the $y_k$.
 \end{itemize}
 
-Monte Carlo simulations are used here to compare the accuracy of both 
+Monte Carlo simulation is used here to compare the accuracy of both 
 estimators for a sample size (or expected value of the sample size) equal to 20. Four cases are considered:
 \begin{itemize}
 \item[Case 1.] $y_k$ is constant for $k=1, \dots, N$; this case corresponds to the case a) above; 
@@ -68,7 +68,7 @@ N=length(pik)
 
 
 @
-Number of simulations (for an accurate result, increase this value to 10000):
+Number of runs (for an accurate result, increase this value to 10000):
 
 <<up2, results=hide>>= 
 sim=10
@@ -120,7 +120,7 @@ ss1[i,]=hajek
 
 
 @
-Computation of the MSE and the ratio $\frac{MSE_{HT}}{MSE_{Hajek}}:$
+Estimation of the MSE and the ratio $\frac{MSE_{HT}}{MSE_{Hajek}}:$
 
 <<up5>>= 
 #true values

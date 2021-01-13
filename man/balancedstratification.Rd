@@ -48,25 +48,8 @@ X=cbind(MU284$P75,MU284$CS82,MU284$SS82,MU284$S82,MU284$ME84)
 strata=MU284$REG
 pik=inclusionprobabilities(MU284$P75,80)
 s=balancedstratification(X,strata,pik,TRUE)
-############
-## Example 3
-############
-data(swissmunicipalities)
-swiss=swissmunicipalities
-X=cbind(swiss$HApoly,
-        swiss$Surfacesbois,
-        swiss$P00BMTOT,
-        swiss$P00BWTOT,
-        swiss$POPTOT,
-        swiss$Pop020,
-        swiss$Pop2040,
-        swiss$Pop4065,
-        swiss$Pop65P,
-        swiss$H00PTOT )
-pik=inclusionprobabilities(swiss$POPTOT,400)
-sample=balancedstratification(X,swiss$REG,pik,comment=TRUE)
-#the sample is
-as.character(swiss$Nom[sample==1])
+#the selected units are
+MU284$LABEL[s==1]
 }
 \keyword{survey}
 \encoding{latin1}

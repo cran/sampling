@@ -1,8 +1,7 @@
 ### R code from vignette source 'calibration.Snw'
-### Encoding: ISO8859-1
 
 ###################################################
-### code chunk number 1: calibration.Snw:20-23
+### code chunk number 1: calibration.Snw:21-24
 ###################################################
 library(sampling)
 ps.options(pointsize=12)
@@ -126,7 +125,7 @@ checkcalibration(Xs2, d2, total2, g2)
 
 
 ###################################################
-### code chunk number 16: calibration.Snw:156-175 (eval = FALSE)
+### code chunk number 16: calibration.Snw:157-176 (eval = FALSE)
 ###################################################
 ## data = rbind(matrix(rep("A", 150), 150, 1, byrow = TRUE), 
 ## matrix(rep("B", 100), 100, 1, byrow = TRUE))
@@ -194,7 +193,7 @@ Y=5*Z*(rnorm(100,0,sqrt(1/3))+apply(X,1,"sum"))
 pik=inclusionprobabilities(Z,20)
 # joint inclusion probabilities 
 pikl=UPtillepi2(pik)
-# number of simulations; let nsim=10000 for an accurate result
+# number of runs; let nsim=10000 for an accurate result
 nsim=10
 c1=c2=c3=c4=c5=c6=numeric(nsim)
 for(i in 1:nsim)
@@ -251,7 +250,7 @@ cat("MSE of the variance estimator 2 of HT estimator:", var(c5)+(mean(c5)-var_HT
 
 
 ###################################################
-### code chunk number 18: calibration.Snw:262-266 (eval = FALSE)
+### code chunk number 18: calibration.Snw:263-267 (eval = FALSE)
 ###################################################
 ## X=cbind(c(rep(1,50),rep(0,50)),c(rep(0,50),rep(1,50)),1:100)
 ## # vector of population totals
@@ -263,7 +262,7 @@ cat("MSE of the variance estimator 2 of HT estimator:", var(c5)+(mean(c5)-var_HT
 ## pik=inclusionprobabilities(Z,20)
 ## # joint inclusion probabilities 
 ## pikl=UPtillepi2(pik)
-## # number of simulations; let nsim=10000 for an accurate result
+## # number of runs; let nsim=10000 for an accurate result
 ## nsim=10
 ## c1=c2=c3=c4=c5=c6=numeric(nsim)
 ## for(i in 1:nsim)
@@ -378,7 +377,7 @@ cat("The population total is:", sum(Y),"\n")
 
 
 ###################################################
-### code chunk number 20: calibration.Snw:390-394 (eval = FALSE)
+### code chunk number 20: calibration.Snw:391-395 (eval = FALSE)
 ###################################################
 ## N=400
 ## n=100
