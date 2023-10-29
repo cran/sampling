@@ -45,9 +45,9 @@ total=c(24,26,290)
 # the g-weights using the truncated method
 g=calib(Xs,d=1/piks,total,method="truncated",bounds=c(0.75,1.2))
 # the calibration estimator of X is equal to 'total' vector
-tcal=t(g/piks)\%*\%Xs
+t(g/piks)\%*\%Xs
 # the g-weights are between lower and upper bounds
-g
+range(g)
 ############
 ## Example 2
 ############
@@ -75,20 +75,18 @@ N=length(pik)               # population size
 s=UPpoisson(pik)            # sample
 Xs=X[s==1,]                 # sample matrix of calibration variables
 piks=pik[s==1]              # sample inclusion probabilities
-n=length(piks)              # sample size
+n=length(piks)              # expected sample size
 # vector of population totals of the calibration variables
 total=c(t(rep(1,times=N))\%*\%X)  
-# the population total 
-total
 # computation of the g-weights
-# by means of different calibration methods.
+# by means of different calibration methods
 g1=calib(Xs,d=1/piks,total,method="linear")
 g2=calib(Xs,d=1/piks,total,method="raking")
 g3=calib(Xs,d=1/piks,total,method="truncated",bounds=c(0.5,1.5))
 g4=calib(Xs,d=1/piks,total,method="logit",bounds=c(0.5,1.5))
-# In some cases, the calibration does not exist
+# in some cases, the calibration is not possible,
 # particularly when bounds are used.
-# if the calibration is possible, the calibration estimator of Xs is printed
+# if the calibration is possible, the calibration estimator of X is printed
 if(checkcalibration(Xs,d=1/piks,total,g1)$result) 
     print(c((g1/piks) \%*\% Xs)) else print("error")
 if(!is.null(g2))
@@ -99,6 +97,7 @@ if(!is.null(g3))
 if(!is.null(g4))
     if(checkcalibration(Xs,d=1/piks,total,g4)$result & all(g4<=1.5) & all(g4>=0.5)) 
          print(c((g4/piks) \%*\% Xs)) else print("error")
+detach(belgianmunicipalities)
 ############
 ## Example 3
 ############

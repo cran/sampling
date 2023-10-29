@@ -1,6 +1,6 @@
 \name{postest}
 \alias{postest}
-\title{The poststratified estimator}
+\title{Poststratified estimator}
 \description{Computes the poststratified estimator of the population total.}
 \usage{postest(data, y, pik, NG, description=FALSE)} 
 \arguments{
@@ -18,9 +18,7 @@ NG is a matrix of population frequency in each cell GH.}
 ## Example 1
 ############
 #stratified sampling and poststratification
-# Swiss municipalities data base
 data(swissmunicipalities)
-attach(swissmunicipalities)
 # the variable 'REG' has 7 categories in the population
 # it is used as stratification variable
 # Computes the population stratum sizes
@@ -33,24 +31,19 @@ table(swissmunicipalities$REG)
 st=strata(swissmunicipalities,stratanames=c("REG"),
 size=c(30,20,45,15,20,11,44), method="srswor")
 # extracts the observed data
-# the order of the columns is different from the order in the initial database
+# the order of the columns is different from the order in the initial data
 x=getdata(swissmunicipalities, st)
 px=poststrata(x,"REG")
+#computes the population frequency in each group
 ct=unique(px$data$REG)
-yy=numeric(length(ct))
-for(i in 1:length(ct))
-  {xx=swissmunicipalities[REG==ct[i],]
-   yy[i]=nrow(xx)
-  }
-yy
-postest(px$data,y=px$data$Pop020,pik=px$data$Prob,NG=diag(yy),description=TRUE)
+yy=table(swissmunicipalities$REG)[ct]
+postest(px$data,y=px$data$Pop020,pik=px$data$Prob,NG=diag(yy))
 HTstrata(x$Pop020,x$Prob,x$Stratum)
 #the two estimators are equal
 ############
 ## Example 2
 ############
 # systematic sampling and poststratification
-# Belgian municipalities data base
 data(belgianmunicipalities)
 Tot=belgianmunicipalities$Tot04
 name=belgianmunicipalities$Commune
@@ -58,47 +51,37 @@ pik=inclusionprobabilities(Tot,200)
 #selects a sample
 s=UPsystematic(pik)  
 #the sample is
-as.vector(name[s==1])
+which(s==1)
 # extracts the observed data
 b=getdata(belgianmunicipalities,s)
-attach(belgianmunicipalities)
 pb=poststrata(b,"Province") 
 #computes the population frequency in each group
 ct=unique(pb$data$Province)
-yy=numeric(length(ct))
-for(i in 1:length(ct))
-  {xx=belgianmunicipalities[Province==ct[i],]
-   yy[i]=nrow(xx)
-  }
+yy=table(belgianmunicipalities$Province)[ct]
 postest(pb$data,y=pb$data$TaxableIncome,pik=pik[s==1],NG=yy,description=TRUE)
 HTestimator(pb$data$TaxableIncome,pik=pik[s==1])
 ############
 ## Example 3
 ############
 #cluster sampling and postratification
-# Swiss municipalities data base
 data(swissmunicipalities)
 # the variable 'REG' has 7 categories in the population
 # it is used as clustering variable
 # the sample size is 3; the method is simple random sampling without replacement
 cl=cluster(swissmunicipalities,clustername=c("REG"),size=3,method="srswor")
 # extracts the observed data 
-# the order of the columns is different from the order in the initial database
+# the order of the columns is different from the order in the initial data
 c=getdata(swissmunicipalities, cl)
 pc=poststrata(c,"CT") 
 #computes the population frequency in each group
 ct=unique(pc$data$CT)
-yy=numeric(length(ct))
-for(i in 1:length(ct))
-  {xx=swissmunicipalities[CT==ct[i],]
-   yy[i]=nrow(xx)
-  }
+yy=table(swissmunicipalities$CT)[ct]
 postest(pc$data,y=pc$data$Pop020,pik=pc$data$Prob,NG=yy,description=TRUE)
 ############
 ## Example 4
 ############
 #postratification with two criteria
-#artificial data frame
+#artificial data 
 data=rbind(matrix(rep("nc",165),165,1,byrow=TRUE),matrix(rep("sc",70),70,1,byrow=TRUE))
 data=cbind.data.frame(data,c(rep(1,100), rep(2,50), rep(3,15), rep(1,30),rep(2,40)),
 1000*runif(235))

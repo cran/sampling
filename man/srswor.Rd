@@ -24,7 +24,7 @@ Each element k of this vector indicates the status of unit k
 #select a sample
 s=srswor(3,10)
 #the sample is
-(1:10)[s==1]
+which(s==1)
 ############
 ## Example 2
 ############
@@ -35,6 +35,8 @@ n=200
 #select a sample
 s=srswor(n,length(Tot))  
 #the sample is 
+which(s==1)
+#names of the selected units
 as.vector(name[s==1])
 }
 \keyword{survey}

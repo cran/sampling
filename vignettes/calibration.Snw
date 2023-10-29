@@ -26,7 +26,7 @@ options(width=60)
 
 \section{Example 1} 
 
-This is an example of using the \verb@calib@ function for calibration and nonresponse adjustment (with response homogeneity groups). 
+Example of using the \verb@calib@ function for calibration and nonresponse adjustment (with response homogeneity groups). 
 
 @
 \noindent
@@ -177,7 +177,7 @@ sampling.newpage()
 @
 
 \section{Example 2} 
-This is an example of: 
+This is an example for 
 \begin{itemize}
 \item variance estimation of the calibration estimator (using the \verb@calibev@ and \verb@varest@ functions),  
 \item variance estimator of the Horvitz-Thompson estimator (using the \verb@varest@ and \verb@varHT@ functions).

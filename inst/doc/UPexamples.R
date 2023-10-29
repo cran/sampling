@@ -67,7 +67,6 @@ q=UPMEqfromw(w,n)
 UPMEsfromq(q)
 
 
-
 ###################################################
 ### code chunk number 10: entropy9
 ###################################################
@@ -139,7 +138,7 @@ boxplot(data.frame(ss), las=3)
 
 
 ###################################################
-### code chunk number 16: UPexamples.Snw:164-172 (eval = FALSE)
+### code chunk number 16: UPexamples.Snw:163-170 (eval = FALSE)
 ###################################################
 ## b=data(belgianmunicipalities)
 ## pik=inclusionprobabilities(belgianmunicipalities$Tot04,200)
@@ -176,6 +175,5 @@ boxplot(data.frame(ss), las=3)
 ## 
 ## 
 ## sampling.newpage()
-## 
 
 

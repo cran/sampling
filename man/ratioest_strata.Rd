@@ -1,6 +1,6 @@
 \name{ratioest_strata}
 \alias{ratioest_strata}
-\title{The ratio estimator for a stratified design}
+\title{Ratio estimator for a stratified design}
 \description{Computes the ratio estimator of the population total for a stratified design. 
 The ratio estimator of a total is the sum of ratio estimator in each stratum.}
 \usage{ratioest_strata(y,x,TX_strata,pik,strata,description=FALSE)}
@@ -20,21 +20,20 @@ The ratio estimator of a total is the sum of ratio estimator in each stratum.}
 ###########
 # Example 1
 ###########
-# this example uses MU284 data with the 'REG' variable for stratification
+# uses MU284 data as population with the 'REG' variable for stratification
 data(MU284)
-attach(MU284)
 # there are 3 outliers which are deleted from the population
-MU281=MU284[RMT85<=3000,]
-detach(MU284)
+MU281=MU284[MU284$RMT85<=3000,]
 attach(MU281)
 # computes the inclusion probabilities using the variable P85
+# sample size 120
 pik=inclusionprobabilities(P85,120)
 # defines the variable of interest
 y=RMT85
 # defines the auxiliary information
 x=CS82
 # computes the population stratum sizes
-table(MU281$REG)
+table(REG)
 # not run
 # 1  2  3  4  5  6  7  8 
 # 24 48 32 37 55 41 15 29 
@@ -48,6 +47,7 @@ TX_strata=as.vector(tapply(CS82,list(REG),FUN=sum))
 # computes the ratio estimator
 ratioest_strata(MU281sample$RMT85,MU281sample$CS82,TX_strata,
 MU281sample$Prob,MU281sample$Stratum)
+detach(MU281)
 ###########
 # Example 2
 ###########

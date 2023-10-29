@@ -5,9 +5,9 @@
 adjustment. For stratified sampling, the same logistic model is used for all strata.}
 \usage{rmodel(formula,weights,X)}
 \arguments{
-\item{formula}{the regression model formula (y~x).}
-\item{weights}{vector of the weights; its length is equal to n, the sample size.}
-\item{X}{the sample data frame.}
+\item{formula}{regression model formula (y~x).}
+\item{weights}{vector of weights; its length is equal to n, the sample size.}
+\item{X}{sample data frame.}
 }
 \value{The function returns the sample data frame with a new column 'prob_resp', which contains 
 the response probabilities.}

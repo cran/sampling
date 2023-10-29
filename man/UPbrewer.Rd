@@ -28,6 +28,6 @@ pik=c(0.2,0.7,0.8,0.5,0.4,0.4)
 #select a sample
 s=UPbrewer(pik)
 #the sample is
-(1:length(pik))[s==1]
+which(s==1)
 }
 \keyword{survey}

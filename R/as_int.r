@@ -1,3 +1,6 @@
+#' Compare x to its round value
+#' @param x a double
+#' @noRd
 .as_int<-function(x)
 {if(!is.integer(x)) {
             xo = round(x)

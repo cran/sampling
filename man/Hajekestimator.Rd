@@ -13,7 +13,7 @@
 \code{\link{HTestimator}}
 }
 \examples{
-# Belgian municipalities data base
+# Belgian municipalities data 
 data(belgianmunicipalities)
 # Computes the inclusion probabilities
 pik=inclusionprobabilities(belgianmunicipalities$Tot04,200)
@@ -29,3 +29,4 @@ Hajekestimator(y[s==1],pik[s==1],type="mean")
 Hajekestimator(y[s==1],pik[s==1],N=N,type="total")
 }
 \keyword{survey}
+\encoding{latin1}

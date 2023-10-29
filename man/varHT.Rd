@@ -5,7 +5,7 @@
 \usage{varHT(y,pikl,method)}
 \arguments{
 \item{y}{vector of the variable of interest; its length is equal to n, the sample size.}
-\item{pikl}{matrix of second-order inclusion probabilities; its dimension is nxn.}
+\item{pikl}{matrix of joint inclusion probabilities; its dimension is nxn.}
 \item{method}{if 1, an unbiased variance estimator is computed; if 2, the Sen-Yates-Grundy variance estimator for fixed sample size is computed; be default, the method is 1.}
 }
 \details{
@@ -28,7 +28,7 @@ y=rnorm(N,10,2)
 s=UPpoisson(pik)
 # Computes the Horvitz-Thompson estimator
 HTestimator(y[s==1],pik[s==1])
-# Computes the second-order inclusion prob. for Poisson sampling
+# Computes the joint inclusion prob. for Poisson sampling
 pikl=outer(pik,pik,"*")
 diag(pikl)=pik
 # Computes the variance estimator (method=1, the sample size is not fixed)
@@ -37,7 +37,7 @@ varHT(y[s==1],pikl[s==1,s==1],1)
 s=UPtille(pik)
 # Computes the Horvitz-Thompson estimator
 HTestimator(y[s==1],pik[s==1])
-# Computes the second-order inclusion prob. for Tille sampling
+# Computes the joint inclusion prob. for Tille sampling
 pikl=UPtillepi2(pik)
 # Computes the variance estimator (method=2, the sample size is fixed)
 varHT(y[s==1],pikl[s==1,s==1],2)

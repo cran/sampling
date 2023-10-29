@@ -9,7 +9,7 @@ srswr(n,N)
 }
 \value{
 Returns a vector of size N, the population size. Each element k of this vector indicates 
-the number of replicates for unit k in the sample.
+the number of replicates of unit k in the sample.
 }
 \arguments{
 \item{n}{sample size.}
@@ -20,7 +20,7 @@ the number of replicates for unit k in the sample.
 \examples{
 s=srswr(3,10)
 #the selected units are 
-(1:10)[s!=0]
+which(s!=0)
 #with the number of replicates 
 s[s!=0]
 }

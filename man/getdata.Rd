@@ -1,8 +1,8 @@
 \name{getdata}
 \alias{getdata}
 \title{Get data}
-\description{Extracts the observed data from a data frame. 
-The function is used after a sample has been drawn.
+\description{Extracts the observed data from a data frame (a population). 
+The function is used after a sample has been drawn from this population.
 }
 \usage{getdata(data, m)}
 \arguments{
@@ -27,7 +27,7 @@ data=cbind.data.frame(data,c(rep(1,100), rep(2,50), rep(3,15), rep(1,30),rep(2,4
 names(data)=c("state","region","income")
 # the inclusion probabilities are computed using the variable 'income'
 pik=inclusionprobabilities(data$income,20)
-# draw a sample s using systematic sampling (sample size is 20)
+# draws a sample using systematic sampling (sample size is 20)
 s=UPsystematic(pik) 
 # extracts the observed data
 getdata(data,s)

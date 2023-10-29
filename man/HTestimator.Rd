@@ -13,15 +13,14 @@
 \examples{
 data(belgianmunicipalities)
 attach(belgianmunicipalities)
-# Computes the inclusion probabilities
+# inclusion probabilities
 pik=inclusionprobabilities(Tot04,200)
 N=length(pik)
 n=sum(pik)
-# Defines the variable of interest
-y=TaxableIncome
-# Draws a Poisson sample of expected size 200
+# draws a Poisson sample of expected size 200
 s=UPpoisson(pik)
-# Computes the Horvitz-Thompson estimator
-HTestimator(y[s==1],pik[s==1])
+# Horvitz-Thompson estimator of the total of TaxableIncome
+HTestimator(TaxableIncome[s==1],pik[s==1])
+detach(belgianmunicipalities)
 }
 \keyword{survey}

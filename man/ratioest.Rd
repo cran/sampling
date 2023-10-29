@@ -1,6 +1,6 @@
 \name{ratioest}
 \alias{ratioest}
-\title{The ratio estimator}
+\title{Ratio estimator}
 \description{Computes the ratio estimator of the population total.}
 \usage{ratioest(y,x,Tx,pik)}
 \arguments{
@@ -14,6 +14,7 @@
 \code{\link{regest}}
 }
 \examples{
+# population
 data(MU284)
 # there are 3 outliers which are deleted from the population
 MU281=MU284[MU284$RMT85<=3000,]
@@ -26,7 +27,8 @@ y=RMT85
 x=CS82
 # draws a systematic sample of size 120
 s=UPsystematic(pik)
-# computes the ratio estimator
+# computes the ratio estimator of the total of RMT85
 ratioest(y[s==1],x[s==1],sum(x),pik[s==1])
+detach(MU281)
 }
 \keyword{survey}

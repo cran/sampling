@@ -36,7 +36,8 @@ s=UPtille(pik)
 HTestimator(y[s==1],pik[s==1])
 # Computes the variance estimation of the Horvitz-Thompson estimator
 varest(Ys=y[s==1],pik=pik[s==1])
-# for an example using calibration estimator see the 'calibration' vignette 
+# for an example using calibration estimator, see the 'calibration' vignette 
 # vignette("calibration", package="sampling")
 }
 \keyword{survey}
+\encoding{latin1}

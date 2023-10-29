@@ -11,7 +11,7 @@ UPrandompivotal(pik,eps=1e-6)
 }
 \arguments{
 \item{pik}{vector of the inclusion probabilities.}
-\item{eps}{the control value, by default equal to 1e-6.}
+\item{eps}{control value, by default equal to 1e-6.}
 }
 \value{
 Returns a vector (with elements 0 and 1) of size N, the population size.  
@@ -33,7 +33,7 @@ pik=c(0.2,0.7,0.8,0.5,0.4,0.4)
 #select a sample
 s=UPrandompivotal(pik)
 #the sample is
-(1:length(pik))[s==1]
+which(s==1)
 }
 \keyword{survey}
 \encoding{latin1}

@@ -1,15 +1,14 @@
 Package: sampling
-Version: 2.9
-Date: 2021-01-12
+Version: 2.10
+Date: 2023-10-27
 Title: Survey Sampling
-Author: Yves Tillé <yves.tille@unine.ch>, Alina Matei <alina.matei@unine.ch>
+Author: Yves TillÃ© <yves.tille@unine.ch>, Alina Matei <alina.matei@unine.ch>
 Maintainer: Alina Matei <alina.matei@unine.ch>
 Description: Functions to draw random samples using different sampling schemes are available. Functions are also provided to obtain (generalized) calibration weights, different estimators, as well some variance estimators.  
 Imports: MASS, lpSolve
 License: GPL (>= 2)
-Encoding: latin1
-RoxygenNote: 7.1.1
+Encoding: UTF-8
 NeedsCompilation: yes
-Packaged: 2021-01-12 13:01:24 UTC; mateia
+Packaged: 2023-10-29 14:17:06 UTC; MateiA
 Repository: CRAN
-Date/Publication: 2021-01-13 11:50:05 UTC
+Date/Publication: 2023-10-29 15:20:02 UTC

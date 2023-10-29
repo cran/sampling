@@ -24,24 +24,24 @@ ps.options(pointsize=12)
 options(width=60)
 
 @
-1) Some examples of using maximum entropy sampling design and related functions:
+\section{Examples of maximum entropy sampling design and related functions}
 
-a) First example
+a) Example 1
 
 @
-Sample of Belgian municipalities, sample size 50
+Consider the Belgian municipalities data set as population, and a sample size n=50
 
 <<entropy1, results=hide>>=
 data(belgianmunicipalities)
 attach(belgianmunicipalities)
 n=50
 @
-Inclusion probabilties proportional to the 'averageincome' variable
+Compute the inclusion probabilties proportional to the `averageincome' variable
 
 <<entropy2, results=hide>>=
 pik=inclusionprobabilities(averageincome,n)
 @
-Draw a sample
+Draw a random sample using the maximum entropy sampling design
 
 <<entropy3, results=hide>>=
 s=UPmaxentropy(pik)
@@ -51,7 +51,7 @@ The sample is
 <<entropy4, results=hide>>=
 as.character(Commune[s==1])
 @
-Joint inclusion probabilities
+Compute the joint inclusion probabilities
 
 <<entropy5, results=hide>>=
 pi2=UPmaxentropypi2(pik)
@@ -62,12 +62,12 @@ Check the result
 rowSums(pi2)/pik/n
 detach(belgianmunicipalities)
 @
-b) Second example
+b) Example 2
 
 @
 Selection of samples from Belgian municipalities data set, sample size 50.
-Once matrix q is computed, a sample is quickly selected.
-Simulations can be run to compare the results.
+Once the matrix q (see below) is computed, a sample is quickly selected.
+Monte Carlo simulation can be used to compare the true inclusion probabilities with the estimated ones.
  
 <<entropy7, results=hide>>=
 data(belgianmunicipalities)
@@ -83,9 +83,8 @@ Draw a sample using the q matrix
 
 <<entropy8, results=hide>>= 
 UPMEsfromq(q)
-
 @
-Simulations to check the sample selection; the difference between pik and the computed inclusion prob. tt is almost 0.
+Monte Carlo simulation to check the sample selection; the difference between pik and the estimated inclusion prob. (object tt below) is almost 0.
 
 <<entropy9, results=hide>>= 
 sim=10000
@@ -96,17 +95,17 @@ tt=tt/sim
 max(abs(tt-pik))
 detach(belgianmunicipalities)
 @
-2) This is an example of unequal probability (UP) sampling functions: selection of samples using the Belgian municipalities data set,
-with equal or unequal probabilities, and study of the Horvitz-Thompson estimator accuracy using boxplots. The following
-sampling schemes are used: Poisson, random systematic, random
+
+\section{Example of unequal probability (UP) sampling designs} 
+
+Selection of samples from the Belgian municipalities data set,
+with equal or unequal probabilities, and study of the Horvitz-Thompson estimator accuracy using boxplots. The following sampling schemes are used: Poisson, random systematic, random
 pivotal, Till\'e, Midzuno, systematic, pivotal, and simple random
 sampling without replacement. Monte Carlo simulations are used to study the accuracy of the
 Horvitz-Thompson estimator of a population total. The aim of this
-example is to demonstrate the effect of the auxiliary information incorporation in the sampling design. We use:
+example is to demonstrate the effect of using auxiliary information in sampling designs. We use:
 \begin{itemize}
-\item some $\pi$ ps sampling designs with Horvitz-Thompson estimation,
-using in the sampling design the information on size measures of
-population units;
+\item some $\pi$ps sampling designs with Horvitz-Thompson estimation, using auxiliary information in a sampling desing (size measurements of population units in 2004);
 \item simple random sampling without replacement with Horvitz-Thompson
 estimation, where no auxiliary information is used.
 \end{itemize}
@@ -128,7 +127,7 @@ Defines the variable of interest:
 <<up3, results=hide>>= 
 y=belgianmunicipalities$TaxableIncome
 @
-Simulation and computation of the Horvitz-Thompson estimator:
+Simulation and computation of the Horvitz-Thompson estimators:
 
 <<up4, results=hide>>= 
 ht=numeric(8)
@@ -169,6 +168,5 @@ boxplot(data.frame(ss), las=3)
 <<up5>>
 
 sampling.newpage()
-
 @
 \end{document}

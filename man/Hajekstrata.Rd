@@ -15,7 +15,7 @@
 \code{\link{HTstrata}}
 }
 \examples{
-# Swiss municipalities data base
+# Swiss municipalities data 
 data(swissmunicipalities)
 # the variable 'REG' has 7 categories in the population 
 # it is used as stratification variable
@@ -30,13 +30,14 @@ table(swissmunicipalities$REG)
 st=strata(swissmunicipalities,stratanames=c("REG"),size=c(30,20,45,15,20,11,44), 
 method="srswor")
 # extracts the observed data
-# the order of the columns is different from the order in the swsissmunicipalities database
+# the order of the columns is different from the order in the swsissmunicipalities data
 x=getdata(swissmunicipalities, st)
 # computes the population sizes of strata
 N=table(swissmunicipalities$REG)
 N=N[unique(x$REG)]
 #the strata 1   2   3   4   5   6   7
 #corresponds to REG  4   1   3   2   5   6   7 
-# computes the Hajek estimator of the variable Pop020 
+# computes the Hajek estimator of the total of Pop020 
 Hajekstrata(x$Pop020,x$Prob,x$Stratum,N,type="total",description=TRUE)}
 \keyword{survey}
+\encoding{latin1}

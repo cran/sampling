@@ -9,7 +9,7 @@ UPtillepi2(pik,eps=1e-6)
 }
 \arguments{
 \item{pik}{vector of the first-order inclusion probabilities.}
-\item{eps}{the control value, by default equal to 1e-6.}
+\item{eps}{control value, by default equal to 1e-6.}
 }
 \value{
 Returns a NxN matrix of the following form: the main diagonal contains the first-order inclusion 
@@ -26,9 +26,8 @@ replacement, \emph{Biometrika}, 83:238-241.
 \examples{
 #defines the prescribed inclusion probabilities 
 pik=c(0.2,0.7,0.8,0.5,0.4,0.4)
-pik_joint=UPtillepi2(pik)
-#the joint inclusion probabilities  
-pik_joint
+#matrix of joint inclusion probabilities  
+UPtillepi2(pik)
 }
 \keyword{survey}
 \encoding{latin1}

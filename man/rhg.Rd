@@ -42,3 +42,5 @@ Xs=cbind.data.frame(Xs,status=c(1,0,1))
 rhg(Xs,selection="town")
 }
 \keyword{survey}
+\encoding{latin1}
+

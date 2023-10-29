@@ -14,7 +14,7 @@
 \item{q}{vector of positive values accounting for heteroscedasticity; its size is n, the sample size.}
 \item{with}{if TRUE, the variance estimation takes into account the initial weights d; otherwise, the final weights w=g*d are taken
 into account; by default, its value is FALSE.}
-\item{EPS}{the tolerance in checking the calibration; by default, its value is 1e-6.}
+\item{EPS}{tolerance in checking the calibration; by default, its value is 1e-6.}
 }
 \value{
 The function returns two values:
@@ -67,10 +67,11 @@ n=length(piks)              # sample size
 # vector of population totals of the calibration variables
 total=c(t(rep(1,times=N))\%*\%X)  
 g1=calib(Xs,d=1/piks,total,method="linear") # computes the g-weights
-pikl=UPsystematicpi2(pik)   # computes the matrix of the joint inclusion probabilities 
-pikls=pikl[s==1,s==1]       # the same matrix for the units in s
-Ys=Tot04[s==1]          # the variable of interest is Tot04 (for the units in s)
+pikl=UPsystematicpi2(pik)   # computes the matrix of joint inclusion probabilities 
+pikls=pikl[s==1,s==1]       # the same matrix for the units in the sample
+Ys=Tot04[s==1]          # the variable of interest is Tot04 (sample level)
 calibev(Ys,Xs,total,pikls,d=1/piks,g1,with=FALSE,EPS=1e-6)
+detach(belgianmunicipalities)
 }
 \keyword{survey}
 \encoding{latin1}

@@ -12,7 +12,7 @@ UPopips(lambda,type=c("pareto","uniform","exponential"))
 \item{type}{the type of order sampling (pareto, uniform, exponential).}
 }
 \value{
-Returns a vector of selected units of size n, the sample size.  
+Returns a vector of the selected units; its length is equal to the sample size.  
 }
 \seealso{\code{\link{inclusionprobabilities}}
 }
@@ -31,3 +31,4 @@ s=UPopips(lambda, type="pareto")
 s
 }
 \keyword{survey}
+\encoding{latin1}

@@ -77,13 +77,11 @@ N=length(pik)               # population size
 s=UPpoisson(pik)            # sample
 Xs=X[s==1,]                 # sample calibration variable matrix 
 piks=pik[s==1]              # sample inclusion probabilities
-n=length(piks)              # sample size
+n=length(piks)              # expected sample size
 # vector of population totals of the calibration variables
 total=c(t(rep(1,times=N))\%*\%X)  
-# the population total
-total
 Z=cbind(TaxableIncome/mean(TaxableIncome),averageincome/mean(averageincome))
-# defines the instrumental variables
+# defines the instrumental variables (sample level)
 Zs=Z[s==1,]
 # computation of the generalized g-weights
 # by means of different generalized calibration methods
@@ -91,7 +89,7 @@ g1=gencalib(Xs,Zs,d=1/piks,total,method="linear")
 g2=gencalib(Xs,Zs,d=1/piks,total,method="raking")
 g3=gencalib(Xs,Zs,d=1/piks,total,method="truncated",bounds=c(0.5,8))
 g4=gencalib(Xs,Zs,d=1/piks,total,method="logit",bounds=c(0.5,1.5))
-# In some cases, the calibration does not exist
+# In some cases, the calibration is not possible
 # particularly when bounds are used.
 # if the calibration is possible, the calibration estimator of X total is printed
 if(checkcalibration(Xs,d=1/piks,total,g1)$result) print(c((g1/piks)\%*\% Xs)) else print("error")
@@ -101,9 +99,11 @@ if(!is.null(g3))
 if(checkcalibration(Xs,d=1/piks,total,g3)$result) print(c((g3/piks)\%*\% Xs)) else print("error")
 if(!is.null(g4))
 if(checkcalibration(Xs,d=1/piks,total,g4)$result) print(c((g4/piks)\%*\% Xs)) else print("error")
+detach(belgianmunicipalities)
 ############
 ## Example 3
 ############
 # Generalized calibration and adjustment for unit nonresponse in the 'calibration' vignette
 # vignette("calibration", package="sampling")
 }
+\encoding{latin1}

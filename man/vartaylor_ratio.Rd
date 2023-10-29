@@ -2,7 +2,7 @@
 \alias{vartaylor_ratio}
 \title{Taylor-series linearization variance estimation of a ratio}
 \description{Computes the Taylor-series linearization variance estimation of the ratio \deqn{\frac{\widehat{Y}_s}{\widehat{X}_s}.} 
-The estimators in the ratio are Horvitz-Thompson estimators.
+The estimators in the ratio are Horvitz-Thompson type estimators.
 }
 \usage{vartaylor_ratio(Ys,Xs,pikls)}
 \arguments{
@@ -31,13 +31,14 @@ X=Women04
 N=length(pik)             
 # joint inclusion probabilities for Poisson sampling
 pikl=outer(pik,pik,"*")
+diag(pikl)=pik
 # draw a sample using Poisson sampling 
 s=UPpoisson(pik)           
 # sample inclusion probabilities
 piks=pik[s==1]            
-# the first observed variable
+# the first observed variable (sample level)  
 Ys=Y[s==1]
-# the second observed variable
+# the second observed variable (sample level)  
 Xs=X[s==1]              
 # matrix of joint inclusion prob. (sample level)          
 pikls=pikl[s==1,s==1] 

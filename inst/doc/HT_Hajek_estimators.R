@@ -20,14 +20,11 @@ pik=inclusionprobabilities(Tot04,n)
 N=length(pik)
 
 
-
-
 ###################################################
 ### code chunk number 3: up2
 ###################################################
 sim=10
 ss=ss1=array(0,c(sim,4))
-
 
 
 ###################################################
@@ -45,7 +42,6 @@ cat("Case 4\n")
 epsilon=rnorm(N,0,sqrt(1/3))
 pik4=pik3
 y4=5*(x+epsilon)
-
 
 
 ###################################################
@@ -75,8 +71,6 @@ ss1[i,]=hajek
 }
 
 
-
-
 ###################################################
 ### code chunk number 6: up5
 ###################################################
@@ -97,7 +91,7 @@ cat("Ratio of the two MSE:", MSE1/MSE2,"\n")
 
 
 ###################################################
-### code chunk number 7: HT_Hajek_estimators.Snw:140-149 (eval = FALSE)
+### code chunk number 7: HT_Hajek_estimators.Snw:137-145 (eval = FALSE)
 ###################################################
 ## data(belgianmunicipalities)
 ## attach(belgianmunicipalities)
@@ -105,11 +99,8 @@ cat("Ratio of the two MSE:", MSE1/MSE2,"\n")
 ## n=20
 ## pik=inclusionprobabilities(Tot04,n)
 ## N=length(pik)
-## 
-## 
 ## sim=10
 ## ss=ss1=array(0,c(sim,4))
-## 
 ## cat("Case 1\n")
 ## y1=rep(3,N)
 ## cat("Case 2\n")
@@ -122,7 +113,6 @@ cat("Ratio of the two MSE:", MSE1/MSE2,"\n")
 ## epsilon=rnorm(N,0,sqrt(1/3))
 ## pik4=pik3
 ## y4=5*(x+epsilon)
-## 
 ## ht=numeric(4)
 ## hajek=numeric(4)
 ## for(i in 1:sim)
@@ -145,8 +135,6 @@ cat("Ratio of the two MSE:", MSE1/MSE2,"\n")
 ## ss[i,]=ht
 ## ss1[i,]=hajek
 ## }
-## 
-## 
 ## #true values
 ## tv=c(sum(y1),sum(y2),sum(y3),sum(y4))
 ## for(i in 1:4)
@@ -164,6 +152,5 @@ cat("Ratio of the two MSE:", MSE1/MSE2,"\n")
 ## 
 ## 
 ## sampling.newpage()
-## 
 
 

@@ -96,21 +96,21 @@ pikfin=samplecube(X,pik,1,TRUE)
 ## Example 6
 ############
 # Selection of a balanced sample using the MU284 population,
-# simulation and comparison of the variance with
+# Monte Carlo simulation and variance comparison with
 # unequal probability sampling of fixed sample size.
 ############
 data(MU284)
-# Computation of the inclusion probabilities
+# inclusion probabilities, sample size 50
 pik=inclusionprobabilities(MU284$P75,50)
-# Definition of the matrix of balancing variables
+# matrix of balancing variables
 X=cbind(MU284$P75,MU284$CS82,MU284$SS82,MU284$S82,MU284$ME84,MU284$REV84)
-# Computation of the Horvitz-Thompson estimator for a balanced sample
+# Horvitz-Thompson estimator for a balanced sample
 s=samplecube(X,pik,1,FALSE)
 HTestimator(MU284$RMT85[s==1],pik[s==1])
-# Computation of the Horvitz-Thompson estimator for an unequal probability sample
+# Horvitz-Thompson estimator for an unequal probability sample
 s=samplecube(matrix(pik),pik,1,FALSE)
 HTestimator(MU284$RMT85[s==1],pik[s==1])
-# simulations; for a better accuracy, increase the value of 'sim'
+# Monte Carlo simulation; for a better accuracy, increase the value 'sim'
 sim=5
 res1=rep(0,times=sim)
 res2=rep(0,times=sim)

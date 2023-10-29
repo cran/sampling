@@ -24,7 +24,7 @@ Madow, W.G. (1949), On the theory of systematic sampling, II,
 \examples{
 #define the prescribed inclusion probabilities
 pik=c(0.2,0.7,0.8,0.5,0.4,0.4)
-#matrix of the joint inclusion probabilities
+#matrix of joint inclusion probabilities
 UPsystematicpi2(pik)
 }
 \keyword{survey}

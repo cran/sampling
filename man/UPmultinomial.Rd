@@ -8,11 +8,11 @@ Uses the Hansen-Hurwitz method to select a sample of units (unequal probabilitie
 UPmultinomial(pik)
 }
 \arguments{
-\item{pik}{vector of the the inclusion probabilities.}
+\item{pik}{vector of the inclusion probabilities.}
 }
 \value{
 Returns a vector of size N, the population size. Each element k of this vector indicates 
-the number of replicates for unit k in the sample.
+the number of replicates of unit k in the sample.
 }
 \references{
 Hansen, M. and Hurwitz, W. (1943), On the theory of sampling from finite populations.
@@ -24,7 +24,7 @@ pik=c(0.2,0.7,0.8,0.5,0.4,0.4)
 #selects a sample
 s=UPmultinomial(pik)
 #the selected units are
-(1:length(pik))[s!=0] 
+which(s!=0)
 #with the number of replicates 
 s[s!=0]
 #or use

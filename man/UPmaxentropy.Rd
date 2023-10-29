@@ -6,10 +6,10 @@
 \alias{UPMEpiktildefrompik}
 \alias{UPMEsfromq}
 \alias{UPMEpik2frompikw}
-\title{Maximum entropy sampling with fixed sample size and unequal probabilities}
+\title{Maximum entropy sampling}
 \description{
 Maximum entropy sampling with fixed sample size and unequal probabilities (or Conditional Poisson sampling) 
-is implemented by means of a sequential method.
+is implemented by means of a sequential method (unequal probabilities, without replacement, fixed sample size).
 }
 \usage{
 UPmaxentropy(pik) 
@@ -71,13 +71,13 @@ Tillé, Y. (2006), \emph{Sampling Algorithms}, Springer.
 pik=c(0.07,0.17,0.41,0.61,0.83,0.91)
 # First method
 UPmaxentropy(pik)
-# Second method by using the intermediate procedures
+# Second method by using intermediate procedures
 n=sum(pik)
 pikt=UPMEpiktildefrompik(pik)
 w=pikt/(1-pikt)
 q=UPMEqfromw(w,n)
 UPMEsfromq(q)
-# The matrix of inclusion probabilities
+# Matrix of joint inclusion probabilities
 # First method: direct computation from pik
 UPmaxentropypi2(pik)
 # Second method: computation from pik and w

@@ -9,7 +9,7 @@ UPsystematic(pik,eps=1e-6)
 }
 \arguments{
 \item{pik}{vector of the inclusion probabilities.}
-\item{eps}{the control value, by default equal to 1e-6.}
+\item{eps}{control value, by default equal to 1e-6.}
 }
 \value{
 Returns a vector (with elements 0 and 1) of size N, the population size.  
@@ -31,7 +31,7 @@ pik=c(0.2,0.7,0.8,0.5,0.4,0.4)
 #selects a sample
 s=UPsystematic(pik)
 #the sample is
-(1:length(pik))[s==1]
+which(s==1)
 ############
 ## Example 2
 ############
@@ -42,7 +42,7 @@ pik=inclusionprobabilities(Tot,200)
 #selects a sample
 s=UPsystematic(pik)  
 #the sample is
-as.vector(name[s==1])
+which(s==1)
 # extracts the observed data
 getdata(belgianmunicipalities,s)
 }

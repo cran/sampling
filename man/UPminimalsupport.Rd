@@ -29,7 +29,7 @@ pik=c(0.2,0.7,0.8,0.5,0.4,0.4)
 #selects a sample
 s=UPminimalsupport(pik)
 #the sample is
-(1:length(pik))[s==1]
+which(s==1)
 ############
 ## Example 2
 ############
@@ -40,6 +40,9 @@ pik=inclusionprobabilities(Tot,200)
 #selects a sample
 s=UPminimalsupport(pik)  
 #the sample is
+which(s==1)
+#names of the selected units
 as.vector(name[s==1])
 }
 \keyword{survey}
+\encoding{latin1}

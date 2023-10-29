@@ -83,7 +83,6 @@ m=mstage(data,size=list(25,10),method=list("srswor","srswor"))
 # the first stage is m[[1]], the second stage is m[[2]]
 # extracts the observed data
 xx=getdata(data,m)[[2]]
-xx
 # check the result 
 table(xx$state,xx$region)
 ############

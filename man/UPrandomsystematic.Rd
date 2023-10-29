@@ -11,7 +11,7 @@ UPrandomsystematic(pik,eps=1e-6)
 }
 \arguments{
 \item{pik}{vector of the inclusion probabilities.}
-\item{eps}{the control value, by default equal to 1e-6.}
+\item{eps}{control value, by default equal to 1e-6.}
 }
 \value{
 Returns a vector (with elements 0 and 1) of size N, the population size.  

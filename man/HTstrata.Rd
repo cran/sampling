@@ -24,13 +24,13 @@ table(swissmunicipalities$REG)
 # 589 913 321 171 471 186 245
 # the sample stratum sizes are given by size=c(30,20,45,15,20,11,44)
 # the method is simple random sampling without replacement 
-# (equal probability, without replacement)
+# (equal probability, fixed sample size, without replacement)
 st=strata(swissmunicipalities,stratanames=c("REG"),size=c(30,20,45,15,20,11,44), 
 method="srswor")
 # extracts the observed data
-# the order of the columns is different from the order in the initial database
+# the order of the columns is different from the order in the initial data
 x=getdata(swissmunicipalities, st)
-# computes the HT estimator of the variable Pop020 
+# computes the HT estimator of the total of Pop020 
 HTstrata(x$Pop020,x$Prob,x$Stratum,description=TRUE)
 }
 \keyword{survey}
