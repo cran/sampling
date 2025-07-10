@@ -1,14 +1,24 @@
 Package: sampling
-Version: 2.10
-Date: 2023-10-27
+Version: 2.11
+Date: 2025-07-10
 Title: Survey Sampling
-Author: Yves Tillé <yves.tille@unine.ch>, Alina Matei <alina.matei@unine.ch>
-Maintainer: Alina Matei <alina.matei@unine.ch>
+Authors@R: c(person(given = "Yves",
+                      family = "Tillé",
+                      role = "aut",
+                      email = "yves.tille@unine.ch"),
+               person(given = "Alina",
+                      family = "Matei",
+                      role = c("aut", "cre"),
+                      email = "alina.matei@unine.ch"))
 Description: Functions to draw random samples using different sampling schemes are available. Functions are also provided to obtain (generalized) calibration weights, different estimators, as well some variance estimators.  
-Imports: MASS, lpSolve
+Imports: MASS, lpSolve, utils
+Depends: R (>= 3.5.0)
 License: GPL (>= 2)
 Encoding: UTF-8
 NeedsCompilation: yes
-Packaged: 2023-10-29 14:17:06 UTC; MateiA
+Packaged: 2025-07-10 14:52:52 UTC; sematei
+Author: Yves Tillé [aut],
+  Alina Matei [aut, cre]
+Maintainer: Alina Matei <alina.matei@unine.ch>
 Repository: CRAN
-Date/Publication: 2023-10-29 15:20:02 UTC
+Date/Publication: 2025-07-10 17:20:02 UTC

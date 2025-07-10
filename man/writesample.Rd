@@ -14,7 +14,7 @@ of all samples of fixed size.}
 \examples{
 # all samples of size 4
 # from a population of size 10
-w=writesample(4,10)
+w<-writesample(4,10)
 # the samples are (read by rows)
 t(apply(w,1,function(x) (1:ncol(w))[x==1]))
 }

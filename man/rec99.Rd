@@ -21,11 +21,12 @@ the municipalities of the Haute-Garonne department, France, with less than 10000
     \item{surf_m2}{surface in square meters.}
     \item{lat_centre}{geographical latitude of the center.}
     \item{lon_centre}{geographical longitude of the center.}
+    \item{NAME_3}{regional administration (prefecture) name; a three-modality variable: Muret, Saint-Gaudens, Toulouse.}
    }
 }
 \source{
-For the first 8 variables, 'Institut national de la statistique et des études économiques', France (http://www.insee.fr).
-The geographical positions are available under the Open Database License ("© OpenStreetMap contributors"). https://www.openstreetmap.org/copyright
+For the first 8 variables, 'Institut national de la statistique et des Etudes Economiques', France (http://www.insee.fr).
+The geographical positions are available under the Open Database License ("OpenStreetMap contributors"). https://www.openstreetmap.org/copyright
 }
 \examples{
 data(rec99)
